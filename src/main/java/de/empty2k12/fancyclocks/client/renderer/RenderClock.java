@@ -25,14 +25,10 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		int meta = tile.getBlockMetadata();
 
 		int rotationAngle = 0;
-		double plusX = 0.5;
-		double plusY = 0.5;
-		double plusZ = 0.5;
 
 		switch(meta % 4){
 		case 0:
 			rotationAngle = 90;
-			plusX = 0.2;
 			break;
 		case 1:
 			rotationAngle = 270;
@@ -47,8 +43,9 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 		GL11.glPushMatrix();
 
-		GL11.glTranslated((float) x + plusX, (float) y + plusY, (float) z + plusZ);
-		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);		
+		GL11.glTranslated((float) x + 0.5, (float) y + 0.2, (float) z + 0.5);
+		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);	
+		GL11.glTranslatef(0.0F, -0.3125F, 0.4375F);
 		GL11.glScalef(1.0F, -1F, -1F);
 
 		bindTexture(texture);
