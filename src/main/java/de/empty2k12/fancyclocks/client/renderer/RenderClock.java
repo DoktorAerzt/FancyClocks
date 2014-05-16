@@ -55,20 +55,18 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		this.model.renderBlock(0.0625F);
 		GL11.glPopMatrix();
 
-		drawTimePointers();
+		drawSecondPointer();
 
 		GL11.glPopMatrix();
 	}
 
-	public static void drawTimePointers() {
-		Double d1 = 64.0D;
-		Double d2 = 32.0D;
+	public static void drawSecondPointer() {
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
-		tessellator.addVertexWithUV(d1, -d2, 1.0D, 0.0D, 1.0D);
-		tessellator.addVertexWithUV(-d1, -d2, 0.9D, 1.0D, 1.0D);
-		tessellator.addVertexWithUV(-d1, d2, 0.9D, 1.0D, 0.0D);
-		tessellator.addVertexWithUV(d1, d2, 0.9D, 0.0D, 0.0D);
+		tessellator.addVertexWithUV(0.1, 0.3, 0.1D, 1.0D, 1.0D);
+		tessellator.addVertexWithUV(-0.2, 0.3, 0.1D, 1.0D, 1.0D);
+		tessellator.addVertexWithUV(-0.2, -0.3, 0.1D, 1.0D, 1.0D);
+		tessellator.addVertexWithUV(0.1, 0.3, 0.1D, 1.0D, 1.0D);
 		tessellator.draw();
 	}
 }
