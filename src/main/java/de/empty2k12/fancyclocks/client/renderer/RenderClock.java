@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import de.empty2k12.fancyclocks.client.model.ModelClock;
+import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 
 public class RenderClock extends TileEntitySpecialRenderer {
@@ -55,12 +56,13 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		this.model.renderBlock(0.0625F);
 		GL11.glPopMatrix();
 
-		drawSecondPointer();
+		drawSecondPointer((TileClock)tile);
 
 		GL11.glPopMatrix();
 	}
 
-	public static void drawSecondPointer() {
+	public static void drawSecondPointer(TileClock tile) {
+		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 1.0f, 0.0f);
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
 		tessellator.addVertexWithUV(-0.03, -0.17, 0.15D, 63.0D, 31.0D);
