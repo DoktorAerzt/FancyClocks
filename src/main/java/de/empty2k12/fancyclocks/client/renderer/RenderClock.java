@@ -1,5 +1,7 @@
 package de.empty2k12.fancyclocks.client.renderer;
 
+import java.util.Calendar;
+
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -62,7 +64,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 	}
 
 	public static void drawSecondPointer(TileClock tile) {
-		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 1.0f, 0.0f);
+		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
 		tessellator.addVertexWithUV(-0.03, -0.17, 0.15D, 63.0D, 31.0D);

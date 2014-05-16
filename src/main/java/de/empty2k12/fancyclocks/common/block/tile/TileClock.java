@@ -5,22 +5,9 @@ import java.util.Calendar;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileClock extends TileEntity {
-	
-	int secondsRotation;
-	
-	Calendar calendar;
-	
-	public TileClock() {
-		calendar = Calendar.getInstance();
-	}
-	
-	@Override
-	public void updateEntity() {
-		secondsRotation = getRotationFromSeconds();
-	}
-	
-	public int getRotationFromSeconds() {
-		return (int) (calendar.get(Calendar.SECOND) * Math.PI);
-	}
 
+	public static int getRotationFromSeconds() {
+		return (int)(90*Math.cos(Math.toRadians(Calendar.getInstance().get(Calendar.SECOND)*6-90)));
+	}
+	
 }

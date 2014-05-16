@@ -30,12 +30,7 @@ public class BlockClock extends BlockContainer {
 	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z) {
 		this.setBlockBoundsOnState(blockAccess.getBlockMetadata(x, y, z));
 	}
-
-	@Override
-	public boolean isNormalCube() {
-		return false;
-	}
-
+	
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
@@ -43,11 +38,6 @@ public class BlockClock extends BlockContainer {
 
 	@Override
 	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int p_149646_5_) {
-		return false;
-	}
-
-	@Override
-	public boolean renderAsNormalBlock() {
 		return false;
 	}
 
