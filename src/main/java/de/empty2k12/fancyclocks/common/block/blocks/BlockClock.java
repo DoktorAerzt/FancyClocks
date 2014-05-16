@@ -40,6 +40,11 @@ public class BlockClock extends BlockContainer {
 	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int p_149646_5_) {
 		return false;
 	}
+	
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
 
 	@Override
 	public boolean canPlaceBlockAt(World world, int x, int y, int z) {

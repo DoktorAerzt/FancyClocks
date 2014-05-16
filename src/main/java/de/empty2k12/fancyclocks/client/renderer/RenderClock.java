@@ -67,15 +67,14 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 	public static void drawSecondPointer(TileClock tile) {
 		Tessellator tessellator = Tessellator.instance;
-		tessellator.startDrawing(GL11.GL_LINE_STRIP);
-		double pixel = 1F/16F;
+		tessellator.startDrawing(GL11.GL_LINES);
 		tessellator.setBrightness(1);
 		tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
-		tessellator.addVertexWithUV(-2*pixel, 0.5+1*pixel, 1*pixel+0.5, 63.0D, 31.0D);
-		tessellator.addVertexWithUV(-2*pixel, 2.5F, 1*pixel+0.5, 63.0D, 31.0D);
-		tessellator.addVertexWithUV(-2*pixel, 2.5F, -1*pixel+0.5, 63.0D, 31.0D);
-		tessellator.addVertexWithUV(-2*pixel, 0.5F+1*pixel, -1*pixel+0.5, 63.0D, 31.0D);
+		tessellator.addVertex(-0.03, -0.17, 0.15D);
+		tessellator.addVertex(-0.03, -0.3, 0.15D);
+		tessellator.addVertex(0.0, -0.3, 0.15D);
+		tessellator.addVertex(0.0, -0.17, 0.15D);
 		tessellator.draw();
 	}
 }
