@@ -110,5 +110,4 @@ public class BlockClock extends BlockContainer {
 
 		return newMeta;
 	}
-
 }
