@@ -15,10 +15,17 @@ public class ModelClock extends ModelBase {
 	ModelRenderer Filling1;
 	ModelRenderer Filling2;
 	ModelRenderer Filling3;
-	ModelRenderer ClockPodest;
+	ModelRenderer MiddleDot1;
+	ModelRenderer twelveOClock;
+	ModelRenderer nineOClock;
+	ModelRenderer threeOClock;
+	ModelRenderer sixOClock;
+	ModelRenderer elevenOClock;
+	ModelRenderer twoOClock;
+	ModelRenderer sevenOClock;
+	ModelRenderer fiveOClock;
 
 	public ModelClock() {
-
 		textureWidth = 64;
 		textureHeight = 32;
 
@@ -76,25 +83,60 @@ public class ModelClock extends ModelBase {
 		Filling3.setTextureSize(64, 32);
 		Filling3.mirror = true;
 		setRotation(Filling3, 0F, 0F, 0F);
-		ClockPodest = new ModelRenderer(this, 0, 26);
-		ClockPodest.addBox(0F, 0F, 0F, 5, 5, 1);
-		ClockPodest.setRotationPoint(-2.5F, -7.5F, 1F);
-		ClockPodest.setTextureSize(64, 32);
-		ClockPodest.mirror = true;
-		setRotation(ClockPodest, 0F, 0F, 0F);
-	}
-
-	public void renderBlock(float f) {
-		Ground1.render(f);
-		SideWall1.render(f);
-		SideWall2.render(f);
-		Inside1.render(f);
-		Roof2.render(f);
-		Roof1.render(f);
-		Filling1.render(f);
-		Filling2.render(f);
-		Filling3.render(f);
-		ClockPodest.render(f);
+		MiddleDot1 = new ModelRenderer(this, 34, 0);
+		MiddleDot1.addBox(0F, 0F, 0F, 1, 1, 2);
+		MiddleDot1.setRotationPoint(-0.5F, -5.5F, 0.5F);
+		MiddleDot1.setTextureSize(64, 32);
+		MiddleDot1.mirror = true;
+		setRotation(MiddleDot1, 0F, 0F, 0F);
+		twelveOClock = new ModelRenderer(this, 34, 0);
+		twelveOClock.addBox(0F, -6F, 0F, 1, 1, 1);
+		twelveOClock.setRotationPoint(-0.5F, -2F, 1F);
+		twelveOClock.setTextureSize(64, 32);
+		twelveOClock.mirror = true;
+		setRotation(twelveOClock, 0F, 0F, 0F);
+		nineOClock = new ModelRenderer(this, 34, 0);
+		nineOClock.addBox(0F, 0F, 0F, 1, 1, 1);
+		nineOClock.setRotationPoint(2F, -5.5F, 1F);
+		nineOClock.setTextureSize(64, 32);
+		nineOClock.mirror = true;
+		setRotation(nineOClock, 0F, 0F, 0F);
+		threeOClock = new ModelRenderer(this, 34, 0);
+		threeOClock.addBox(0F, 0F, 0F, 1, 1, 1);
+		threeOClock.setRotationPoint(-3F, -5.5F, 1F);
+		threeOClock.setTextureSize(64, 32);
+		threeOClock.mirror = true;
+		setRotation(threeOClock, 0F, 0F, 0F);
+		sixOClock = new ModelRenderer(this, 34, 0);
+		sixOClock.addBox(0F, 0F, 0F, 1, 1, 1);
+		sixOClock.setRotationPoint(-0.5F, -3F, 1F);
+		sixOClock.setTextureSize(64, 32);
+		sixOClock.mirror = true;
+		setRotation(sixOClock, 0F, 0F, 0F);
+		elevenOClock = new ModelRenderer(this, 34, 0);
+		elevenOClock.addBox(0F, 0F, 0F, 1, 1, 1);
+		elevenOClock.setRotationPoint(1F, -7F, 1F);
+		elevenOClock.setTextureSize(64, 32);
+		elevenOClock.mirror = true;
+		setRotation(elevenOClock, 0F, 0F, 0F);
+		twoOClock = new ModelRenderer(this, 34, 0);
+		twoOClock.addBox(0F, 0F, 0F, 1, 1, 1);
+		twoOClock.setRotationPoint(-2F, -7F, 1F);
+		twoOClock.setTextureSize(64, 32);
+		twoOClock.mirror = true;
+		setRotation(twoOClock, 0F, 0F, 0F);
+		sevenOClock = new ModelRenderer(this, 34, 0);
+		sevenOClock.addBox(0F, 0F, 0F, 1, 1, 1);
+		sevenOClock.setRotationPoint(1F, -4F, 1F);
+		sevenOClock.setTextureSize(64, 32);
+		sevenOClock.mirror = true;
+		setRotation(sevenOClock, 0F, 0F, 0F);
+		fiveOClock = new ModelRenderer(this, 34, 0);
+		fiveOClock.addBox(0F, 0F, 0F, 1, 1, 1);
+		fiveOClock.setRotationPoint(-2F, -4F, 1F);
+		fiveOClock.setTextureSize(64, 32);
+		fiveOClock.mirror = true;
+		setRotation(fiveOClock, 0F, 0F, 0F);
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -109,7 +151,36 @@ public class ModelClock extends ModelBase {
 		Filling1.render(f5);
 		Filling2.render(f5);
 		Filling3.render(f5);
-		ClockPodest.render(f5);
+		MiddleDot1.render(f5);
+		twelveOClock.render(f5);
+		nineOClock.render(f5);
+		threeOClock.render(f5);
+		sixOClock.render(f5);
+		elevenOClock.render(f5);
+		twoOClock.render(f5);
+		sevenOClock.render(f5);
+		fiveOClock.render(f5);
+	}
+	
+	public void renderModel(float f) {
+		Ground1.render(f);
+		SideWall1.render(f);
+		SideWall2.render(f);
+		Inside1.render(f);
+		Roof2.render(f);
+		Roof1.render(f);
+		Filling1.render(f);
+		Filling2.render(f);
+		Filling3.render(f);
+		MiddleDot1.render(f);
+		twelveOClock.render(f);
+		nineOClock.render(f);
+		threeOClock.render(f);
+		sixOClock.render(f);
+		elevenOClock.render(f);
+		twoOClock.render(f);
+		sevenOClock.render(f);
+		fiveOClock.render(f);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

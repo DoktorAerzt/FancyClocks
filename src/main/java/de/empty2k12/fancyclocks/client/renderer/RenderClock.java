@@ -54,7 +54,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 		bindTexture(texture);
 
-		this.model.renderBlock(0.0625F);
+		this.model.renderModel(0.0625F);
 	
 		GL11.glTranslatef(-0.0F, -0.3F, -0.0F);
 		GL11.glScalef(-1.0F, 1F, 1F);
@@ -73,7 +73,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
 		Tessellator secondTess = Tessellator.instance;
 		secondTess.startDrawing(GL11.GL_LINE_STRIP);
-		secondTess.setColorOpaque_F(0.0F, 1.0F, 1.0F);
+		secondTess.setBrightness(1);
 		secondTess.addVertex(-0.01, 0.01, 0.15D);
 		secondTess.addVertex(-0.01, -0.15, 0.15D);
 		secondTess.addVertex(0.0, -0.15, 0.15D);
@@ -87,10 +87,10 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glRotatef(tile.getRotationFromMinutes(), 0.0f, 0.0f, 1.0f);
 		Tessellator minuteTess = Tessellator.instance;
 		minuteTess.startDrawing(GL11.GL_LINE_STRIP);
-		minuteTess.setColorOpaque_F(255.0F, 255.0F, 255.0F);
+		minuteTess.setBrightness(1);
 		minuteTess.addVertex(-0.01, 0.01, 0.15D);
-		minuteTess.addVertex(-0.01, -0.15, 0.15D);
-		minuteTess.addVertex(0.0, -0.15, 0.15D);
+		minuteTess.addVertex(-0.01, -0.12, 0.15D);
+		minuteTess.addVertex(0.0, -0.12, 0.15D);
 		minuteTess.addVertex(0.0, 0.01, 0.15D);
 		minuteTess.draw();
 		GL11.glPopMatrix();
@@ -101,10 +101,10 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glRotatef(tile.getRotationFromHours(), 0.0f, 0.0f, 1.0f);
 		Tessellator hourTess = Tessellator.instance;
 		hourTess.startDrawing(GL11.GL_LINE_STRIP);
-		hourTess.setColorOpaque_F(1.0F, 1.0F, 255.0F);
+		hourTess.setBrightness(1);
 		hourTess.addVertex(-0.01, 0.01, 0.15D);
-		hourTess.addVertex(-0.01, -0.15, 0.15D);
-		hourTess.addVertex(0.0, -0.15, 0.15D);
+		hourTess.addVertex(-0.01, -0.10, 0.15D);
+		hourTess.addVertex(0.0, -0.10, 0.15D);
 		hourTess.addVertex(0.0, 0.01, 0.15D);
 		hourTess.draw();
 		GL11.glPopMatrix();
