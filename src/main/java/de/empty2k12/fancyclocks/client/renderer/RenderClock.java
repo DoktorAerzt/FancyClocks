@@ -60,7 +60,9 @@ public class RenderClock extends TileEntitySpecialRenderer {
 	
 		GL11.glTranslatef(-0.0F, -0.3F, -0.0F);
 		GL11.glScalef(-1.0F, 1F, 1F);
-		drawSecondPointer((TileClock)tile);
+		//drawSecondPointer((TileClock)tile);
+		//drawMinutePointer((TileClock)tile);
+		drawHourPointer((TileClock)tile);
 		
 		GL11.glPopMatrix();
 	}
@@ -68,9 +70,32 @@ public class RenderClock extends TileEntitySpecialRenderer {
 	public static void drawSecondPointer(TileClock tile) {
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawing(GL11.GL_LINE_STRIP);
-		tessellator.setBrightness(1);
 		tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
+		tessellator.addVertex(-0.01, 0.01, 0.15D);
+		tessellator.addVertex(-0.01, -0.15, 0.15D);
+		tessellator.addVertex(0.0, -0.15, 0.15D);
+		tessellator.addVertex(0.0, 0.01, 0.15D);
+		tessellator.draw();
+	}
+	
+	public static void drawMinutePointer(TileClock tile) {
+		Tessellator tessellator = Tessellator.instance;
+		tessellator.startDrawing(GL11.GL_LINE_STRIP);
+		tessellator.setColorOpaque_F(255.0F, 1.0F, 1.0F);
+		GL11.glRotatef(tile.getRotationFromMinutes(), 0.0f, 0.0f, 1.0f);
+		tessellator.addVertex(-0.01, 0.01, 0.15D);
+		tessellator.addVertex(-0.01, -0.15, 0.15D);
+		tessellator.addVertex(0.0, -0.15, 0.15D);
+		tessellator.addVertex(0.0, 0.01, 0.15D);
+		tessellator.draw();
+	}
+	
+	public static void drawHourPointer(TileClock tile) {
+		Tessellator tessellator = Tessellator.instance;
+		tessellator.startDrawing(GL11.GL_LINE_STRIP);
+		tessellator.setColorOpaque_F(1.0F, 1.0F, 255.0F);
+		GL11.glRotatef(tile.getRotationFromHours(), 0.0f, 0.0f, 1.0f);
 		tessellator.addVertex(-0.01, 0.01, 0.15D);
 		tessellator.addVertex(-0.01, -0.15, 0.15D);
 		tessellator.addVertex(0.0, -0.15, 0.15D);
