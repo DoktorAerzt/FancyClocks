@@ -58,8 +58,8 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		this.model.renderBlock(0.0625F);
 		GL11.glPopMatrix();
 	
-		GL11.glRotatef(0.0F, 0.0F, 0.0F, 0.0F);	
-		GL11.glTranslatef(0.0F, 0.0F, 0.0F);
+		GL11.glTranslatef(-0.0F, -0.24F, -0.0F);
+		GL11.glScalef(-1.0F, 1F, 1F);
 		drawSecondPointer((TileClock)tile);
 		
 		GL11.glPopMatrix();
@@ -67,14 +67,14 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 	public static void drawSecondPointer(TileClock tile) {
 		Tessellator tessellator = Tessellator.instance;
-		tessellator.startDrawing(GL11.GL_LINES);
+		tessellator.startDrawing(GL11.GL_LINE_STRIP);
 		tessellator.setBrightness(1);
 		tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
-		tessellator.addVertex(-0.03, -0.17, 0.15D);
-		tessellator.addVertex(-0.03, -0.3, 0.15D);
-		tessellator.addVertex(0.0, -0.3, 0.15D);
-		tessellator.addVertex(0.0, -0.17, 0.15D);
+		tessellator.addVertex(-0.01, 0.01, 0.15D);
+		tessellator.addVertex(-0.01, -0.2, 0.15D);
+		tessellator.addVertex(0.0, -0.2, 0.15D);
+		tessellator.addVertex(0.0, -0.01, 0.15D);
 		tessellator.draw();
 	}
 }
