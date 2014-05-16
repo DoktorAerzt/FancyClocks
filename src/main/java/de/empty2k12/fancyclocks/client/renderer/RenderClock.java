@@ -57,20 +57,25 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 		this.model.renderBlock(0.0625F);
 		GL11.glPopMatrix();
-
+	
+		GL11.glRotatef(0.0F, 0.0F, 0.0F, 0.0F);	
+		GL11.glTranslatef(0.0F, 0.0F, 0.0F);
 		drawSecondPointer((TileClock)tile);
-
+		
 		GL11.glPopMatrix();
 	}
 
 	public static void drawSecondPointer(TileClock tile) {
 		Tessellator tessellator = Tessellator.instance;
-		tessellator.startDrawingQuads();
+		tessellator.startDrawing(GL11.GL_LINE_STRIP);
+		double pixel = 1F/16F;
+		tessellator.setBrightness(1);
+		tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
-		tessellator.addVertexWithUV(-0.03, -0.17, 0.15D, 63.0D, 31.0D);
-		tessellator.addVertexWithUV(-0.03, -0.3, 0.15D, 63.0D, 31.0D);
-		tessellator.addVertexWithUV(0.0, -0.3, 0.15D, 63.0D, 31.0D);
-		tessellator.addVertexWithUV(0.0, -0.17, 0.15D, 63.0D, 31.0D);
+		tessellator.addVertexWithUV(-2*pixel, 0.5+1*pixel, 1*pixel+0.5, 63.0D, 31.0D);
+		tessellator.addVertexWithUV(-2*pixel, 2.5F, 1*pixel+0.5, 63.0D, 31.0D);
+		tessellator.addVertexWithUV(-2*pixel, 2.5F, -1*pixel+0.5, 63.0D, 31.0D);
+		tessellator.addVertexWithUV(-2*pixel, 0.5F+1*pixel, -1*pixel+0.5, 63.0D, 31.0D);
 		tessellator.draw();
 	}
 }
