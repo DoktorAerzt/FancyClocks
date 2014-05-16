@@ -26,6 +26,10 @@ public class BlockClock extends BlockContainer {
 		setHarvestLevel("axe", 0);
 	}
 
+	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z) {
+		this.setBlockBoundsOnState(blockAccess.getBlockMetadata(x, y, z));
+	}
+
 	@Override
 	public boolean isNormalCube() {
 		return false;
@@ -109,5 +113,26 @@ public class BlockClock extends BlockContainer {
 		}
 
 		return newMeta;
+	}
+
+	//FIXME: if time change these!
+	public void setBlockBoundsOnState(int meta) {
+		float f = 0.30F;
+
+		if (meta == 2) {
+			this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
+		}
+
+		if (meta == 3) {
+			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
+		}
+
+		if (meta == 4) {
+			this.setBlockBounds(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		}
+
+		if (meta == 5) {
+			this.setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
+		}
 	}
 }

@@ -45,7 +45,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 		GL11.glTranslated((float) x + 0.5, (float) y + 0.2, (float) z + 0.5);
 		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);	
-		GL11.glTranslatef(0.0F, -0.3125F, 0.4375F);
+		GL11.glTranslatef(0.0F, 0.1F, 0.4375F);
 		GL11.glScalef(1.0F, -1F, -1F);
 
 		bindTexture(texture);
