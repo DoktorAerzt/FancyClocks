@@ -21,6 +21,7 @@ public class BlockClock extends BlockContainer {
 		super(Material.wood);
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setBlockName("blockClock");
+		setStepSound(Block.soundTypeWood);
 		setHardness(2F);
 		setResistance(1F);
 		setHarvestLevel("axe", 0);

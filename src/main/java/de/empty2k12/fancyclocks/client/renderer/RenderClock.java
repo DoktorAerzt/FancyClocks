@@ -1,5 +1,6 @@
 package de.empty2k12.fancyclocks.client.renderer;
 
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -54,6 +55,20 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		this.model.renderBlock(0.0625F);
 		GL11.glPopMatrix();
 
+		drawTimePointers();
+		
 		GL11.glPopMatrix();
+	}
+	
+	public static void drawTimePointers() {
+		Tessellator tessellator = Tessellator.instance;
+		float pixel = 1F/16F;
+		
+		tessellator.startDrawingQuads();
+		
+		tessellator.addVertexWithUV(1, 1, 1, 1, 1);
+
+		
+		tessellator.draw();
 	}
 }
