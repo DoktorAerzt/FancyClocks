@@ -11,7 +11,7 @@ import de.empty2k12.fancyclocks.common.misc.ModInfo;
 
 public class RenderClock extends TileEntitySpecialRenderer {
 	
-	public static final ResourceLocation texture = new ResourceLocation(ModInfo.MOD_ID + "");
+	public static final ResourceLocation texture = new ResourceLocation(ModInfo.MOD_ID + ":" + "textures/model/clock1.png");
 	
 	public ModelClock model;
 	
@@ -24,17 +24,15 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		//TODO: improve/pointer
 		GL11.glPushMatrix();
 		
-			GL11.glColor4f(1F, 1F, 1F, 1f);
-			GL11.glTranslated((float) x + 0.5, (float) y + 0.85, (float) z + 0.5);
+			GL11.glTranslated((float) x + 0.5, (float) y + 0.2, (float) z + 0.2);
 			GL11.glRotatef(180F, 0F, 0F, 5F);
 		
 			bindTexture(texture);
 		
-			GL11.glPopMatrix();
+			GL11.glPushMatrix();
 			this.model.renderBlock(0.0625F);
 			GL11.glPopMatrix();
 		
 		GL11.glPopMatrix();
 	}
-
 }
