@@ -63,10 +63,10 @@ public class RenderClock extends TileEntitySpecialRenderer {
 	public static void drawSecondPointer() {
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
-		tessellator.addVertexWithUV(-0.005, 0.3, 0.1D, 64.0D, 32.0D);
-		tessellator.addVertexWithUV(-0.005, -0.3, 0.1D, 64.0D, 32.0D);
-		tessellator.addVertexWithUV(0.05, -0.3, 0.1D, 64.0D, 32.0D);
-		tessellator.addVertexWithUV(0.05, 0.3, 0.1D, 64.0D, 32.0D);
+		tessellator.addVertexWithUV(-0.03, -0.17, 0.15D, 63.0D, 31.0D);
+		tessellator.addVertexWithUV(-0.03, -0.3, 0.15D, 63.0D, 31.0D);
+		tessellator.addVertexWithUV(0.0, -0.3, 0.15D, 63.0D, 31.0D);
+		tessellator.addVertexWithUV(0.0, -0.17, 0.15D, 63.0D, 31.0D);
 		tessellator.draw();
 	}
 }
