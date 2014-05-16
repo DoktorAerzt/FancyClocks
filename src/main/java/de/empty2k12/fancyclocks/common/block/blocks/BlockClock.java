@@ -10,7 +10,7 @@ import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 
 public class BlockClock extends BlockContainer {
 
-	protected BlockClock() {
+	public BlockClock() {
 		super(Material.wood);
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setBlockName("blockClock");
