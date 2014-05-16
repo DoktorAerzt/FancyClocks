@@ -73,7 +73,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
 		Tessellator secondTess = Tessellator.instance;
 		secondTess.startDrawing(GL11.GL_LINE_STRIP);
-		secondTess.setColorOpaque_F(1.0F, 1.0F, 1.0F);
+		secondTess.setColorOpaque_F(0.0F, 1.0F, 1.0F);
 		secondTess.addVertex(-0.01, 0.01, 0.15D);
 		secondTess.addVertex(-0.01, -0.15, 0.15D);
 		secondTess.addVertex(0.0, -0.15, 0.15D);
@@ -87,7 +87,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glRotatef(tile.getRotationFromMinutes(), 0.0f, 0.0f, 1.0f);
 		Tessellator minuteTess = Tessellator.instance;
 		minuteTess.startDrawing(GL11.GL_LINE_STRIP);
-		minuteTess.setColorOpaque_F(255.0F, 1.0F, 1.0F);
+		minuteTess.setColorOpaque_F(255.0F, 255.0F, 255.0F);
 		minuteTess.addVertex(-0.01, 0.01, 0.15D);
 		minuteTess.addVertex(-0.01, -0.15, 0.15D);
 		minuteTess.addVertex(0.0, -0.15, 0.15D);
