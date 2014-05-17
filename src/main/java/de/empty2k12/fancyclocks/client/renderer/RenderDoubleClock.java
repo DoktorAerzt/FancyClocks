@@ -32,12 +32,9 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 			rotationAngle = 90;
 			break;
 		case 2:
-			rotationAngle = 90;
+			rotationAngle = 0;
 			break;
 		case 3:
-			rotationAngle = -180;
-			break;
-		case 4:
 			rotationAngle = -90;
 			break;
 		}

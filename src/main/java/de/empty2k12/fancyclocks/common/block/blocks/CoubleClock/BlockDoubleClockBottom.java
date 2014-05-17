@@ -34,7 +34,7 @@ public class BlockDoubleClockBottom extends Block {
 		TileDoubleClockTop tile = (TileDoubleClockTop) world.getTileEntity(x, y + 1, z);
 		if(tile != null)
 			tile.direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-		((EntityPlayer)entity).addChatComponentMessage(new ChatComponentText(""));
+		((EntityPlayer)entity).addChatComponentMessage(new ChatComponentText("" + tile.direction));
 	}
 
 	@Override
