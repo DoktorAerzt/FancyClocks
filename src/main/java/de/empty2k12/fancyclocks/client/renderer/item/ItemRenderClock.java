@@ -1,16 +1,20 @@
 package de.empty2k12.fancyclocks.client.renderer.item;
 
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.IItemRenderer;
-import de.empty2k12.fancyclocks.client.model.ModelClock;
-import de.empty2k12.fancyclocks.common.block.Blocks;
+import de.empty2k12.fancyclocks.client.renderer.RenderClock;
+import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 
 public class ItemRenderClock implements IItemRenderer {
 
-	private final ModelClock model;
+	private final TileEntitySpecialRenderer renderer;
+	private TileEntity dummytile;
 
 	public ItemRenderClock(){
-		this.model = new ModelClock();
+		this.renderer = new RenderClock();
+		this.dummytile = new TileClock();
 	}
 
 	@Override
@@ -20,11 +24,12 @@ public class ItemRenderClock implements IItemRenderer {
 
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper){
-		return true;
+		return false;
 	}
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data){
-		TileEntityRenderer.instance.renderTileEntityAt(new TileEntityEngine(), 0.0D, 0.0D, 0.0D, 0.0F);
+		this.renderer.renderTileEntityAt(dummytile, 0F, 0F, 0F, 0F);
 	}
+	
 }

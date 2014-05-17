@@ -8,6 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import de.empty2k12.fancyclocks.common.block.Blocks;
@@ -60,17 +61,15 @@ public class BlockDoubleClockTop extends BlockContainer {
 	public boolean isNormalCube(IBlockAccess world, int x, int y, int z) {
 		return false;
 	}
-
-	@Override
-	public int getRenderType() {
-		return 0;
-	}
 	
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
 	
-	
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+		return new ItemStack(Blocks.clock_bottom);
+	}
 
 }
