@@ -13,9 +13,14 @@ public class TileClock extends TileEntity {
 	private static int oldSeconds;
 
 	private boolean silent = true; //XXX: change back its just for development
+	public boolean dummy = false;
 	
 	private static Calendar calendar;
 	
+	public TileClock(boolean dummy) {
+		this.dummy = dummy;
+	}
+
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		this.silent = compound.getBoolean("silent");

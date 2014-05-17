@@ -1,7 +1,5 @@
 package de.empty2k12.fancyclocks.client.renderer;
 
-import java.util.Calendar;
-
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -10,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import de.empty2k12.fancyclocks.client.model.ModelClock;
+import de.empty2k12.fancyclocks.common.block.tile.DummyTile;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 
@@ -25,23 +24,26 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float var8) {
-		int meta = tile.getBlockMetadata();
 
 		int rotationAngle = 0;
 
-		switch(meta % 4){
-		case 0:
-			rotationAngle = 90;
-			break;
-		case 1:
-			rotationAngle = 270;
-			break;
-		case 2:
-			rotationAngle = 0;
-			break;
-		case 3:
-			rotationAngle = 180;
-			break;
+		if(!((TileClock)tile).dummy) {
+			int meta = tile.getBlockMetadata();
+
+			switch(meta % 4){
+			case 0:
+				rotationAngle = 90;
+				break;
+			case 1:
+				rotationAngle = 270;
+				break;
+			case 2:
+				rotationAngle = 0;
+				break;
+			case 3:
+				rotationAngle = 180;
+				break;
+			}
 		}
 
 		GL11.glPushMatrix();
@@ -54,11 +56,11 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		bindTexture(texture);
 
 		this.model.renderModel(0.0625F);
-	
+
 		GL11.glTranslatef(-0.0F, -0.3F, -0.0F);
 		GL11.glScalef(-1.0F, 1F, 1F);
-		
-		
+
+
 		//FIXME: shift them up a bit!
 		//TODO: if i have time: show indicators for numbers
 		drawSecondPointer((TileClock)tile);
@@ -66,7 +68,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		drawMinutePointer((TileClock)tile);
 		GL11.glTranslatef(0, 0, 0);
 		drawHourPointer((TileClock)tile);
-		
+
 		GL11.glPopMatrix();
 	}
 
@@ -83,7 +85,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		secondTess.draw();
 		GL11.glPopMatrix();
 	}
-	
+
 	public static void drawMinutePointer(TileClock tile) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromMinutes(), 0.0f, 0.0f, 1.0f);
@@ -97,7 +99,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		minuteTess.draw();
 		GL11.glPopMatrix();
 	}
-	
+
 	public static void drawHourPointer(TileClock tile) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromHours(), 0.0f, 0.0f, 1.0f);

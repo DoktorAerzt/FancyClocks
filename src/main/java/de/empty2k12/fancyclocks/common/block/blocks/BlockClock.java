@@ -26,8 +26,9 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 		setHardness(2F);
 		setResistance(1F);
 		setHarvestLevel("axe", 0);
+		setBlockTextureName("minecraft:planks_oak");
 	}
-	
+
 	@Override
 	public void onScrewDriveTurn(EntityPlayer player, World world, int x, int y, int z) {
 		if(world.getTileEntity(x, y, z) instanceof TileClock) {
@@ -41,7 +42,7 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z) {
 		this.setBlockBoundsOnState(blockAccess.getBlockMetadata(x, y, z));
 	}
-	
+
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
@@ -51,12 +52,12 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int p_149646_5_) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	@Override
 	public boolean isNormalCube() {
 		return false;
@@ -101,7 +102,7 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileClock();
+		return new TileClock(false);
 	}
 
 	@Override

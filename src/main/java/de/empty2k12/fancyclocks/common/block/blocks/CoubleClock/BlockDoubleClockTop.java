@@ -18,7 +18,6 @@ public class BlockDoubleClockTop extends BlockContainer {
 
 	public BlockDoubleClockTop() {
 		super(Material.wood);
-		setCreativeTab(CreativeTabs.tabDecorations);
 		setHarvestLevel("axe", 0);
 		setHardness(2F);
 		setResistance(2F);
