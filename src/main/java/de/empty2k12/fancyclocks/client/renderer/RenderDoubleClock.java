@@ -13,7 +13,7 @@ import de.empty2k12.fancyclocks.common.misc.ModInfo;
 public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 	private ModelDoubleClock model;
-	private ResourceLocation texture = new ResourceLocation(ModInfo.MOD_ID + ":" + "texture/model/doubleClock1.png");
+	private ResourceLocation texture = new ResourceLocation(ModInfo.MOD_ID + ":" + "textures/model/doubleClock1.png");
 	
 	public RenderDoubleClock() {
 		model = new ModelDoubleClock();
