@@ -26,6 +26,8 @@ public class FancyClocks {
 	//TODO: creative tab
 	//TODO: Archievements after addng recipes!
 	
+	//Almost fnished with the recipes
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.registerRenderers();
