@@ -5,7 +5,7 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import de.empty2k12.fancyclocks.client.renderer.RenderClock;
 import de.empty2k12.fancyclocks.client.renderer.RenderDoubleClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
 
 public class ClientProxy extends CommonProxy {
@@ -16,7 +16,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileClock.class, renderClock);
 		
 		TileEntitySpecialRenderer renderDoubleClock = new RenderDoubleClock();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileDoubleClock.class, renderDoubleClock);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileDoubleClockTop.class, renderDoubleClock);
 	}
 	
 }

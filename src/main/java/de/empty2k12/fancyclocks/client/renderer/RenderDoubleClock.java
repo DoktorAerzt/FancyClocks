@@ -7,6 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import de.empty2k12.fancyclocks.client.model.ModelDoubleClock;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 
 public class RenderDoubleClock extends TileEntitySpecialRenderer {
@@ -20,7 +21,7 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float var8) {
-		int meta = tile.getBlockMetadata();
+		int meta = ((TileDoubleClockTop)tile).direction;
 
 		int rotationAngle = 0;
 
@@ -41,17 +42,18 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 		GL11.glPushMatrix();
 
-		GL11.glTranslated((float) x + 0.5, (float) y + 0.2, (float) z + 0.5);
+		GL11.glTranslated((float) x + 0.5, (float) y + 0.5, (float) z + 0.5);
 		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);	
-		GL11.glTranslatef(0.0F, 0.1F, 0.4375F);
+		GL11.glTranslatef(0.0F, 0.0F, 0.0F);
 		GL11.glScalef(1.0F, -1F, -1F);
 
+		GL11.glDisable(GL11.GL_LIGHTING);
 		bindTexture(texture);
+		GL11.glEnable(GL11.GL_LIGHTING);
 
 		this.model.renderModel(0.0625F);
-	
-		GL11.glTranslatef(-0.0F, -0.3F, -0.0F);
-		GL11.glScalef(-1.0F, 1F, 1F);
+		
+		GL11.glPopMatrix();
 	}
 
 }

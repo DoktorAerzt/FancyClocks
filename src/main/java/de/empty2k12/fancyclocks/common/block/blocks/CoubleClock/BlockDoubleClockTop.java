@@ -64,5 +64,10 @@ public class BlockDoubleClockTop extends BlockContainer {
 	public int getRenderType() {
 		return 0;
 	}
+	
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
 
 }

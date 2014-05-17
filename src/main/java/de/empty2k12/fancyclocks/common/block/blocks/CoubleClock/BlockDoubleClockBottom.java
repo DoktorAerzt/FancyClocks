@@ -26,11 +26,15 @@ public class BlockDoubleClockBottom extends Block {
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
 		world.setBlock(x, y + 1, z, Blocks.clock_top, 0, 2);
+		world.setTileEntity(x, y + 1, z, new TileDoubleClockTop());
 		if (entity == null)
 			return;	
 
 		TileDoubleClockTop tile = (TileDoubleClockTop) world.getTileEntity(x, y, z);
-		tile.direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+		if(tile == null)
+			entity.addVelocity(0F, 1F, 0F);
+		if(tile != null)
+			tile.direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 	}
 
 	@Override
@@ -65,4 +69,10 @@ public class BlockDoubleClockBottom extends Block {
 	public int getRenderType() {
 		return 0;
 	}
+	
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+	
 }
