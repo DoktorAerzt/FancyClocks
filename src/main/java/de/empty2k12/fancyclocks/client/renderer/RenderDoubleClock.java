@@ -15,16 +15,16 @@ import de.empty2k12.fancyclocks.common.misc.ModInfo;
 public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 	private ModelDoubleClock model;
-	
+
 	private ResourceLocation texture = new ResourceLocation(ModInfo.MOD_ID + ":" + "textures/model/doubleClock1.png");
-	
+
 	public RenderDoubleClock() {
 		model = new ModelDoubleClock();
 	}
 
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float var8) {
-		
+
 		int rotationAngle = 0;
 
 		switch(((TileDoubleClockTop)tile).direction){
@@ -45,56 +45,60 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 
 		GL11.glTranslated((float) x + 0.5, (float) y + 0.5, (float) z + 0.5);
-		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);	
-		GL11.glTranslatef(0.0F, 0.0F, 0.0F);
+		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);
 		GL11.glScalef(1.0F, -1F, -1F);
 
-		GL11.glDisable(GL11.GL_LIGHTING);
 		bindTexture(texture);
-		GL11.glEnable(GL11.GL_LIGHTING);
 
 		this.model.renderModel(0.0625F);
 		
+		GL11.glTranslatef(0F, -0.01F, -0.3F);
+
+		//TODO: if i have time: show indicators for numbers
+		drawSecondPointer((TileDoubleClockTop)tile);
+		drawMinutePointer((TileDoubleClockTop)tile);
+		drawHourPointer((TileDoubleClockTop)tile);
+
 		GL11.glPopMatrix();
 	}
-	
-	public static void drawSecondPointer(TileClock tile) {
+
+	public static void drawSecondPointer(TileDoubleClockTop tile) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
 		Tessellator secondTess = Tessellator.instance;
 		secondTess.startDrawing(GL11.GL_LINE_STRIP);
 		secondTess.setBrightness(1);
-		secondTess.addVertex(-0.01, 0.01, 0.15D);
-		secondTess.addVertex(-0.01, -0.15, 0.15D);
-		secondTess.addVertex(0.0, -0.15, 0.15D);
+		secondTess.addVertex(-0.02, 0.01, 0.15D);
+		secondTess.addVertex(-0.02, -0.17, 0.15D);
+		secondTess.addVertex(0.0, -0.17, 0.15D);
 		secondTess.addVertex(0.0, 0.01, 0.15D);
 		secondTess.draw();
 		GL11.glPopMatrix();
 	}
-	
-	public static void drawMinutePointer(TileClock tile) {
+
+	public static void drawMinutePointer(TileDoubleClockTop tile) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromMinutes(), 0.0f, 0.0f, 1.0f);
 		Tessellator minuteTess = Tessellator.instance;
 		minuteTess.startDrawing(GL11.GL_LINE_STRIP);
 		minuteTess.setBrightness(1);
-		minuteTess.addVertex(-0.01, 0.01, 0.15D);
-		minuteTess.addVertex(-0.01, -0.12, 0.15D);
-		minuteTess.addVertex(0.0, -0.12, 0.15D);
+		minuteTess.addVertex(-0.02, 0.01, 0.15D);
+		minuteTess.addVertex(-0.02, -0.14, 0.15D);
+		minuteTess.addVertex(0.0, -0.14, 0.15D);
 		minuteTess.addVertex(0.0, 0.01, 0.15D);
 		minuteTess.draw();
 		GL11.glPopMatrix();
 	}
-	
-	public static void drawHourPointer(TileClock tile) {
+
+	public static void drawHourPointer(TileDoubleClockTop tile) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromHours(), 0.0f, 0.0f, 1.0f);
 		Tessellator hourTess = Tessellator.instance;
 		hourTess.startDrawing(GL11.GL_LINE_STRIP);
 		hourTess.setBrightness(1);
-		hourTess.addVertex(-0.01, 0.01, 0.15D);
-		hourTess.addVertex(-0.01, -0.10, 0.15D);
-		hourTess.addVertex(0.0, -0.10, 0.15D);
+		hourTess.addVertex(-0.02, 0.01, 0.15D);
+		hourTess.addVertex(-0.02, -0.12, 0.15D);
+		hourTess.addVertex(0.0, -0.12, 0.15D);
 		hourTess.addVertex(0.0, 0.01, 0.15D);
 		hourTess.draw();
 		GL11.glPopMatrix();
