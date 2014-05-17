@@ -6,7 +6,7 @@ import de.empty2k12.fancyclocks.common.block.blocks.BlockClock;
 import de.empty2k12.fancyclocks.common.block.blocks.CoubleClock.BlockDoubleClockBottom;
 import de.empty2k12.fancyclocks.common.block.blocks.CoubleClock.BlockDoubleClockTop;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
 public class Blocks {
 	
@@ -30,7 +30,7 @@ public class Blocks {
 	
 	public static void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileClock.class, "tileClock");
-		GameRegistry.registerTileEntity(TileDoubleClock.class, "tileDoubleClock");
+		GameRegistry.registerTileEntity(TileDoubleClockTop.class, "tileDoubleClockTop");
 	}
 
 }
