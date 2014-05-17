@@ -10,6 +10,8 @@ import net.minecraft.tileentity.TileEntity;
 public class TileDoubleClockTop extends TileEntity {
 
 	public int direction;
+	
+	public int rotationForPendel;
 
 	private static int oldSeconds;
 
@@ -31,6 +33,12 @@ public class TileDoubleClockTop extends TileEntity {
 
 	@Override
 	public void updateEntity() {
+		if(rotationForPendel == 10) {
+			rotationForPendel--;
+		} else if (rotationForPendel == -10){
+			rotationForPendel--;
+		}
+		
 		calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Berlin"));
 		if(oldSeconds != calendar.get(Calendar.SECOND)) {
 			oldSeconds = calendar.get(Calendar.SECOND);

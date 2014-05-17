@@ -58,21 +58,23 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		drawSecondPointer((TileDoubleClockTop)tile);
 		drawMinutePointer((TileDoubleClockTop)tile);
 		drawHourPointer((TileDoubleClockTop)tile);
+
+		GL11.glTranslated(-0.05D, -0.01D, 0.1D);
 		
 		drawPendel((TileDoubleClockTop)tile);
-
+		
 		GL11.glPopMatrix();
 	}
 	
 	public static void drawPendel(TileDoubleClockTop tile) {
 		GL11.glPushMatrix();
-		GL11.glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
+		GL11.glRotatef(180.0f + tile.rotationForPendel, 0.0f, 0.0f, 1.0f);
 		Tessellator pendelTess = Tessellator.instance;
 		pendelTess.startDrawing(GL11.GL_LINE_STRIP);
 		pendelTess.setBrightness(1);
 		pendelTess.addVertexWithUV(-0.1, 0.01, 0.15D, 1D, 1D);
-		pendelTess.addVertexWithUV(-0.1, -0.17, 0.15D, 1D, 1D);
-		pendelTess.addVertexWithUV(0.0, -0.17, 0.15D, 1D, 1D);
+		pendelTess.addVertexWithUV(-0.1, -1.2, 0.15D, 1D, 1D);
+		pendelTess.addVertexWithUV(0.0, -1.2, 0.15D, 1D, 1D);
 		pendelTess.addVertexWithUV(0.0, 0.01, 0.15D, 1D, 1D);
 		pendelTess.draw();
 		GL11.glPopMatrix();
