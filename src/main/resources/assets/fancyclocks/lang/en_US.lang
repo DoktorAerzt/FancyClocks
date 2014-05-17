@@ -1,5 +1,6 @@
 #Blocks
 tile.blockClock.name=Clock
+tile.blockDoubleClock.name=Grandfather Clock
 
 #Items
 item.screwdriver.name=Screwdriver
