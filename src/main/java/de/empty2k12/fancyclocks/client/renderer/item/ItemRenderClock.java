@@ -15,7 +15,7 @@ public class ItemRenderClock implements IItemRenderer {
 
 	@Override
 	public boolean handleRenderType(ItemStack itemStack, ItemRenderType type) {
-		return itemStack == new ItemStack(Blocks.clock);
+		return type == ItemRenderType.INVENTORY;
 	}
 
 	@Override
@@ -25,6 +25,6 @@ public class ItemRenderClock implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data){
-		model.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+		TileEntityRenderer.instance.renderTileEntityAt(new TileEntityEngine(), 0.0D, 0.0D, 0.0D, 0.0F);
 	}
 }
