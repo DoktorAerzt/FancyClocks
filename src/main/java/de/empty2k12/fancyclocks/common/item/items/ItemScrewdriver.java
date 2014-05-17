@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import de.empty2k12.fancyclocks.api.IClockScrewdriver;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
+import de.empty2k12.fancyclocks.common.misc.ModInfo;
 
 public class ItemScrewdriver extends Item implements IClockScrewdriver {
 	
@@ -16,8 +17,9 @@ public class ItemScrewdriver extends Item implements IClockScrewdriver {
 		setMaxDamage(-1);
 		setMaxStackSize(1);
 		setTextureName("screwdriver");
+		setUnlocalizedName(ModInfo.MOD_ID + ":" + "screwdriver");
 	}
-
+	
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);

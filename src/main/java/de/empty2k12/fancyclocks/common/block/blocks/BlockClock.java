@@ -55,6 +55,16 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
+	
+	@Override
+	public boolean isNormalCube() {
+		return false;
+	}
+	
+	@Override
+	public int getRenderType() {
+		return 0;
+	}
 
 	@Override
 	public boolean canPlaceBlockAt(World world, int x, int y, int z) {

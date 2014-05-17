@@ -161,7 +161,7 @@ public class ModelClock extends ModelBase {
 		sevenOClock.render(f5);
 		fiveOClock.render(f5);
 	}
-	
+
 	public void renderModel(float f) {
 		Ground1.render(f);
 		SideWall1.render(f);

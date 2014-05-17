@@ -7,11 +7,12 @@ import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileClock extends TileEntity {
-	
+
 	static int oldSeconds;
-	
+
+	//TODO: save these!
 	private boolean silent;
-	
+
 	@Override
 	public void updateEntity() {
 		if(oldSeconds != Calendar.getInstance().get(Calendar.SECOND)) {
@@ -29,23 +30,23 @@ public class TileClock extends TileEntity {
 	public static int getRotationFromMinutes() {
 		return Calendar.getInstance().get(Calendar.MINUTE)*6;
 	}
-	
+
 	public static int getRotationFromHours() {
 		return Calendar.getInstance().get(Calendar.HOUR)*15;
 	}
 
 	public void toggleSounds() {
-		if(silent)
+		if(silent) {
 			silent = false;
-		
-		if(!silent)
+		} else {
 			silent = true;
+		}
 	}
-	
+
 	public boolean getSilent() {
 		return silent;
 	}
-	
+
 	/*
 	 * Once around = 360°
 	 * one minute = 60 secs

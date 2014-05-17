@@ -8,6 +8,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import de.empty2k12.fancyclocks.common.block.Blocks;
+import de.empty2k12.fancyclocks.common.item.Items;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
 
@@ -28,6 +29,7 @@ public class FancyClocks {
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.registerRenderers();
 		Blocks.init();
+		Items.init();
 	}
     
     @EventHandler
