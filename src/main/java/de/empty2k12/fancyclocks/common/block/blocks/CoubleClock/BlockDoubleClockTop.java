@@ -69,5 +69,7 @@ public class BlockDoubleClockTop extends BlockContainer {
 	public boolean isOpaqueCube() {
 		return false;
 	}
+	
+	
 
 }

@@ -52,13 +52,28 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 		this.model.renderModel(0.0625F);
 		
-		GL11.glTranslatef(0F, -0.01F, -0.3F);
+		GL11.glTranslatef(0F, -0.13F, -0.3F);
 
 		//TODO: if i have time: show indicators for numbers
 		drawSecondPointer((TileDoubleClockTop)tile);
 		drawMinutePointer((TileDoubleClockTop)tile);
 		drawHourPointer((TileDoubleClockTop)tile);
+		
+		drawPendel((TileDoubleClockTop)tile);
 
+		GL11.glPopMatrix();
+	}
+	
+	public static void drawPendel(TileDoubleClockTop tile) {
+		GL11.glPushMatrix();
+		GL11.glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
+		Tessellator pendelTess = Tessellator.instance;
+		pendelTess.startDrawingQuads();
+		pendelTess.addVertex(-0.1, 0.01, 0.15D);
+		pendelTess.addVertex(-0.1, -0.17, 0.15D);
+		pendelTess.addVertex(0.0, -0.17, 0.15D);
+		pendelTess.addVertex(0.0, 0.01, 0.15D);
+		pendelTess.draw();
 		GL11.glPopMatrix();
 	}
 
