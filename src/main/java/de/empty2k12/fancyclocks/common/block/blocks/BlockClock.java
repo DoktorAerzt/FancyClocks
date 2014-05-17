@@ -8,14 +8,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 
-public class BlockClock extends BlockContainer {
+public class BlockClock extends BlockContainer implements IScrewdriveable {
 
 	public BlockClock() {
 		super(Material.wood);
@@ -25,6 +25,11 @@ public class BlockClock extends BlockContainer {
 		setHardness(2F);
 		setResistance(1F);
 		setHarvestLevel("axe", 0);
+	}
+	
+	@Override
+	public void onScrewDriveTurn(EntityPlayer player, int x, int y, int z) {
+		
 	}
 
 	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z) {

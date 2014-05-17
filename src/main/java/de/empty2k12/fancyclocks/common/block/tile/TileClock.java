@@ -2,16 +2,26 @@ package de.empty2k12.fancyclocks.common.block.tile;
 
 import java.util.Calendar;
 
+import de.empty2k12.fancyclocks.client.misc.SoundHandler;
+import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileClock extends TileEntity {
 	
-	int oldSeconds;
+	static int oldSeconds;
+	
+	@Override
+	public void updateEntity() {
+		if(oldSeconds != Calendar.getInstance().get(Calendar.SECOND)) {
+			oldSeconds = Calendar.getInstance().get(Calendar.SECOND);
+			getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
+		}
+	}
 
 	public static int getRotationFromSeconds() {
 		return Calendar.getInstance().get(Calendar.SECOND)*6;
 	}
-	
+
 	public static int getRotationFromMinutes() {
 		return Calendar.getInstance().get(Calendar.MINUTE)*6;
 	}

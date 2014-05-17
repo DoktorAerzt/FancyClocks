@@ -24,8 +24,6 @@ public class FancyClocks {
 	//TODO: everything from my todo list!
 	//TODO: creative tab
 	
-	//nothing to show i am modeling!
-	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.registerRenderers();
