@@ -10,11 +10,15 @@ public class TileClock extends TileEntity {
 	
 	static int oldSeconds;
 	
+	private boolean silent;
+	
 	@Override
 	public void updateEntity() {
 		if(oldSeconds != Calendar.getInstance().get(Calendar.SECOND)) {
 			oldSeconds = Calendar.getInstance().get(Calendar.SECOND);
-			getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
+			if(!silent) {
+				getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
+			}
 		}
 	}
 
@@ -28,6 +32,18 @@ public class TileClock extends TileEntity {
 	
 	public static int getRotationFromHours() {
 		return Calendar.getInstance().get(Calendar.HOUR)*15;
+	}
+
+	public void toggleSounds() {
+		if(silent)
+			silent = false;
+		
+		if(!silent)
+			silent = true;
+	}
+	
+	public boolean getSilent() {
+		return silent;
 	}
 	
 	/*

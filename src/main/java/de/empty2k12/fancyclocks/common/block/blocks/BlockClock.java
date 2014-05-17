@@ -10,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
@@ -28,8 +29,12 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 	}
 	
 	@Override
-	public void onScrewDriveTurn(EntityPlayer player, int x, int y, int z) {
-		
+	public void onScrewDriveTurn(EntityPlayer player, World world, int x, int y, int z) {
+		if(world.getTileEntity(x, y, z) instanceof TileClock) {
+			TileClock tile = (TileClock) world.getTileEntity(x, y, z);
+			tile.toggleSounds();
+			player.addChatComponentMessage(new ChatComponentText("The Clock is now" + (tile.getSilent() ? " silent!" : " ticking!")));
+		}
 	}
 
 	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z) {

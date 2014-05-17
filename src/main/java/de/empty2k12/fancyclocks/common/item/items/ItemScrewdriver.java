@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import de.empty2k12.fancyclocks.api.IClockScrewdriver;
+import de.empty2k12.fancyclocks.api.IScrewdriveable;
 
 public class ItemScrewdriver extends Item implements IClockScrewdriver {
 	
@@ -23,7 +24,10 @@ public class ItemScrewdriver extends Item implements IClockScrewdriver {
 	
 	@Override
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		if(world.getBlock(x, y, z) instanceof IScrewdriveable) {
+			((IScrewdriveable)world.getBlock(x, y, z)).onScrewDriveTurn(player, world, x, y, z);
+			return true;
+		}
 		return false;
 	}
-	
 }
