@@ -68,11 +68,12 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 		GL11.glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
 		Tessellator pendelTess = Tessellator.instance;
-		pendelTess.startDrawingQuads();
-		pendelTess.addVertex(-0.1, 0.01, 0.15D);
-		pendelTess.addVertex(-0.1, -0.17, 0.15D);
-		pendelTess.addVertex(0.0, -0.17, 0.15D);
-		pendelTess.addVertex(0.0, 0.01, 0.15D);
+		pendelTess.startDrawing(GL11.GL_LINE_STRIP);
+		pendelTess.setBrightness(1);
+		pendelTess.addVertexWithUV(-0.1, 0.01, 0.15D, 1D, 1D);
+		pendelTess.addVertexWithUV(-0.1, -0.17, 0.15D, 1D, 1D);
+		pendelTess.addVertexWithUV(0.0, -0.17, 0.15D, 1D, 1D);
+		pendelTess.addVertexWithUV(0.0, 0.01, 0.15D, 1D, 1D);
 		pendelTess.draw();
 		GL11.glPopMatrix();
 	}

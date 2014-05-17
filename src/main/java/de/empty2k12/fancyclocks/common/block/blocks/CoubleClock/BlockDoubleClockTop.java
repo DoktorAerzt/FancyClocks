@@ -21,6 +21,7 @@ public class BlockDoubleClockTop extends BlockContainer {
 		setHarvestLevel("axe", 0);
 		setHardness(2F);
 		setResistance(2F);
+		setBlockTextureName("minecraft:planks_oak");
 	}
 
 	@Override

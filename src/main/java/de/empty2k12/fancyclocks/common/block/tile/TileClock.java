@@ -38,15 +38,15 @@ public class TileClock extends TileEntity {
 	}
 
 	public static int getRotationFromSeconds() {
-		return calendar.get(Calendar.SECOND)*6;
+		return calendar == null ? 0 : calendar.get(Calendar.SECOND)*6;
 	}
 
 	public static int getRotationFromMinutes() {
-		return calendar.get(Calendar.MINUTE)*6;
+		return calendar == null ? 0 : calendar.get(Calendar.MINUTE)*6;
 	}
 
 	public static int getRotationFromHours() {
-		return calendar.get(Calendar.HOUR_OF_DAY)*30;
+		return calendar == null ? 0 : calendar.get(Calendar.HOUR_OF_DAY)*30;
 	}
 
 	public void toggleSounds() {
