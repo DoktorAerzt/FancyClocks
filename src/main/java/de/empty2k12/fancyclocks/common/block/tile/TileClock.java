@@ -4,14 +4,24 @@ import java.util.Calendar;
 
 import de.empty2k12.fancyclocks.client.misc.SoundHandler;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileClock extends TileEntity {
 
 	static int oldSeconds;
 
-	//TODO: save these!
 	private boolean silent;
+	
+	@Override
+	public void readFromNBT(NBTTagCompound compound) {
+		this.silent = compound.getBoolean("silent");
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound compound) {
+		compound.setBoolean("silent", silent);
+	}
 
 	@Override
 	public void updateEntity() {
@@ -46,11 +56,4 @@ public class TileClock extends TileEntity {
 	public boolean getSilent() {
 		return silent;
 	}
-
-	/*
-	 * Once around = 360°
-	 * one minute = 60 secs
-	 * 360/60
-	 * dangit that was eZZZZ :)
-	 * */
 }

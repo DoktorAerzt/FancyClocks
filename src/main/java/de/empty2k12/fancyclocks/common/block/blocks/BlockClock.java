@@ -33,6 +33,7 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 		if(world.getTileEntity(x, y, z) instanceof TileClock) {
 			TileClock tile = (TileClock) world.getTileEntity(x, y, z);
 			tile.toggleSounds();
+			//TODO: Translate to Local with StatCollector.translateToLocal();
 			player.addChatComponentMessage(new ChatComponentText("The Clock is now" + (tile.getSilent() ? " silent!" : " ticking!")));
 		}
 	}

@@ -25,7 +25,6 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float var8) {
-		//TODO: improve/pointer
 		int meta = tile.getBlockMetadata();
 
 		int rotationAngle = 0;

@@ -24,6 +24,7 @@ public class FancyClocks {
 	//TODO: Config
 	//TODO: everything from my todo list!
 	//TODO: creative tab
+	//TODO: Archievements after addng recipes!
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

@@ -16,8 +16,8 @@ public class ItemScrewdriver extends Item implements IClockScrewdriver {
 		setFull3D();
 		setMaxDamage(-1);
 		setMaxStackSize(1);
-		setTextureName("screwdriver");
-		setUnlocalizedName(ModInfo.MOD_ID + ":" + "screwdriver");
+		setTextureName(ModInfo.MOD_ID + ":" + "screwdriver");
+		setUnlocalizedName("screwdriver");
 	}
 	
 	@Override
