@@ -12,7 +12,7 @@ public class TileClock extends TileEntity {
 
 	private static int oldSeconds;
 
-	private boolean silent;
+	private boolean silent = true; //XXX: change back its just for development
 	
 	private static Calendar calendar;
 	
@@ -29,8 +29,8 @@ public class TileClock extends TileEntity {
 	@Override
 	public void updateEntity() {
 		calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Berlin"));
-		if(oldSeconds != Calendar.getInstance().get(Calendar.SECOND)) {
-			oldSeconds = Calendar.getInstance().get(Calendar.SECOND);
+		if(oldSeconds != calendar.get(Calendar.SECOND)) {
+			oldSeconds = calendar.get(Calendar.SECOND);
 			if(!silent) {
 				getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
 			}
@@ -46,7 +46,7 @@ public class TileClock extends TileEntity {
 	}
 
 	public static int getRotationFromHours() {
-		return calendar.get(Calendar.HOUR_OF_DAY)*15;
+		return calendar.get(Calendar.HOUR_OF_DAY)*30;
 	}
 
 	public void toggleSounds() {
