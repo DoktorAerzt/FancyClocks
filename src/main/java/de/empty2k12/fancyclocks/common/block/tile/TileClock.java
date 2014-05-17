@@ -10,16 +10,11 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileClock extends TileEntity {
 
-	static int oldSeconds;
+	private static int oldSeconds;
 
 	private boolean silent;
 	
 	private static Calendar calendar;
-	
-	public TileClock() {
-		calendar = Calendar.getInstance();
-		calendar.setTimeZone(TimeZone.getTimeZone("Berlin"));
-	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
@@ -33,6 +28,7 @@ public class TileClock extends TileEntity {
 
 	@Override
 	public void updateEntity() {
+		calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Berlin"));
 		if(oldSeconds != Calendar.getInstance().get(Calendar.SECOND)) {
 			oldSeconds = Calendar.getInstance().get(Calendar.SECOND);
 			if(!silent) {
@@ -46,11 +42,11 @@ public class TileClock extends TileEntity {
 	}
 
 	public static int getRotationFromMinutes() {
-		return calendar.getInstance().get(Calendar.MINUTE)*6;
+		return calendar.get(Calendar.MINUTE)*6;
 	}
 
 	public static int getRotationFromHours() {
-		return calendar.getInstance().get(Calendar.HOUR)*15;
+		return calendar.get(Calendar.HOUR_OF_DAY)*15;
 	}
 
 	public void toggleSounds() {

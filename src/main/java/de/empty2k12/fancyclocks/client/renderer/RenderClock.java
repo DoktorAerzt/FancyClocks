@@ -58,6 +58,8 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glTranslatef(-0.0F, -0.3F, -0.0F);
 		GL11.glScalef(-1.0F, 1F, 1F);
 		
+		
+		//FIXME: shift them up a bit!
 		drawSecondPointer((TileClock)tile);
 		GL11.glTranslatef(0, 0, 0);
 		drawMinutePointer((TileClock)tile);
