@@ -33,6 +33,7 @@ public class TileDoubleClockTop extends TileEntity {
 
 	@Override
 	public void updateEntity() {
+		calculatePendelRotation();
 		calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Berlin"));
 		if(oldSeconds != calendar.get(Calendar.SECOND)) {
 			oldSeconds = calendar.get(Calendar.SECOND);
@@ -78,13 +79,13 @@ public class TileDoubleClockTop extends TileEntity {
 		} else if(rotationForPendel == 6) {
 			rotationForPendel = 5;
 		} else if(rotationForPendel == 5) {
-			rotationForPendel = 5;
+			rotationForPendel = 4;
 		} else if(rotationForPendel == 4) {
-			rotationForPendel = 5;
+			rotationForPendel = 3;
 		} else if(rotationForPendel == 3) {
-			rotationForPendel = 5;
+			rotationForPendel = 2;
 		} else if(rotationForPendel == 2) {
-			rotationForPendel = 5;
+			rotationForPendel = 1;
 		}
 	}
 
