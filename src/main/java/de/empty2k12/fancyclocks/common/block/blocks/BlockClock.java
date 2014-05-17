@@ -11,10 +11,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
 public class BlockClock extends BlockContainer implements IScrewdriveable {
 
@@ -34,8 +36,7 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 		if(world.getTileEntity(x, y, z) instanceof TileClock) {
 			TileClock tile = (TileClock) world.getTileEntity(x, y, z);
 			tile.toggleSounds();
-			//TODO: Translate to Local with StatCollector.translateToLocal();
-			player.addChatComponentMessage(new ChatComponentText("The Clock is now" + (tile.getSilent() ? " silent!" : " ticking!")));
+			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("msg.clock.1") + " " + (tile.getSilent() ? StatCollector.translateToLocal("msg.clock.silent") : StatCollector.translateToLocal("msg.clock.ticking") + "!")));
 		}
 	}
 

@@ -4,7 +4,6 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
 import de.empty2k12.fancyclocks.client.renderer.RenderClock;
-import de.empty2k12.fancyclocks.common.block.tile.DummyTile;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 
 public class ItemRenderClock implements IItemRenderer {

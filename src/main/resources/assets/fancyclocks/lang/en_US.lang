@@ -4,3 +4,8 @@ tile.blockDoubleClock.name=Grandfather Clock
 
 #Items
 item.screwdriver.name=Screwdriver
+
+#Translations
+msg.clock.1=The clock is now
+msg.clock.silent=silent
+msg.clock.ticking=ticking

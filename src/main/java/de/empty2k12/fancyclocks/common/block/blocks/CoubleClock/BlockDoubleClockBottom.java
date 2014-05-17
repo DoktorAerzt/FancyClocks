@@ -8,12 +8,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.Blocks;
+import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
-public class BlockDoubleClockBottom extends Block {
+public class BlockDoubleClockBottom extends Block implements IScrewdriveable {
 
 	public BlockDoubleClockBottom() {
 		super(Material.wood);
@@ -69,10 +72,19 @@ public class BlockDoubleClockBottom extends Block {
 	public int getRenderType() {
 		return 0;
 	}
-	
+
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
-	
+
+	@Override
+	public void onScrewDriveTurn(EntityPlayer player, World world, int x, int y, int z) {
+		if(world.getTileEntity(x, y + 1, z) instanceof TileDoubleClockTop) {
+			TileDoubleClockTop tile = (TileDoubleClockTop) world.getTileEntity(x, y, z);
+			tile.toggleSounds();
+			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("msg.clock.1") + " " + (tile.getSilent() ? StatCollector.translateToLocal("msg.clock.silent") : StatCollector.translateToLocal("msg.clock.ticking") + "!")));
+		}
+	}
+
 }

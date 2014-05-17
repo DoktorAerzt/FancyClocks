@@ -8,13 +8,16 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.Blocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
-public class BlockDoubleClockTop extends BlockContainer {
+public class BlockDoubleClockTop extends BlockContainer implements IScrewdriveable {
 
 	public BlockDoubleClockTop() {
 		super(Material.wood);
@@ -69,6 +72,15 @@ public class BlockDoubleClockTop extends BlockContainer {
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		return new ItemStack(Blocks.clock_bottom);
+	}
+
+	@Override
+	public void onScrewDriveTurn(EntityPlayer player, World world, int x, int y, int z) {
+		if(world.getTileEntity(x, y, z) instanceof TileDoubleClockTop) {
+			TileDoubleClockTop tile = (TileDoubleClockTop) world.getTileEntity(x, y, z);
+			tile.toggleSounds();
+			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("msg.clock.1") + " " + (tile.getSilent() ? StatCollector.translateToLocal("msg.clock.silent") : StatCollector.translateToLocal("msg.clock.ticking") + "!")));
+		}
 	}
 
 }
