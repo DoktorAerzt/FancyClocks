@@ -21,22 +21,24 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float var8) {
-		int meta = ((TileDoubleClockTop)tile).direction;
-
+		
 		int rotationAngle = 0;
 
-		switch(meta % 4){
+		switch(((TileDoubleClockTop)tile).direction){
 		case 0:
-			rotationAngle = 90;
+			rotationAngle = 180;
 			break;
 		case 1:
-			rotationAngle = 270;
+			rotationAngle = 90;
 			break;
 		case 2:
-			rotationAngle = 0;
+			rotationAngle = 90;
 			break;
 		case 3:
-			rotationAngle = 180;
+			rotationAngle = -180;
+			break;
+		case 4:
+			rotationAngle = -90;
 			break;
 		}
 

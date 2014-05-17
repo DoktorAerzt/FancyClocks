@@ -6,6 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -30,11 +31,10 @@ public class BlockDoubleClockBottom extends Block {
 		if (entity == null)
 			return;	
 
-		TileDoubleClockTop tile = (TileDoubleClockTop) world.getTileEntity(x, y, z);
-		if(tile == null)
-			entity.addVelocity(0F, 1F, 0F);
+		TileDoubleClockTop tile = (TileDoubleClockTop) world.getTileEntity(x, y + 1, z);
 		if(tile != null)
 			tile.direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+		((EntityPlayer)entity).addChatComponentMessage(new ChatComponentText(""));
 	}
 
 	@Override
