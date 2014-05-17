@@ -1,6 +1,7 @@
 package de.empty2k12.fancyclocks.common.block.tile;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import de.empty2k12.fancyclocks.client.misc.SoundHandler;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
@@ -12,6 +13,13 @@ public class TileClock extends TileEntity {
 	static int oldSeconds;
 
 	private boolean silent;
+	
+	private static Calendar calendar;
+	
+	public TileClock() {
+		calendar = Calendar.getInstance();
+		calendar.setTimeZone(TimeZone.getTimeZone("Berlin"));
+	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
@@ -34,15 +42,15 @@ public class TileClock extends TileEntity {
 	}
 
 	public static int getRotationFromSeconds() {
-		return Calendar.getInstance().get(Calendar.SECOND)*6;
+		return calendar.get(Calendar.SECOND)*6;
 	}
 
 	public static int getRotationFromMinutes() {
-		return Calendar.getInstance().get(Calendar.MINUTE)*6;
+		return calendar.getInstance().get(Calendar.MINUTE)*6;
 	}
 
 	public static int getRotationFromHours() {
-		return Calendar.getInstance().get(Calendar.HOUR)*15;
+		return calendar.getInstance().get(Calendar.HOUR)*15;
 	}
 
 	public void toggleSounds() {
