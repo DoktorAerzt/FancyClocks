@@ -11,6 +11,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockDoubleClockTop extends BlockContainer {
@@ -27,7 +28,7 @@ public class BlockDoubleClockTop extends BlockContainer {
 	public TileEntity createNewTileEntity(World var1, int var2) {
 		return new TileDoubleClock();
 	}
-	
+
 	@Override
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
 		if (world.getBlock(x, y - 1, z) == Blocks.clock_bottom) {
@@ -39,10 +40,30 @@ public class BlockDoubleClockTop extends BlockContainer {
 		}
 		super.onBlockHarvested(world, x, y, z, meta, player);
 	}
-	
+
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
 		return new ArrayList<ItemStack>();
 	}
-	
+
+	@Override
+	public boolean shouldSideBeRendered(IBlockAccess acess, int x, int y, int z, int meta) {
+		return false;
+	}
+
+	@Override
+	public boolean isNormalCube() {
+		return false;
+	}
+
+	@Override
+	public boolean isNormalCube(IBlockAccess world, int x, int y, int z) {
+		return false;
+	}
+
+	@Override
+	public int getRenderType() {
+		return 0;
+	}
+
 }
