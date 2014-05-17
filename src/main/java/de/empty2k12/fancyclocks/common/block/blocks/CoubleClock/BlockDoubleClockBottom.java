@@ -17,13 +17,11 @@ public class BlockDoubleClockBottom extends Block {
 		super(Material.wood);
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setBlockName("blockDoubleClock");
+		setHarvestLevel("axe", 0);
+		setHardness(2F);
+		setResistance(2F);
 	}
-
-	@Override
-	public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
-		super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
-	}
-
+	
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
 		world.setBlock(x, y + 1, z, Blocks.clock_top, 0, 2);
@@ -31,9 +29,9 @@ public class BlockDoubleClockBottom extends Block {
 
 	@Override
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
-		//FIXME: drop something!
 		if (world.getBlock(x, y + 1, z) == Blocks.clock_top) {
 			if (!player.capabilities.isCreativeMode) {
+				world.func_147480_a(x, y, z, true);
 				world.func_147480_a(x, y + 1, z, false);
 			} else {
 				world.func_147480_a(x, y + 1, z, false);

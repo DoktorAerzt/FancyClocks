@@ -1,5 +1,7 @@
 package de.empty2k12.fancyclocks.common.block.blocks.CoubleClock;
 
+import java.util.ArrayList;
+
 import de.empty2k12.fancyclocks.common.block.Blocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
 import net.minecraft.block.Block;
@@ -7,6 +9,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -15,6 +18,9 @@ public class BlockDoubleClockTop extends BlockContainer {
 	public BlockDoubleClockTop() {
 		super(Material.wood);
 		setCreativeTab(CreativeTabs.tabDecorations);
+		setHarvestLevel("axe", 0);
+		setHardness(2F);
+		setResistance(2F);
 	}
 
 	@Override
@@ -28,11 +34,15 @@ public class BlockDoubleClockTop extends BlockContainer {
 			if (!player.capabilities.isCreativeMode) {
 				world.func_147480_a(x, y - 1, z, true);
 			} else {
-				world.func_147480_a(x, y - 1, z, true);
+				world.func_147480_a(x, y - 1, z, false);
 			}
 		}
 		super.onBlockHarvested(world, x, y, z, meta, player);
 	}
-
+	
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+		return new ArrayList<ItemStack>();
+	}
 	
 }
