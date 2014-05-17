@@ -12,7 +12,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
-import de.empty2k12.fancyclocks.common.block.Blocks;
+import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
@@ -30,7 +30,7 @@ public class BlockDoubleClockBottom extends Block implements IScrewdriveable {
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
-		world.setBlock(x, y + 1, z, Blocks.clock_top, 0, 2);
+		world.setBlock(x, y + 1, z, ClockBlocks.clock_top, 0, 2);
 		world.setTileEntity(x, y + 1, z, new TileDoubleClockTop());
 		if (entity == null)
 			return;	
@@ -42,7 +42,7 @@ public class BlockDoubleClockBottom extends Block implements IScrewdriveable {
 
 	@Override
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
-		if (world.getBlock(x, y + 1, z) == Blocks.clock_top) {
+		if (world.getBlock(x, y + 1, z) == ClockBlocks.clock_top) {
 			if (!player.capabilities.isCreativeMode) {
 				world.func_147480_a(x, y, z, true);
 				world.func_147480_a(x, y + 1, z, false);

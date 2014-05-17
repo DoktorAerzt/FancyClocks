@@ -8,7 +8,7 @@ import de.empty2k12.fancyclocks.common.block.blocks.CoubleClock.BlockDoubleClock
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
-public class Blocks {
+public class ClockBlocks {
 	
 	public static Block clock;
 	

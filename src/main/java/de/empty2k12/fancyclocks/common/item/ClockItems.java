@@ -4,7 +4,7 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.empty2k12.fancyclocks.common.item.items.ItemScrewdriver;
 
-public class Items {
+public class ClockItems {
 	
 	public static Item screwdriver;
 	

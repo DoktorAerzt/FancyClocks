@@ -14,7 +14,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
-import de.empty2k12.fancyclocks.common.block.Blocks;
+import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
 public class BlockDoubleClockTop extends BlockContainer implements IScrewdriveable {
@@ -34,7 +34,7 @@ public class BlockDoubleClockTop extends BlockContainer implements IScrewdriveab
 
 	@Override
 	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
-		if (world.getBlock(x, y - 1, z) == Blocks.clock_bottom) {
+		if (world.getBlock(x, y - 1, z) == ClockBlocks.clock_bottom) {
 			if (!player.capabilities.isCreativeMode) {
 				world.func_147480_a(x, y - 1, z, true);
 			} else {
@@ -71,7 +71,7 @@ public class BlockDoubleClockTop extends BlockContainer implements IScrewdriveab
 	
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-		return new ItemStack(Blocks.clock_bottom);
+		return new ItemStack(ClockBlocks.clock_bottom);
 	}
 
 	@Override

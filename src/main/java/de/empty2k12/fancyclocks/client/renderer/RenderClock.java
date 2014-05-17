@@ -59,14 +59,17 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glTranslatef(-0.0F, -0.3F, -0.0F);
 		GL11.glScalef(-1.0F, 1F, 1F);
 
+		GL11.glTranslated(0D, 0D, 0D);
 
-		//FIXME: shift them up a bit!
-		//TODO: if i have time: show indicators for numbers
-		drawSecondPointer((TileClock)tile);
-		GL11.glTranslatef(0, 0, 0);
-		drawMinutePointer((TileClock)tile);
-		GL11.glTranslatef(0, 0, 0);
-		drawHourPointer((TileClock)tile);
+		if(!((TileClock)tile).dummy) {
+			//FIXME: shift them up a bit!
+			//TODO: if i have time: show indicators for numbers
+			drawSecondPointer((TileClock)tile);
+			GL11.glTranslatef(0, 0, 0);
+			drawMinutePointer((TileClock)tile);
+			GL11.glTranslatef(0, 0, 0);
+			drawHourPointer((TileClock)tile);
+		}
 
 		GL11.glPopMatrix();
 	}
