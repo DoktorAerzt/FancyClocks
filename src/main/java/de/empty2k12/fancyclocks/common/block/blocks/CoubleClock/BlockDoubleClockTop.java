@@ -1,5 +1,6 @@
 package de.empty2k12.fancyclocks.common.block.blocks.CoubleClock;
 
+import de.empty2k12.fancyclocks.common.block.Blocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -20,4 +21,11 @@ public class BlockDoubleClockTop extends BlockContainer {
 		return new TileDoubleClock();
 	}
 
+	@Override
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta) {
+		//7if(world.getBlock(x, y, z) == Blocks.clock_bottom) {
+			world.setBlockToAir(x, y, z);
+		//}
+	}
+	
 }

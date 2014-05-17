@@ -1,5 +1,6 @@
 package de.empty2k12.fancyclocks.common.block.blocks.CoubleClock;
 
+import de.empty2k12.fancyclocks.common.block.Blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,6 +17,13 @@ public class BlockDoubleClockBottom extends Block {
 	@Override
 	public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
 		super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
+	}
+	
+	@Override
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta) {
+		//if(world.getBlock(x, y, z) == Blocks.clock_top) {
+			world.setBlockToAir(x, y, z);
+		//}
 	}
 
 }
