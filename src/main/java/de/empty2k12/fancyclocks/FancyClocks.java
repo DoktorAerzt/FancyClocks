@@ -19,6 +19,7 @@ import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.item.ClockItems;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
+import de.empty2k12.fancyclocks.common.util.TimeUtil;
 
 @Mod(modid = ModInfo.MOD_ID, version = ModInfo.MOD_NAME)
 public class FancyClocks {
@@ -34,7 +35,7 @@ public class FancyClocks {
 
 	//TODO: Config
 	//TODO: everything from my todo list!
-	//TODO: creative tab sdhl
+	//TODO: creative tab
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -48,11 +49,12 @@ public class FancyClocks {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		FMLCommonHandler.instance().bus().register(this); 
+		new TimeUtil();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-
+		
 	}
 
 	public static void addRecipes() {
