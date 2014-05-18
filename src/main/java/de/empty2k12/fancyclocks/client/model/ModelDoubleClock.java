@@ -90,7 +90,7 @@ public class ModelDoubleClock extends ModelBase {
 		PointerDinghy.setTextureSize(64, 32);
 		PointerDinghy.mirror = true;
 		setRotation(PointerDinghy, 0F, 0F, 0F);
-		Movement1 = new ModelRenderer(this, 0, 0);
+		Movement1 = new ModelRenderer(this, 18, 13);
 		Movement1.addBox(0F, 0F, 1F, 8, 8, 5);
 		Movement1.setRotationPoint(-4F, -5F, -3F);
 		Movement1.setTextureSize(64, 32);

@@ -75,34 +75,34 @@ public class BlockModernClock extends BlockContainer implements IScrewdriveable 
 				world.isSideSolid(x, y, z + 1, NORTH);
 	}
 
-//	@Override
-//	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-//		int l = world.getBlockMetadata(x, y, z);
-//		boolean flag = false;
-//
-//		if (l == 2 && world.isSideSolid(x, y, z + 1, NORTH)) {
-//			flag = true;
-//		}
-//
-//		if (l == 3 && world.isSideSolid(x, y, z - 1, SOUTH)) {
-//			flag = true;
-//		}
-//
-//		if (l == 4 && world.isSideSolid(x + 1, y, z, WEST)) {
-//			flag = true;
-//		}
-//
-//		if (l == 5 && world.isSideSolid(x - 1, y, z, EAST)) {
-//			flag = true;
-//		}
-//
-//		if (!flag) {
-//			this.dropBlockAsItem(world, x, y, z, l, 0);
-//			world.setBlockToAir(x, y, z);
-//		}
-//
-//		super.onNeighborBlockChange(world, x, y, z, block);
-//	}
+	@Override
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+		int l = world.getBlockMetadata(x, y, z);
+		boolean flag = false;
+
+		if (l == 2 && world.isSideSolid(x, y, z + 1, NORTH)) {
+			flag = true;
+		}
+
+		if (l == 3 && world.isSideSolid(x, y, z - 1, SOUTH)) {
+			flag = true;
+		}
+
+		if (l == 4 && world.isSideSolid(x + 1, y, z, WEST)) {
+			flag = true;
+		}
+
+		if (l == 5 && world.isSideSolid(x - 1, y, z, EAST)) {
+			flag = true;
+		}
+
+		if (!flag) {
+			this.dropBlockAsItem(world, x, y, z, l, 0);
+			world.setBlockToAir(x, y, z);
+		}
+
+		super.onNeighborBlockChange(world, x, y, z, block);
+	}
 	
 	@Override
 	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int meta) {
@@ -129,7 +129,7 @@ public class BlockModernClock extends BlockContainer implements IScrewdriveable 
 
 	//FIXME: if time change these!
 	public void setBlockBoundsOnState(int meta) {
-		float f = 0.1F;
+		float f = 0.15F;
 
 		if (meta == 2) {
 			this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
