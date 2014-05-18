@@ -47,18 +47,22 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		GL11.glTranslated((float) x + 0.5, (float) y + 0.5, (float) z + 0.5);
 		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);
 		GL11.glScalef(1.1F, -1.1F, -1.1F);
-		
+
 		bindTexture(texture);
 		
-		GL11.glPushMatrix();
-		this.model.renderModel(0.0625F);
-		GL11.glPopMatrix();
-
 		GL11.glTranslatef(0.01F, -0.055F, -0.3F);
-		//TODO: if i have time: show indicators for numbers
 		drawSecondPointer((TileDoubleClockTop)tile);
 		drawMinutePointer((TileDoubleClockTop)tile);
 		drawHourPointer((TileDoubleClockTop)tile);
+		GL11.glTranslatef(-0.01F, 0.055F, 0.3F);
+
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		bindTexture(texture);
+		this.model.renderModel(0.0625F);
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glPopMatrix();
 
 		GL11.glPopMatrix();
 	}
