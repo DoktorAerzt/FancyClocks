@@ -99,14 +99,13 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 6, 2, 5, par3StructureBoundingBox);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 1, 7, 4, 1, Blocks.planks, Blocks.planks, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 4, 7, 4, 4, Blocks.planks, Blocks.planks, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 3, 4, 7, 3, 4, Blocks.bookshelf, Blocks.bookshelf, false);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 7, 1, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 0), 7, 1, 3, par3StructureBoundingBox);
-		k = this.getMetadataWithOffset(Blocks.oak_stairs, 3);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 6, 1, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 5, 1, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 4, 1, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 3, 1, 4, par3StructureBoundingBox);
+//		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 7, 1, 4, par3StructureBoundingBox);
+//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 0), 7, 1, 3, par3StructureBoundingBox);
+//		k = this.getMetadataWithOffset(Blocks.oak_stairs, 3);
+//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 6, 1, 4, par3StructureBoundingBox);
+//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 5, 1, 4, par3StructureBoundingBox);
+//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 4, 1, 4, par3StructureBoundingBox);
+//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 3, 1, 4, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 1, 0, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 2, 0, par3StructureBoundingBox);
 		this.placeDoorAtCurrentPosition(par1World, par3StructureBoundingBox, par2Random, 1, 1, 0, this.getMetadataWithOffset(Blocks.wooden_door, 1));
@@ -115,7 +114,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		{
 			this.placeBlockAtCurrentPosition(par1World, Blocks.stone_stairs, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 0, -1, par3StructureBoundingBox);
 		}
-		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, new Random(), par4, par5, par6, text, par8);
+		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, new Random(), 1, 3, -1, new String[] {"", "Clock Shop", "", ""});
 
 		for (l = 0; l < 6; ++l)
 		{
@@ -143,13 +142,13 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		return par0StructureBoundingBox != null && par0StructureBoundingBox.minY > 10;
 	}
 
-	protected boolean placeSignWithTextAtCurrentPosition(World par1World, StructureBoundingBox par2StructureBoundingBox, Random par3Random, int par4, int par5, int par6, String[] text, int par8) {
+	protected boolean placeSignWithTextAtCurrentPosition(World par1World, StructureBoundingBox par2StructureBoundingBox, Random par3Random, int par4, int par5, int par6, String[] text) {
 		int x = this.getXWithOffset(par4, par6);
 		int y = this.getYWithOffset(par5);
 		int z = this.getZWithOffset(par4, par6);
 
 		if (par2StructureBoundingBox.isVecInside(x, y, z) && par1World.getBlock(x, y, z) != Blocks.wall_sign) {
-			par1World.setBlock(x, y, z, Blocks.wall_sign, 0, 2);
+			par1World.setBlock(x, y, z, Blocks.wall_sign, this.getMetadataWithOffset(Blocks.wall_sign, 2), 2);
 			TileEntitySign tilesign = (TileEntitySign)par1World.getTileEntity(x, y, z);
 
 			if (tilesign != null) {
