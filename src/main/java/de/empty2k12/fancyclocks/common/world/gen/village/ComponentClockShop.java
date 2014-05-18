@@ -3,10 +3,15 @@ package de.empty2k12.fancyclocks.common.world.gen.village;
 import java.util.List;
 import java.util.Random;
 
+import de.empty2k12.fancyclocks.common.block.ClockBlocks;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntitySign;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
@@ -99,13 +104,13 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 6, 2, 5, par3StructureBoundingBox);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 1, 7, 4, 1, Blocks.planks, Blocks.planks, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 4, 7, 4, 4, Blocks.planks, Blocks.planks, false);
-//		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 7, 1, 4, par3StructureBoundingBox);
-//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 0), 7, 1, 3, par3StructureBoundingBox);
-//		k = this.getMetadataWithOffset(Blocks.oak_stairs, 3);
-//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 6, 1, 4, par3StructureBoundingBox);
-//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 5, 1, 4, par3StructureBoundingBox);
-//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 4, 1, 4, par3StructureBoundingBox);
-//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 3, 1, 4, par3StructureBoundingBox);
+		this.placeDoubleClock(par1World, 4, 1, 4);
+		//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, this.getMetadataWithOffset(Blocks.oak_stairs, 0), 7, 1, 3, par3StructureBoundingBox);
+		//		k = this.getMetadataWithOffset(Blocks.oak_stairs, 3);
+		//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 6, 1, 4, par3StructureBoundingBox);
+		//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 5, 1, 4, par3StructureBoundingBox);
+		//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 4, 1, 4, par3StructureBoundingBox);
+		//		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 3, 1, 4, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 1, 0, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 2, 0, par3StructureBoundingBox);
 		this.placeDoorAtCurrentPosition(par1World, par3StructureBoundingBox, par2Random, 1, 1, 0, this.getMetadataWithOffset(Blocks.wooden_door, 1));
@@ -160,5 +165,16 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		} else {
 			return false;
 		}
+	}
+
+	protected boolean placeDoubleClock(World par1World, int par2, int par3, int par4) {
+		int x = this.getXWithOffset(par2, par4);
+		int y = this.getYWithOffset(par3);
+		int z = this.getZWithOffset(par2, par4);
+
+		par1World.setBlock(x, y, z, ClockBlocks.clock_bottom, 0, 2);
+		par1World.setBlock(x, y + 1, z, ClockBlocks.clock_top, 0, 2);
+		par1World.setTileEntity(x, y + 1, z, new TileDoubleClockTop());
+		return true;
 	}
 }
