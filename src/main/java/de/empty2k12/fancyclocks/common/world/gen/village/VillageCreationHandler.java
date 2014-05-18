@@ -1,5 +1,6 @@
 package de.empty2k12.fancyclocks.common.world.gen.village;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -12,7 +13,7 @@ public class VillageCreationHandler implements IVillageCreationHandler {
 
 	@Override
 	public PieceWeight getVillagePieceWeight(Random random, int i) {
-		return new StructureVillagePieces.PieceWeight();
+		return new StructureVillagePieces.PieceWeight(ComponentClockShop.class, 4, 2);
 	}
 
 	@Override
@@ -21,10 +22,8 @@ public class VillageCreationHandler implements IVillageCreationHandler {
 	}
 
 	@Override
-	public Object buildComponent(PieceWeight villagePiece, Start startPiece,
-			List pieces, Random random, int p1, int p2, int p3, int p4, int p5) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object buildComponent(PieceWeight villagePiece, Start startPiece, List pieces, Random random, int p1, int p2, int p3, int p4, int p5) {
+		return ComponentClockShop.buildComponent(startPiece, pieces, random, p1, p2, p3, p4, p5);
 	}
 
 }

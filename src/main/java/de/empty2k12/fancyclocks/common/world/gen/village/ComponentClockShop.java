@@ -21,6 +21,12 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		this.boundingBox = par4StructureBoundingBox;
 	}
 
+	public static ComponentClockShop buildComponent(StructureVillagePieces.Start par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
+	{
+		StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(par3, par4, par5, 0, 0, 0, 5, 12, 9, par6);
+		return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(par1List, structureboundingbox) == null ? new ComponentClockShop(par0ComponentVillageStartPiece, par7, par2Random, structureboundingbox, par6) : null;
+	}
+
 	/**
 	 * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
 	 * Mineshafts at the end, it adds Fences...
@@ -57,7 +63,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 				this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, j, l, 6 + k, 5 - k, par3StructureBoundingBox);
 			}
 		}
-		
+
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 0, 0, 1, 5, Blocks.diamond_block, Blocks.diamond_block, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 5, 8, 1, 5, Blocks.diamond_block, Blocks.diamond_block, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 1, 0, 8, 1, 4, Blocks.diamond_block, Blocks.diamond_block, false);
@@ -131,6 +137,11 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 	protected int getVillagerType(int par1)
 	{
 		return 1;
+	}
+
+	protected static boolean canVillageGoDeeper(StructureBoundingBox par0StructureBoundingBox)
+	{
+		return par0StructureBoundingBox != null && par0StructureBoundingBox.minY > 10;
 	}
 
 }
