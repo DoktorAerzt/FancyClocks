@@ -5,6 +5,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
+import net.minecraft.world.gen.structure.StructureVillagePieces;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -21,6 +23,7 @@ import de.empty2k12.fancyclocks.common.item.ClockItems;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import de.empty2k12.fancyclocks.common.misc.TabFancyClocks;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
+import de.empty2k12.fancyclocks.common.world.gen.village.ComponentClockShop;
 
 @Mod(modid = ModInfo.MOD_ID, version = ModInfo.MOD_NAME)
 public class FancyClocks {
@@ -33,9 +36,9 @@ public class FancyClocks {
 
 	public static Achievement timeMaster;
 	public static Achievement advancedTimeMaster;
-	
+
 	public static CreativeTabs tabFancyClocks = new TabFancyClocks("FancyClocks");
-	
+
 	//TODO: everything from my todo list!
 	//TODO: Village House!
 
@@ -46,6 +49,8 @@ public class FancyClocks {
 		proxy.registerRenderers();
 		addRecipes();
 		addAchievements();
+
+		MapGenStructureIO.func_143031_a(ComponentClockShop.class, "clockShop");
 	}
 
 	@EventHandler
@@ -55,7 +60,7 @@ public class FancyClocks {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
+
 	}
 
 	public static void addRecipes() {
