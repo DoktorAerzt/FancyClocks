@@ -6,7 +6,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
-import net.minecraft.world.gen.structure.StructureVillagePieces;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -18,12 +17,14 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.VillagerRegistry;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.item.ClockItems;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import de.empty2k12.fancyclocks.common.misc.TabFancyClocks;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
 import de.empty2k12.fancyclocks.common.world.gen.village.ComponentClockShop;
+import de.empty2k12.fancyclocks.common.world.gen.village.VillageCreationHandler;
 
 @Mod(modid = ModInfo.MOD_ID, version = ModInfo.MOD_NAME)
 public class FancyClocks {
@@ -51,6 +52,7 @@ public class FancyClocks {
 		addAchievements();
 
 		MapGenStructureIO.func_143031_a(ComponentClockShop.class, "clockShop");
+		VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
 	}
 
 	@EventHandler
