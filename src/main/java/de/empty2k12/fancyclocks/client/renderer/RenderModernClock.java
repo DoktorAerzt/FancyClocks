@@ -46,7 +46,7 @@ public class RenderModernClock extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 		GL11.glTranslated((float) x + 0.5, (float) y + 0.2, (float) z + 0.5);
 		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);
-		GL11.glScalef(1.5f, 1.5f, 1.5f);
+		//GL11.glScalef(1.1f, 1.1f, 1.1f);
 		GL11.glTranslated(-0.25d, 0.075d, 0.44d);
 		
 		bindTexture(texture);
@@ -55,7 +55,7 @@ public class RenderModernClock extends TileEntitySpecialRenderer {
 		this.model.renderModel(0.0625F);
 		GL11.glPopMatrix();
 		
-		//GL11.glTranslatef(0.5f, -0.0f, -0.05F);
+		GL11.glTranslatef(0.5f, -0.0f, -0.05F);
 
 		drawSecondPointer((TileModernClock)tile);
 		drawMinutePointer((TileModernClock)tile);
