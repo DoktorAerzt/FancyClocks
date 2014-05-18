@@ -5,6 +5,9 @@ import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntitySign;
+import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -112,6 +115,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		{
 			this.placeBlockAtCurrentPosition(par1World, Blocks.stone_stairs, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 0, -1, par3StructureBoundingBox);
 		}
+		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, new Random(), par4, par5, par6, text, par8);
 
 		for (l = 0; l < 6; ++l)
 		{
@@ -138,12 +142,24 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 	{
 		return par0StructureBoundingBox != null && par0StructureBoundingBox.minY > 10;
 	}
-	
-	public void placeSignWithTextAtCurrentPosition(World par1World, int x, int y, int z, StructureBoundingBox par5StructureBoundingBox, String par6String, String par7String, String par8String, String par9String) {
-		this.placeBlockAtCurrentPosition(par1World, Blocks.wall_sign, this.getMetadataWithOffset(Blocks.wall_sign, 2), 1, 3, -1, par5StructureBoundingBox);
-		this.get
-		if(par1World.getTileEntity(this.getBlockAtCurrentPosition(par1World, 1, 3, -1, par5StructureBoundingBox), this.getBlockAtCurrentPosition(par1World, 1, 3, -1, par5StructureBoundingBox), this.getBlockAtCurrentPosition(par1World, 1, 3, -1, par5StructureBoundingBox)))
-	}
-	
 
+	protected boolean placeSignWithTextAtCurrentPosition(World par1World, StructureBoundingBox par2StructureBoundingBox, Random par3Random, int par4, int par5, int par6, String[] text, int par8) {
+		int x = this.getXWithOffset(par4, par6);
+		int y = this.getYWithOffset(par5);
+		int z = this.getZWithOffset(par4, par6);
+
+		if (par2StructureBoundingBox.isVecInside(x, y, z) && par1World.getBlock(x, y, z) != Blocks.wall_sign) {
+			par1World.setBlock(x, y, z, Blocks.wall_sign, 0, 2);
+			TileEntitySign tilesign = (TileEntitySign)par1World.getTileEntity(x, y, z);
+
+			if (tilesign != null) {
+				for(int i = 0; i < text.length; i++) {
+					tilesign.signText[i] = text[i];
+				}
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
