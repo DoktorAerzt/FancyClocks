@@ -4,6 +4,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -11,6 +12,8 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.item.ClockItems;
@@ -32,7 +35,6 @@ public class FancyClocks {
 	//TODO: Config
 	//TODO: everything from my todo list!
 	//TODO: creative tab
-	//TODO: Archievements after addng recipes!
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -44,7 +46,7 @@ public class FancyClocks {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	@EventHandler
@@ -59,6 +61,13 @@ public class FancyClocks {
 
 	public static void addAchievements() {
 		timeMaster = new Achievement("timeMaster", "timeMaster", 1, 1, ClockBlocks.clock, null);
+	}
+	
+	@SubscribeEvent
+	public void onCrafting(PlayerEvent.ItemCraftedEvent event) {
+		if(event.crafting == new ItemStack(ClockBlocks.clock)) {
+			event.player.addStat(FancyClocks.timeMaster, 1);
+		}
 	}
 
 }
