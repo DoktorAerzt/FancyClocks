@@ -112,7 +112,6 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		{
 			this.placeBlockAtCurrentPosition(par1World, Blocks.stone_stairs, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 0, -1, par3StructureBoundingBox);
 		}
-		this.placeBlockAtCurrentPosition(par1World, Blocks.wall_sign, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 3, -1, par3StructureBoundingBox);
 
 		for (l = 0; l < 6; ++l)
 		{
@@ -139,5 +138,12 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 	{
 		return par0StructureBoundingBox != null && par0StructureBoundingBox.minY > 10;
 	}
+	
+	public void placeSignWithTextAtCurrentPosition(World par1World, int x, int y, int z, StructureBoundingBox par5StructureBoundingBox, String par6String, String par7String, String par8String, String par9String) {
+		this.placeBlockAtCurrentPosition(par1World, Blocks.wall_sign, this.getMetadataWithOffset(Blocks.wall_sign, 2), 1, 3, -1, par5StructureBoundingBox);
+		this.get
+		if(par1World.getTileEntity(this.getBlockAtCurrentPosition(par1World, 1, 3, -1, par5StructureBoundingBox), this.getBlockAtCurrentPosition(par1World, 1, 3, -1, par5StructureBoundingBox), this.getBlockAtCurrentPosition(par1World, 1, 3, -1, par5StructureBoundingBox)))
+	}
+	
 
 }
