@@ -41,7 +41,6 @@ public class FancyClocks {
 	public static CreativeTabs tabFancyClocks = new TabFancyClocks("FancyClocks");
 
 	//TODO: everything from my todo list!
-	//TODO: Village House!
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

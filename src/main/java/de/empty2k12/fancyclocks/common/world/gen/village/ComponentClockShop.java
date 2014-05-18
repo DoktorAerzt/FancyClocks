@@ -23,7 +23,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 
 	public static ComponentClockShop buildComponent(StructureVillagePieces.Start par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
 	{
-		StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(par3, par4, par5, 0, 0, 0, 5, 12, 9, par6);
+		StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(par3, par4, par5, 0, 0, 0, 9, 9, 6, par6);
 		return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(par1List, structureboundingbox) == null ? new ComponentClockShop(par0ComponentVillageStartPiece, par7, par2Random, structureboundingbox, par6) : null;
 	}
 
@@ -104,11 +104,6 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 5, 1, 4, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 4, 1, 4, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, k, 3, 1, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.fence, 0, 6, 1, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.wooden_pressure_plate, 0, 6, 2, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.fence, 0, 4, 1, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.wooden_pressure_plate, 0, 4, 2, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.crafting_table, 0, 7, 1, 1, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 1, 0, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 2, 0, par3StructureBoundingBox);
 		this.placeDoorAtCurrentPosition(par1World, par3StructureBoundingBox, par2Random, 1, 1, 0, this.getMetadataWithOffset(Blocks.wooden_door, 1));
