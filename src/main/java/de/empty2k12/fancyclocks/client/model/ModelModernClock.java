@@ -5,15 +5,16 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelModernClock extends ModelBase {
-	
+
 	ModelRenderer Main;
 	ModelRenderer Border1;
 	ModelRenderer Border2;
 	ModelRenderer Border3;
 	ModelRenderer Border4;
+	ModelRenderer PoinerDinghy;
 
 	public ModelModernClock() {
-		
+
 		textureWidth = 64;
 		textureHeight = 32;
 
@@ -47,6 +48,13 @@ public class ModelModernClock extends ModelBase {
 		Border4.setTextureSize(64, 32);
 		Border4.mirror = true;
 		setRotation(Border4, 0F, 0F, 0F);
+		PoinerDinghy = new ModelRenderer(this, 0, 0);
+		PoinerDinghy.addBox(0F, 0F, 0F, 1, 1, 1);
+		PoinerDinghy.setRotationPoint(3.5F, 3.5F, -0.5F);
+		PoinerDinghy.setTextureSize(64, 32);
+		PoinerDinghy.mirror = true;
+		setRotation(PoinerDinghy, 0F, 0F, 0F);
+		
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -57,14 +65,16 @@ public class ModelModernClock extends ModelBase {
 		Border2.render(f5);
 		Border3.render(f5);
 		Border4.render(f5);
+		PoinerDinghy.render(f5);
 	}
-	
+
 	public void renderModel(float f) {
 		Main.render(f);
 		Border1.render(f);
 		Border2.render(f);
 		Border3.render(f);
 		Border4.render(f);
+		PoinerDinghy.render(f);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
