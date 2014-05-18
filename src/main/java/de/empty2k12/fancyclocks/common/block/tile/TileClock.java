@@ -12,7 +12,7 @@ public class TileClock extends TileEntity {
 
 	private static int oldSeconds;
 
-	private boolean silent = true; //XXX: change back its just for development
+	private boolean silent = false;
 	public boolean dummy = false;
 
 	private static Calendar calendar;

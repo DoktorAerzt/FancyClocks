@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "fancyclocks",
+  "name": "Fancy Clocks",
+  "description": "Adds fancier (3d) modeled clocks to the Game!",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authors": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authors": ["Empty2k12"],
+  "credits": "ModJam Team: Motivating me to code quicker and don't waste too much time!",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
