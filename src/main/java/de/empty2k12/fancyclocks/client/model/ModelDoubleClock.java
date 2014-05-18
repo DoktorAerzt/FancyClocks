@@ -16,9 +16,9 @@ public class ModelDoubleClock extends ModelBase {
 	ModelRenderer Back1;
 	ModelRenderer Roof1;
 	ModelRenderer Roof2;
+	ModelRenderer PointerDinghy;
 	ModelRenderer Movement1;
 	ModelRenderer Front1;
-	ModelRenderer PointerDinghy;
 
 	public ModelDoubleClock() {
 		textureWidth = 64;
@@ -84,6 +84,12 @@ public class ModelDoubleClock extends ModelBase {
 		Roof2.setTextureSize(64, 32);
 		Roof2.mirror = true;
 		setRotation(Roof2, 0F, 0F, 0F);
+		PointerDinghy = new ModelRenderer(this, 43, 30);
+		PointerDinghy.addBox(0F, 0F, 0F, 1, 1, 1);
+		PointerDinghy.setRotationPoint(-0.5F, -1.5F, -2.5F);
+		PointerDinghy.setTextureSize(64, 32);
+		PointerDinghy.mirror = true;
+		setRotation(PointerDinghy, 0F, 0F, 0F);
 		Movement1 = new ModelRenderer(this, 0, 0);
 		Movement1.addBox(0F, 0F, 1F, 8, 8, 5);
 		Movement1.setRotationPoint(-4F, -5F, -3F);
@@ -96,12 +102,6 @@ public class ModelDoubleClock extends ModelBase {
 		Front1.setTextureSize(64, 32);
 		Front1.mirror = true;
 		setRotation(Front1, 0F, 0F, 0F);
-		PointerDinghy = new ModelRenderer(this, 0, 0);
-		PointerDinghy.addBox(0F, 0F, 0F, 1, 1, 1);
-		PointerDinghy.setRotationPoint(-0.5F, -1.5F, -2.5F);
-		PointerDinghy.setTextureSize(64, 32);
-		PointerDinghy.mirror = true;
-		setRotation(PointerDinghy, 0F, 0F, 0F);
 	}
 
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
@@ -117,9 +117,9 @@ public class ModelDoubleClock extends ModelBase {
 		Back1.render(f5);
 		Roof1.render(f5);
 		Roof2.render(f5);
+		PointerDinghy.render(f5);
 		Movement1.render(f5);
 		Front1.render(f5);
-		PointerDinghy.render(f5);
 	}
 
 	public void renderModel(float f5) {
@@ -133,9 +133,9 @@ public class ModelDoubleClock extends ModelBase {
 		Back1.render(f5);
 		Roof1.render(f5);
 		Roof2.render(f5);
+		PointerDinghy.render(f5);
 		Movement1.render(f5);
 		Front1.render(f5);
-		PointerDinghy.render(f5);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
