@@ -73,7 +73,4 @@ public class FancyClocks {
 			event.player.addStat(timeMaster, 50);
 		}
 	}
-	
-	ComponentVillageHouse1
-
 }
