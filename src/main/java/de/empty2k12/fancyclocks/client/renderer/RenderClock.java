@@ -10,19 +10,15 @@ import org.lwjgl.opengl.GL11;
 import de.empty2k12.fancyclocks.client.model.ModelClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
-import de.empty2k12.fancyclocks.common.util.TimeUtil;
 
 public class RenderClock extends TileEntitySpecialRenderer {
 
 	public static final ResourceLocation texture = new ResourceLocation(ModInfo.MOD_ID + ":" + "textures/model/clock1.png");
 
 	public ModelClock model;
-	
-	private static TimeUtil timeUtil;
 
 	public RenderClock() {
 		model = new ModelClock();
-		timeUtil = TimeUtil.instance;
 	}
 
 	@Override
@@ -80,7 +76,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 	public static void drawSecondPointer(TileClock tile) {
 		GL11.glPushMatrix();
-		GL11.glRotatef(timeUtil.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
+		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
 		Tessellator secondTess = Tessellator.instance;
 		secondTess.startDrawing(GL11.GL_LINE_STRIP);
 		secondTess.setBrightness(1);
@@ -94,7 +90,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 	public static void drawMinutePointer(TileClock tile) {
 		GL11.glPushMatrix();
-		GL11.glRotatef(timeUtil.getRotationFromMinutes(), 0.0f, 0.0f, 1.0f);
+		GL11.glRotatef(tile.getRotationFromMinutes(), 0.0f, 0.0f, 1.0f);
 		Tessellator minuteTess = Tessellator.instance;
 		minuteTess.startDrawing(GL11.GL_LINE_STRIP);
 		minuteTess.setBrightness(1);
@@ -108,7 +104,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 	public static void drawHourPointer(TileClock tile) {
 		GL11.glPushMatrix();
-		GL11.glRotatef(timeUtil.getRotationFromHours(), 0.0f, 0.0f, 1.0f);
+		GL11.glRotatef(tile.getRotationFromHours(), 0.0f, 0.0f, 1.0f);
 		Tessellator hourTess = Tessellator.instance;
 		hourTess.startDrawing(GL11.GL_LINE_STRIP);
 		hourTess.setBrightness(1);

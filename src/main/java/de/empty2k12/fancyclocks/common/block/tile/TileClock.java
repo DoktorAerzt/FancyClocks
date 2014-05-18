@@ -14,9 +14,9 @@ public class TileClock extends TileEntity {
 
 	private boolean silent = true; //XXX: change back its just for development
 	public boolean dummy = false;
-	
+
 	private static Calendar calendar;
-	
+
 	public TileClock(boolean dummy) {
 		this.dummy = dummy;
 	}
@@ -25,7 +25,7 @@ public class TileClock extends TileEntity {
 	public void readFromNBT(NBTTagCompound compound) {
 		this.silent = compound.getBoolean("silent");
 	}
-	
+
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		compound.setBoolean("silent", silent);
@@ -42,17 +42,17 @@ public class TileClock extends TileEntity {
 		}
 	}
 
-//	public static int getRotationFromSeconds() {
-//		return calendar == null ? 0 : calendar.get(Calendar.SECOND)*6;
-//	}
-//
-//	public static int getRotationFromMinutes() {
-//		return calendar == null ? 0 : calendar.get(Calendar.MINUTE)*6;
-//	}
-//
-//	public static int getRotationFromHours() {
-//		return calendar == null ? 0 : calendar.get(Calendar.HOUR_OF_DAY)*30;
-//	}
+	public static int getRotationFromSeconds() {
+		return calendar == null ? 0 : calendar.get(Calendar.SECOND)*6;
+	}
+
+	public static int getRotationFromMinutes() {
+		return calendar == null ? 0 : calendar.get(Calendar.MINUTE)*6;
+	}
+
+	public static int getRotationFromHours() {
+		return calendar == null ? 0 : (calendar.get(Calendar.HOUR_OF_DAY)*30 + calendar.get(Calendar.MINUTE)/6);
+	}
 
 	public void toggleSounds() {
 		if(silent) {

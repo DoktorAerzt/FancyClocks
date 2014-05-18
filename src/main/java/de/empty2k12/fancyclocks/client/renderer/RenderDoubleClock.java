@@ -52,13 +52,14 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 		this.model.renderModel(0.0625F);
 		
-		GL11.glTranslatef(0F, -0.13F, -0.3F);
-
+		GL11.glTranslatef(0F, -0.12F, -0.3F);	
 		//TODO: if i have time: show indicators for numbers
 		drawSecondPointer((TileDoubleClockTop)tile);
 		drawMinutePointer((TileDoubleClockTop)tile);
 		drawHourPointer((TileDoubleClockTop)tile);
 
+		
+		
 		GL11.glTranslated(-0.05D, -0.01D, 0.1D);
 		
 		drawPendel((TileDoubleClockTop)tile);
@@ -84,7 +85,7 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
 		Tessellator secondTess = Tessellator.instance;
-		secondTess.startDrawing(GL11.GL_LINE_STRIP);
+		secondTess.startDrawing(GL11.GL_LINE_TOKEN);
 		secondTess.setBrightness(1);
 		secondTess.addVertex(-0.02, 0.01, 0.15D);
 		secondTess.addVertex(-0.02, -0.17, 0.15D);
@@ -110,7 +111,7 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 	public static void drawHourPointer(TileDoubleClockTop tile) {
 		GL11.glPushMatrix();
-		GL11.glRotatef(tile.getRotationFromHours(), 0.0f, 0.0f, 1.0f);
+		GL11.glRotatef(tile.getRotationFromHours(), 0.0f, 0.1f, 1.0f);
 		Tessellator hourTess = Tessellator.instance;
 		hourTess.startDrawing(GL11.GL_LINE_STRIP);
 		hourTess.setBrightness(1);

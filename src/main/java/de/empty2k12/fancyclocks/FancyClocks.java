@@ -19,7 +19,6 @@ import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.item.ClockItems;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
-import de.empty2k12.fancyclocks.common.util.TimeUtil;
 
 @Mod(modid = ModInfo.MOD_ID, version = ModInfo.MOD_NAME)
 public class FancyClocks {
@@ -49,7 +48,6 @@ public class FancyClocks {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		FMLCommonHandler.instance().bus().register(this); 
-		new TimeUtil();
 	}
 
 	@EventHandler

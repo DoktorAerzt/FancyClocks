@@ -52,7 +52,7 @@ public class TileDoubleClockTop extends TileEntity {
 	}
 
 	public static int getRotationFromHours() {
-		return calendar == null ? 0 : calendar.get(Calendar.HOUR_OF_DAY)*30;
+		return calendar == null ? 0 : (calendar.get(Calendar.HOUR_OF_DAY)*30 + calendar.get(Calendar.MINUTE)/6);
 	}
 
 	public void toggleSounds() {
@@ -66,7 +66,7 @@ public class TileDoubleClockTop extends TileEntity {
 	public boolean getSilent() {
 		return silent;
 	}
-	
+
 	public void calculatePendelRotation() {
 		if(rotationForPendel == 10) {
 			rotationForPendel = 9;
