@@ -112,6 +112,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		{
 			this.placeBlockAtCurrentPosition(par1World, Blocks.stone_stairs, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 0, -1, par3StructureBoundingBox);
 		}
+		this.placeBlockAtCurrentPosition(par1World, Blocks.wall_sign, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 3, -1, par3StructureBoundingBox);
 
 		for (l = 0; l < 6; ++l)
 		{
