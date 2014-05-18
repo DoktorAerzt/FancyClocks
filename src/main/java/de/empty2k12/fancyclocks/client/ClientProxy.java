@@ -17,7 +17,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenderers() {
 		TileEntitySpecialRenderer renderClock = new RenderClock();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileClock.class, renderClock);
-		MinecraftForgeClient.registerItemRenderer(Items.clock, new ItemRenderClock());
+		//MinecraftForgeClient.registerItemRenderer(Items.clock, new ItemRenderClock());
 		
 		TileEntitySpecialRenderer renderDoubleClock = new RenderDoubleClock();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileDoubleClockTop.class, renderDoubleClock);
