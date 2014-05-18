@@ -44,9 +44,11 @@ public class RenderModernClock extends TileEntitySpecialRenderer {
 		}
 
 		GL11.glPushMatrix();
-		GL11.glTranslated((float) x + 0.1, (float) y  + 0.795, (float) z + 0.8);
+		GL11.glTranslated((float) x + 0.5, (float) y  + 0.5, (float) z + 0.5);
 		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);
-		GL11.glScalef(-1.1f, -1.1f, 1.1f);
+		GL11.glTranslated(-0.3, -0.3, 0.44);
+
+		GL11.glScalef(1.2f, 1.2f, 1.2f);
 
 		bindTexture(texture);
 
@@ -54,23 +56,12 @@ public class RenderModernClock extends TileEntitySpecialRenderer {
 		this.model.renderModel(0.0625F);
 		GL11.glPopMatrix();
 
-		GL11.glScalef(1.1f, 1.1f, -1.1f);
-		GL11.glTranslatef(0.23f, 0.23f, -0.28F);
+		GL11.glScalef(-1.2f, -1.2f, -1.2f);
+		GL11.glTranslatef(-0.20f, -0.22f, -0.28F);
 
 		drawSecondPointer((TileModernClock)tile);
 		drawMinutePointer((TileModernClock)tile);
 		drawHourPointer((TileModernClock)tile);
-
-		GL11.glPushMatrix();
-		Tessellator overlayTess = Tessellator.instance;
-		overlayTess.startDrawingQuads();
-		overlayTess.setBrightness(1);
-		overlayTess.addVertexWithUV(0.01, 1, 0.3D, 2, 2);
-		overlayTess.addVertexWithUV(0.01, 1, 0.3D, 2, 2);
-		overlayTess.addVertexWithUV(0.1, 1, 0.3D, 2, 2);
-		overlayTess.addVertexWithUV(0.1, 1, 0.3D, 2, 2);
-		overlayTess.draw();
-		GL11.glPopMatrix();
 
 		GL11.glPopMatrix();
 	}
