@@ -63,12 +63,12 @@ public class BlockDoubleClockTop extends BlockContainer implements IScrewdriveab
 	public boolean isNormalCube(IBlockAccess world, int x, int y, int z) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
-	
+
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		return new ItemStack(ClockBlocks.clock_bottom);
@@ -79,8 +79,7 @@ public class BlockDoubleClockTop extends BlockContainer implements IScrewdriveab
 		if(world.getTileEntity(x, y, z) instanceof TileDoubleClockTop) {
 			TileDoubleClockTop tile = (TileDoubleClockTop) world.getTileEntity(x, y, z);
 			tile.toggleSounds();
-			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("msg.clock.1") + " " + (tile.getSilent() ? StatCollector.translateToLocal("msg.clock.silent") : StatCollector.translateToLocal("msg.clock.ticking") + "!")));
+			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("msg.clock.1") + " " + (tile.getSilent() ? StatCollector.translateToLocal("msg.clock.silent") : StatCollector.translateToLocal("msg.clock.ticking")) + "!"));
 		}
 	}
-
 }

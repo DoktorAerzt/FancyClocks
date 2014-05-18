@@ -11,11 +11,9 @@ public class TileDoubleClockTop extends TileEntity {
 
 	public int direction;
 
-	public int rotationForPendel;
-
 	private static int oldSeconds;
 
-	private boolean silent = true; //XXX: change back its just for development
+	private boolean silent = false;
 
 	private static Calendar calendar;
 
@@ -33,11 +31,10 @@ public class TileDoubleClockTop extends TileEntity {
 
 	@Override
 	public void updateEntity() {
-		calculatePendelRotation();
 		calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Berlin"));
 		if(oldSeconds != calendar.get(Calendar.SECOND)) {
 			oldSeconds = calendar.get(Calendar.SECOND);
-			if(!silent) {
+			if(!silent && !getWorldObj().isRemote) {
 				getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
 			}
 		}
@@ -65,28 +62,6 @@ public class TileDoubleClockTop extends TileEntity {
 
 	public boolean getSilent() {
 		return silent;
-	}
-
-	public void calculatePendelRotation() {
-		if(rotationForPendel == 10) {
-			rotationForPendel = 9;
-		} else if(rotationForPendel == 9) {
-			rotationForPendel = 8;
-		} else if(rotationForPendel == 8) {
-			rotationForPendel = 7;
-		} else if(rotationForPendel == 7) {
-			rotationForPendel = 6;
-		} else if(rotationForPendel == 6) {
-			rotationForPendel = 5;
-		} else if(rotationForPendel == 5) {
-			rotationForPendel = 4;
-		} else if(rotationForPendel == 4) {
-			rotationForPendel = 3;
-		} else if(rotationForPendel == 3) {
-			rotationForPendel = 2;
-		} else if(rotationForPendel == 2) {
-			rotationForPendel = 1;
-		}
 	}
 
 }
