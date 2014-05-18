@@ -4,7 +4,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
-import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -34,7 +34,7 @@ public class FancyClocks {
 
 	//TODO: Config
 	//TODO: everything from my todo list!
-	//TODO: creative tab
+	//TODO: creative tab sdhl
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -42,11 +42,12 @@ public class FancyClocks {
 		ClockItems.init();
 		proxy.registerRenderers();
 		addRecipes();
+		addAchievements();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(this);
+		FMLCommonHandler.instance().bus().register(this); 
 	}
 
 	@EventHandler
@@ -62,11 +63,11 @@ public class FancyClocks {
 	public static void addAchievements() {
 		timeMaster = new Achievement("timeMaster", "timeMaster", 1, 1, ClockBlocks.clock, null);
 	}
-	
+
 	@SubscribeEvent
 	public void onCrafting(PlayerEvent.ItemCraftedEvent event) {
 		if(event.crafting == new ItemStack(ClockBlocks.clock)) {
-			event.player.addStat(FancyClocks.timeMaster, 1);
+			event.player.addStat(FancyClocks.timeMaster, 50);
 		}
 	}
 
