@@ -84,7 +84,7 @@ public class ModelDoubleClock extends ModelBase {
 		Roof2.mirror = true;
 		setRotation(Roof2, 0F, 0F, 0F);
 		Movement1 = new ModelRenderer(this, 0, 0);
-		Movement1.addBox(0F, 0F, 1F, 8, 7, 6);
+		Movement1.addBox(0F, 0F, 1F, 8, 7, 5);
 		Movement1.setRotationPoint(-4F, -5F, -3F);
 		Movement1.setTextureSize(64, 32);
 		Movement1.mirror = true;

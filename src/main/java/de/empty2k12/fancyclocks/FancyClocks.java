@@ -34,6 +34,8 @@ public class FancyClocks {
 	
 	//TODO: everything from my todo list!
 	//TODO: creative tab
+	//TODO: Village House!
+	//FIXME: texture(s)!!!!
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
