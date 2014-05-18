@@ -54,7 +54,7 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		this.model.renderModel(0.0625F);
 		GL11.glPopMatrix();
 
-		GL11.glTranslatef(0F, -0.12F, -0.3F);
+		GL11.glTranslatef(0.01F, -0.055F, -0.3F);
 		//TODO: if i have time: show indicators for numbers
 		drawSecondPointer((TileDoubleClockTop)tile);
 		drawMinutePointer((TileDoubleClockTop)tile);
@@ -72,8 +72,8 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		secondTess.setColorRGBA(255, 0, 0, 100);
 		secondTess.setTranslation(0, 0, 0);
 		secondTess.addVertex(-0.02, 0.01, 0.15D);
-		secondTess.addVertex(-0.02, -0.17, 0.15D);
-		secondTess.addVertex(0.0, -0.17, 0.15D);
+		secondTess.addVertex(-0.02, -0.2, 0.15D);
+		secondTess.addVertex(0.0, -0.2, 0.15D);
 		secondTess.addVertex(0.0, 0.01, 0.15D);
 		secondTess.draw();
 		GL11.glPopMatrix();
@@ -87,8 +87,8 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		minuteTess.setBrightness(1000);
 		minuteTess.setColorRGBA(0, 0, 255, 100);
 		minuteTess.addVertex(-0.02, 0.01, 0.15D);
-		minuteTess.addVertex(-0.02, -0.14, 0.15D);
-		minuteTess.addVertex(0.0, -0.14, 0.15D);
+		minuteTess.addVertex(-0.02, -0.16, 0.15D);
+		minuteTess.addVertex(0.0, -0.16, 0.15D);
 		minuteTess.addVertex(0.0, 0.01, 0.15D);
 		minuteTess.draw();
 		GL11.glPopMatrix();
@@ -102,8 +102,8 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		hourTess.setBrightness(1000);
 		hourTess.setColorRGBA(0, 255, 0, 100);
 		hourTess.addVertex(-0.02, 0.01, 0.15D);
-		hourTess.addVertex(-0.02, -0.12, 0.15D);
-		hourTess.addVertex(0.0, -0.12, 0.15D);
+		hourTess.addVertex(-0.02, -0.15, 0.15D);
+		hourTess.addVertex(0.0, -0.15, 0.15D);
 		hourTess.addVertex(0.0, 0.01, 0.15D);
 		hourTess.draw();
 		GL11.glPopMatrix();
