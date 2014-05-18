@@ -46,12 +46,13 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 		GL11.glTranslated((float) x + 0.5, (float) y + 0.3, (float) z + 0.5);
 		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);
-		GL11.glTranslatef(0.0F, 0.0F, 0.4375F);
 		GL11.glScalef(1.0F, -1F, -1F);
-
+		
 		bindTexture(texture);
-
+		
+		GL11.glPushMatrix();
 		this.model.renderModel(0.0625F);
+		GL11.glPopMatrix();
 
 		GL11.glTranslatef(0F, -0.12F, -0.3F);	
 		//TODO: if i have time: show indicators for numbers

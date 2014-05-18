@@ -62,7 +62,6 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glTranslated(0D, 0D, 0D);
 
 		if(!((TileClock)tile).dummy) {
-			//FIXME: shift them up a bit!
 			//TODO: if i have time: show indicators for numbers
 			drawSecondPointer((TileClock)tile);
 			GL11.glTranslatef(0, 0, 0);

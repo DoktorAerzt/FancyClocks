@@ -31,8 +31,7 @@ public class FancyClocks {
 
 	public static Achievement timeMaster;
 	public static Achievement advancedTimeMaster;
-
-	//TODO: Config
+	
 	//TODO: everything from my todo list!
 	//TODO: creative tab
 
@@ -67,7 +66,7 @@ public class FancyClocks {
 	@SubscribeEvent
 	public void onCrafting(PlayerEvent.ItemCraftedEvent event) {
 		if(event.crafting == new ItemStack(ClockBlocks.clock)) {
-			event.player.addStat(FancyClocks.timeMaster, 50);
+			event.player.addStat(timeMaster, 50);
 		}
 	}
 
