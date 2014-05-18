@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import de.empty2k12.fancyclocks.FancyClocks;
 import de.empty2k12.fancyclocks.api.IClockScrewdriver;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
@@ -12,7 +13,7 @@ import de.empty2k12.fancyclocks.common.misc.ModInfo;
 public class ItemScrewdriver extends Item implements IClockScrewdriver {
 	
 	public ItemScrewdriver() {
-		setCreativeTab(CreativeTabs.tabTools);
+		setCreativeTab(FancyClocks.tabFancyClocks);
 		setFull3D();
 		setMaxDamage(-1);
 		setMaxStackSize(1);

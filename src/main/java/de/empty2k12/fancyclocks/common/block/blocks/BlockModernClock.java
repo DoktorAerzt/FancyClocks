@@ -4,6 +4,7 @@ import static net.minecraftforge.common.util.ForgeDirection.EAST;
 import static net.minecraftforge.common.util.ForgeDirection.NORTH;
 import static net.minecraftforge.common.util.ForgeDirection.SOUTH;
 import static net.minecraftforge.common.util.ForgeDirection.WEST;
+import de.empty2k12.fancyclocks.FancyClocks;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
@@ -22,7 +23,7 @@ public class BlockModernClock extends BlockContainer implements IScrewdriveable 
 
 	public BlockModernClock() {
 		super(Material.iron);
-		setCreativeTab(CreativeTabs.tabDecorations);
+		setCreativeTab(FancyClocks.tabFancyClocks);
 		setBlockTextureName("minecraft:iron_block");
 		setBlockName("blockModernClock");
 		setHardness(2F);
@@ -38,6 +39,7 @@ public class BlockModernClock extends BlockContainer implements IScrewdriveable 
 		}
 	}
 
+	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z) {
 		this.setBlockBoundsOnState(blockAccess.getBlockMetadata(x, y, z));
 	}
@@ -127,7 +129,6 @@ public class BlockModernClock extends BlockContainer implements IScrewdriveable 
 		return newMeta;
 	}
 
-	//FIXME: if time change these!
 	public void setBlockBoundsOnState(int meta) {
 		float f = 0.15F;
 

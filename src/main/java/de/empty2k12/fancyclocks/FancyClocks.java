@@ -1,5 +1,6 @@
 package de.empty2k12.fancyclocks;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -18,6 +19,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.item.ClockItems;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
+import de.empty2k12.fancyclocks.common.misc.TabFancyClocks;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
 
 @Mod(modid = ModInfo.MOD_ID, version = ModInfo.MOD_NAME)
@@ -32,10 +34,10 @@ public class FancyClocks {
 	public static Achievement timeMaster;
 	public static Achievement advancedTimeMaster;
 	
+	public static CreativeTabs tabFancyClocks = new TabFancyClocks("FancyClocks");
+	
 	//TODO: everything from my todo list!
-	//TODO: creative tab
 	//TODO: Village House!
-	//FIXME: texture(s)!!!!
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -71,5 +73,7 @@ public class FancyClocks {
 			event.player.addStat(timeMaster, 50);
 		}
 	}
+	
+	ComponentVillageHouse1
 
 }

@@ -14,6 +14,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import de.empty2k12.fancyclocks.FancyClocks;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
@@ -22,7 +23,7 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 
 	public BlockClock() {
 		super(Material.wood);
-		setCreativeTab(CreativeTabs.tabDecorations);
+		setCreativeTab(FancyClocks.tabFancyClocks);
 		setBlockName("blockClock");
 		setStepSound(Block.soundTypeWood);
 		setHardness(2F);

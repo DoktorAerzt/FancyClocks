@@ -11,6 +11,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import de.empty2k12.fancyclocks.FancyClocks;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
@@ -20,7 +21,7 @@ public class BlockDoubleClockBottom extends Block {
 
 	public BlockDoubleClockBottom() {
 		super(Material.wood);
-		setCreativeTab(CreativeTabs.tabDecorations);
+		setCreativeTab(FancyClocks.tabFancyClocks);
 		setBlockName("blockDoubleClock");
 		setHarvestLevel("axe", 0);
 		setHardness(2F);

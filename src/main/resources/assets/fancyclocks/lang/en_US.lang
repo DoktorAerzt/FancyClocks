@@ -10,3 +10,6 @@ item.screwdriver.name=Screwdriver
 msg.clock.1=The clock is now
 msg.clock.silent=silent
 msg.clock.ticking=ticking
+
+#Creative Tabs
+tile.FancyClocks.name=Fancy Clocks
