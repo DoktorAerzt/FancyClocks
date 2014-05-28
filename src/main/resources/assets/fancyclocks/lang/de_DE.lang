@@ -1,0 +1,14 @@
+#Blocks
+tile.blockClock.name=Uhr
+tile.blockDoubleClock.name=Großvater Uhr
+tile.blockModernClock.name=Moderne Uhr
+#Items
+item.screwdriver.name=Schraubendreher
+
+#Translations
+msg.clock.1=Die Uhr imacht nun
+msg.clock.silent=keine geräusche
+msg.clock.ticking=geräusche
+
+#Creative Tabs
+itemGroup.FancyClocks=Fancy Clocks
