@@ -6,7 +6,7 @@ tile.blockModernClock.name=Moderne Uhr
 item.screwdriver.name=Schraubendreher
 
 #Translations
-msg.clock.1=Die Uhr imacht nun
+msg.clock.1=Die Uhr macht nun
 msg.clock.silent=keine geräusche
 msg.clock.ticking=geräusche
 
