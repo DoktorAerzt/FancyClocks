@@ -26,23 +26,21 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 		int rotationAngle = 0;
 
-		if(!((TileClock)tile).dummy) {
-			int meta = tile.getBlockMetadata();
+		int meta = tile.getBlockMetadata();
 
-			switch(meta % 4){
-			case 0:
-				rotationAngle = 90;
-				break;
-			case 1:
-				rotationAngle = 270;
-				break;
-			case 2:
-				rotationAngle = 0;
-				break;
-			case 3:
-				rotationAngle = 180;
-				break;
-			}
+		switch(meta % 4){
+		case 0:
+			rotationAngle = 90;
+			break;
+		case 1:
+			rotationAngle = 270;
+			break;
+		case 2:
+			rotationAngle = 0;
+			break;
+		case 3:
+			rotationAngle = 180;
+			break;
 		}
 
 		GL11.glPushMatrix();

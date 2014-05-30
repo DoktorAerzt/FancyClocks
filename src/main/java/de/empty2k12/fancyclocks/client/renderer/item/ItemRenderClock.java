@@ -13,7 +13,6 @@ public class ItemRenderClock implements IItemRenderer {
 
 	public ItemRenderClock(){
 		this.renderer = new RenderClock();
-		this.dummytile = new TileClock(true);
 	}
 
 	@Override

@@ -13,12 +13,10 @@ public class TileClock extends TileEntity {
 	private static int oldSeconds;
 
 	private boolean silent = false;
-	public boolean dummy = false;
 
 	private static Calendar calendar;
 
-	public TileClock(boolean dummy) {
-		this.dummy = dummy;
+	public TileClock() {
 	}
 
 	@Override
