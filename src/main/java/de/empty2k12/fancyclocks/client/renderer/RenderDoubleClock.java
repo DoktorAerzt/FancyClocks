@@ -27,18 +27,18 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 		int rotationAngle = 0;
 
-		switch(((TileDoubleClockTop)tile).direction){
+		switch(tile.getBlockMetadata() % 4){
 		case 0:
-			rotationAngle = 180;
+			rotationAngle = -90;
 			break;
 		case 1:
 			rotationAngle = 90;
 			break;
 		case 2:
-			rotationAngle = 0;
+			rotationAngle = 180;
 			break;
 		case 3:
-			rotationAngle = -90;
+			rotationAngle = 360;
 			break;
 		}
 

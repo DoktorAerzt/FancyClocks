@@ -6,6 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
@@ -29,16 +30,48 @@ public class BlockDoubleClockBottom extends Block {
 		setBlockTextureName("minecraft:planks_oak");
 	}
 
-	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
-		world.setBlock(x, y + 1, z, ClockBlocks.clock_top, 0, 2);
-		world.setTileEntity(x, y + 1, z, new TileDoubleClockTop());
-		if (entity == null)
-			return;	
+	//	@Override
+	//	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
+	//		world.setBlock(x, y + 1, z, ClockBlocks.clock_top, 0, 2);
+	//		world.setTileEntity(x, y + 1, z, new TileDoubleClockTop());
+	//		if (entity == null)
+	//			return;	
+	//
+	//		TileDoubleClockTop tile = (TileDoubleClockTop) world.getTileEntity(x, y + 1, z);
+	//		if(tile != null)
+	//			tile.direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+	//	}
 
-		TileDoubleClockTop tile = (TileDoubleClockTop) world.getTileEntity(x, y + 1, z);
-		if(tile != null)
-			tile.direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
+
+		if (entity == null)
+			return;
+
+		int newMeta = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+
+		world.setBlock(x, y + 1, z, ClockBlocks.clock_top, 0, 2);
+		world.setTileEntity(x, y + 1, z, new TileDoubleClockTop());	
+
+		if (newMeta == 0) {
+			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+			world.setBlockMetadataWithNotify(x, y + 1, z, 2, 2);
+		}
+
+		if (newMeta == 1) {
+			world.setBlockMetadataWithNotify(x, y, z, 5, 2);
+			world.setBlockMetadataWithNotify(x, y + 1, z, 5, 2);
+		}
+
+		if (newMeta == 2) {
+			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+			world.setBlockMetadataWithNotify(x, y + 1, z, 3, 2);
+		}
+
+		if (newMeta == 3) {
+			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
+			world.setBlockMetadataWithNotify(x, y + 1, z, 4, 2);
+		}
 	}
 
 	@Override
@@ -73,5 +106,5 @@ public class BlockDoubleClockBottom extends Block {
 	public boolean isOpaqueCube() {
 		return false;
 	}
-	
+
 }
