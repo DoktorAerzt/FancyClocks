@@ -127,8 +127,4 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		pendelTess.draw();
 		GL11.glPopMatrix();
 	}
-
-	//	GL11.glTranslated(-0.05D, -0.01D, 0.1D);
-	//	
-	//	drawPendel((TileDoubleClockTop)tile);
 }

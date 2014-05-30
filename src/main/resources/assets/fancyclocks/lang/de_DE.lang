@@ -1,14 +1,14 @@
 #Blocks
 tile.blockClock.name=Uhr
-tile.blockDoubleClock.name=Gro√üvater Uhr
+tile.blockDoubleClock.name=Standuhr
 tile.blockModernClock.name=Moderne Uhr
 #Items
 item.screwdriver.name=Schraubendreher
 
 #Translations
 msg.clock.1=Die Uhr macht nun
-msg.clock.silent=keine ger√§usche
-msg.clock.ticking=ger√§usche
+msg.clock.silent=keine Ger‰usche
+msg.clock.ticking=Ger‰usche
 
 #Creative Tabs
 itemGroup.FancyClocks=Fancy Clocks
