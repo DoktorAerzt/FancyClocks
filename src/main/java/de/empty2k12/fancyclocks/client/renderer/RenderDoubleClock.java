@@ -49,7 +49,7 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		GL11.glScalef(1.1F, -1.1F, -1.1F);
 
 		bindTexture(texture);
-		
+
 		GL11.glTranslatef(0.01F, -0.055F, -0.3F);
 		drawSecondPointer((TileDoubleClockTop)tile);
 		drawMinutePointer((TileDoubleClockTop)tile);
@@ -127,4 +127,5 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		pendelTess.draw();
 		GL11.glPopMatrix();
 	}
+
 }
