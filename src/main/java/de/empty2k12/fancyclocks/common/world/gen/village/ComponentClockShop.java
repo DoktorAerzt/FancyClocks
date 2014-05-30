@@ -18,19 +18,17 @@ import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 
-public class ComponentClockShop extends StructureVillagePieces.Village{
+public class ComponentClockShop extends StructureVillagePieces.Village {
 
 	public ComponentClockShop() {}
 
-	public ComponentClockShop(StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5)
-	{
+	public ComponentClockShop(StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5) {
 		super(par1ComponentVillageStartPiece, par2);
 		this.coordBaseMode = par5;
 		this.boundingBox = par4StructureBoundingBox;
 	}
 
-	public static ComponentClockShop buildComponent(StructureVillagePieces.Start par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
-	{
+	public static ComponentClockShop buildComponent(StructureVillagePieces.Start par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7) {
 		StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(par3, par4, par5, 0, 0, 0, 9, 9, 6, par6);
 		return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(par1List, structureboundingbox) == null ? new ComponentClockShop(par0ComponentVillageStartPiece, par7, par2Random, structureboundingbox, par6) : null;
 	}
@@ -39,14 +37,12 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 	 * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
 	 * Mineshafts at the end, it adds Fences...
 	 */
-	public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
-	{
-		if (this.field_143015_k < 0)
-		{
+	public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox) {
+		
+		if (this.field_143015_k < 0) {
 			this.field_143015_k = this.getAverageGroundLevel(par1World, par3StructureBoundingBox);
 
-			if (this.field_143015_k < 0)
-			{
+			if (this.field_143015_k < 0) {
 				return true;
 			}
 
@@ -63,10 +59,8 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		int k;
 		int l;
 
-		for (k = -1; k <= 2; ++k)
-		{
-			for (l = 0; l <= 8; ++l)
-			{
+		for (k = -1; k <= 2; ++k) {
+			for (l = 0; l <= 8; ++l) {
 				this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, i, l, 6 + k, k, par3StructureBoundingBox);
 				this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, j, l, 6 + k, 5 - k, par3StructureBoundingBox);
 			}
@@ -110,16 +104,13 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 2, 0, par3StructureBoundingBox);
 		this.placeDoorAtCurrentPosition(par1World, par3StructureBoundingBox, par2Random, 1, 1, 0, this.getMetadataWithOffset(Blocks.wooden_door, 1));
 
-		if (this.getBlockAtCurrentPosition(par1World, 1, 0, -1, par3StructureBoundingBox).getMaterial() == Material.air && this.getBlockAtCurrentPosition(par1World, 1, -1, -1, par3StructureBoundingBox).getMaterial() != Material.air)
-		{
+		if (this.getBlockAtCurrentPosition(par1World, 1, 0, -1, par3StructureBoundingBox).getMaterial() == Material.air && this.getBlockAtCurrentPosition(par1World, 1, -1, -1, par3StructureBoundingBox).getMaterial() != Material.air) {
 			this.placeBlockAtCurrentPosition(par1World, Blocks.stone_stairs, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 0, -1, par3StructureBoundingBox);
 		}
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 1, 3, -1, new String[] {"", "Clock Shop", "(Unfinished)", ""});
 
-		for (l = 0; l < 6; ++l)
-		{
-			for (int i1 = 0; i1 < 9; ++i1)
-			{
+		for (l = 0; l < 6; ++l) {
+			for (int i1 = 0; i1 < 9; ++i1) {
 				this.clearCurrentPositionBlocksUpwards(par1World, i1, 9, l, par3StructureBoundingBox);
 				this.func_151554_b(par1World, Blocks.cobblestone, 0, i1, -1, l, par3StructureBoundingBox);
 			}
@@ -132,13 +123,11 @@ public class ComponentClockShop extends StructureVillagePieces.Village{
 	/**
 	 * Returns the villager type to spawn in this component, based on the number of villagers already spawned.
 	 */
-	protected int getVillagerType(int par1)
-	{
+	protected int getVillagerType(int par1) {
 		return 1;
 	}
 
-	protected static boolean canVillageGoDeeper(StructureBoundingBox par0StructureBoundingBox)
-	{
+	protected static boolean canVillageGoDeeper(StructureBoundingBox par0StructureBoundingBox) {
 		return par0StructureBoundingBox != null && par0StructureBoundingBox.minY > 10;
 	}
 
