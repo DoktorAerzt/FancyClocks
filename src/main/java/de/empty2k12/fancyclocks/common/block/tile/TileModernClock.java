@@ -33,7 +33,7 @@ public class TileModernClock extends TileEntity {
 
 	@Override
 	public void updateEntity() {
-		calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Berlin"));
+		calendar = Calendar.getInstance();
 		if(oldSeconds != calendar.get(Calendar.SECOND)) {
 			oldSeconds = calendar.get(Calendar.SECOND);
 			if(!silent) {
