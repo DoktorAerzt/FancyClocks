@@ -1,0 +1,15 @@
+#Blocks
+tile.blockClock.name=Clock
+tile.blockDoubleClock.name=Grandfather Clock
+tile.blockModernClock.name=Modern Clock
+
+#Items
+item.screwdriver.name=Screwdriver
+
+#Translations
+msg.clock.1=The clock is now
+msg.clock.silent=silent
+msg.clock.ticking=ticking
+
+#Creative Tabs
+itemGroup.FancyClocks.name=Fancy Clocks
