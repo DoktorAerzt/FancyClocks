@@ -61,11 +61,7 @@ public class FancyClocks {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> a9d685f221507ac400328d344b8733839dec5e23
 	}
 
 	public static void addRecipes() {
