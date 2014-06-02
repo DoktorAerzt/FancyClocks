@@ -26,7 +26,7 @@ import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
 import de.empty2k12.fancyclocks.common.world.gen.village.ComponentClockShop;
 import de.empty2k12.fancyclocks.common.world.gen.village.VillageCreationHandler;
 
-@Mod(modid = ModInfo.MOD_ID, version = ModInfo.MOD_NAME)
+@Mod(modid = ModInfo.MOD_ID, version = ModInfo.MOD_VERSION, name = ModInfo.MOD_NAME)
 public class FancyClocks {
 
 	@Instance(ModInfo.MOD_ID)
