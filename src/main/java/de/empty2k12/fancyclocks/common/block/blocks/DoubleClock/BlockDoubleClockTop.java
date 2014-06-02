@@ -82,4 +82,9 @@ public class BlockDoubleClockTop extends BlockContainer implements IScrewdriveab
 			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("msg.clock.1") + " " + (tile.getSilent() ? StatCollector.translateToLocal("msg.clock.silent") : StatCollector.translateToLocal("msg.clock.ticking")) + "!"));
 		}
 	}
+	
+	@Override
+	public boolean canBlockStay(World world, int x, int y, int z) {
+		return world.getBlock(x, y - 1, z) == ClockBlocks.clock_bottom;
+	}
 }

@@ -29,19 +29,7 @@ public class BlockDoubleClockBottom extends Block {
 		setResistance(2F);
 		setBlockTextureName("minecraft:planks_oak");
 	}
-
-	//	@Override
-	//	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
-	//		world.setBlock(x, y + 1, z, ClockBlocks.clock_top, 0, 2);
-	//		world.setTileEntity(x, y + 1, z, new TileDoubleClockTop());
-	//		if (entity == null)
-	//			return;	
-	//
-	//		TileDoubleClockTop tile = (TileDoubleClockTop) world.getTileEntity(x, y + 1, z);
-	//		if(tile != null)
-	//			tile.direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-	//	}
-
+	
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
 
@@ -105,6 +93,16 @@ public class BlockDoubleClockBottom extends Block {
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
+	}
+	
+	@Override
+	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
+		return (world.isAirBlock(x, y + 1, z) && world.isAirBlock(x, y, z));
+	}
+	
+	@Override
+	public boolean canBlockStay(World world, int x, int y, int z) {
+		return world.getBlock(x, y + 1, z) == ClockBlocks.clock_top;
 	}
 
 }
