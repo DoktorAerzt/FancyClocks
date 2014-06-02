@@ -31,20 +31,20 @@ public class ItemRenderDoubleClock implements IItemRenderer {
 		bindTexture("textures/model/doubleClock1.png");
 
 		if(type == ItemRenderType.FIRST_PERSON_MAP || type == ItemRenderType.EQUIPPED_FIRST_PERSON) {
-			GL11.glScalef(5f, 5f, 5f);
-			GL11.glRotatef(15, 0, 1, 0);
-			GL11.glTranslatef(-0.1f, -0.3f, -0.1f);
+			GL11.glScalef(2f, 2f, 2f);
+			GL11.glRotatef(30, 0, 1, 0);
+			GL11.glTranslatef(-0.0f, -0.7f, -0.3f);
 		} else if (type == ItemRenderType.ENTITY) {
 			GL11.glScalef(5f, 5f, 5f);
-			GL11.glTranslated(0F, -0.3F, 0F);
+			GL11.glTranslated(0F, -0.5F, 0F);
 		} else if (type == ItemRenderType.INVENTORY) {
 			GL11.glScalef(1.9f, 1.9f, 1.9f);
-			GL11.glRotatef(285f, 0f, 1f, 0f);
-			GL11.glTranslatef(-0.05f, -0.12f, 0f);
+			GL11.glRotatef(290f, 0f, 1f, 0f);
+			GL11.glTranslatef(-0.05f, -0.18f, 0f);
 		} else if (type == ItemRenderType.EQUIPPED) {
 			GL11.glScalef(5f, 5f, 5f);
 			GL11.glRotatef(180, 0, 1, 0);
-			GL11.glTranslatef(-0.2f, -0.1f, 0.105f);
+			GL11.glTranslatef(-0.2f, -0.3f, 0.105f);
 		}
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);

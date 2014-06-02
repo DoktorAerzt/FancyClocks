@@ -56,14 +56,12 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		drawHourPointer((TileDoubleClockTop)tile);
 		GL11.glTranslatef(-0.01F, 0.055F, 0.3F);
 
-		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		bindTexture(texture);
 		this.model.renderModel(0.0625F);
 		GL11.glDisable(GL11.GL_BLEND);
-		GL11.glPopMatrix();
-
+		
 		GL11.glPopMatrix();
 	}
 
