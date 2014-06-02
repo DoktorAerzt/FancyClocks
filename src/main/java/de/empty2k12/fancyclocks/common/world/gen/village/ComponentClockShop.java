@@ -27,10 +27,6 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(par1List, structureboundingbox) == null ? new ComponentClockShop(par0ComponentVillageStartPiece, par7, par2Random, structureboundingbox, par6) : null;
 	}
 
-	/**
-	 * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
-	 * Mineshafts at the end, it adds Fences...
-	 */
 	public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox) {
 
 		if (this.field_143015_k < 0) {
@@ -42,7 +38,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 
 			this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 9 - 1, 0);
 		}
-		
+
 		//Roof Start
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 1, 7, 5, 4, Blocks.air, Blocks.air, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 8, 0, 5, Blocks.cobblestone, Blocks.cobblestone, false);
@@ -53,7 +49,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		int j = this.getMetadataWithOffset(Blocks.oak_stairs, 2);
 		int k;
 		int l;
-	
+
 		for (k = -1; k <= 2; ++k) {
 			for (l = 0; l <= 8; ++l) {
 				this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, i, l, 6 + k, k, par3StructureBoundingBox);
@@ -105,7 +101,14 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		this.placeModernClockAtCurrentPosition(par1World, 6, 2, 4, 1);
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 6, 3, 4, new String[] {"", "Price:", "25$", ""});
 		//Clocks End
-
+		
+		//Counter Start
+		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 6, 1, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, Blocks.flower_pot, 0, 6, 2, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 11, 6, 1, 1, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 11, 7, 1, 2, par3StructureBoundingBox);
+		//Counter End
+		
 		//Door Start
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 1, 0, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 2, 0, par3StructureBoundingBox);
@@ -117,7 +120,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 			this.placeBlockAtCurrentPosition(par1World, Blocks.stone_stairs, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 0, -1, par3StructureBoundingBox);
 		}
 		//Outside Staris End
-		
+
 		//Outside Sign Start
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 1, 3, -1, new String[] {"", "Clock Shop", "(Unfinished)", ""});
 		//Outside Sign End
