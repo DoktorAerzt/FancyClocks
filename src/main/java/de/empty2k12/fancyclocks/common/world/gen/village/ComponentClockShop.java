@@ -16,8 +16,6 @@ import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
 public class ComponentClockShop extends StructureVillagePieces.Village {
 
-	public ComponentClockShop() {}
-
 	public ComponentClockShop(StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5) {
 		super(par1ComponentVillageStartPiece, par2);
 		this.coordBaseMode = par5;
@@ -44,7 +42,8 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 
 			this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 9 - 1, 0);
 		}
-
+		
+		//Roof Start
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 1, 7, 5, 4, Blocks.air, Blocks.air, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 8, 0, 5, Blocks.cobblestone, Blocks.cobblestone, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 5, 0, 8, 5, 5, Blocks.cobblestone, Blocks.cobblestone, false);
@@ -54,14 +53,16 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		int j = this.getMetadataWithOffset(Blocks.oak_stairs, 2);
 		int k;
 		int l;
-
+	
 		for (k = -1; k <= 2; ++k) {
 			for (l = 0; l <= 8; ++l) {
 				this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, i, l, 6 + k, k, par3StructureBoundingBox);
 				this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, j, l, 6 + k, 5 - k, par3StructureBoundingBox);
 			}
 		}
+		//Roof End
 
+		//Walls Start
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 0, 0, 1, 5, Blocks.cobblestone, Blocks.cobblestone, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 5, 8, 1, 5, Blocks.cobblestone, Blocks.cobblestone, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 1, 0, 8, 1, 4, Blocks.cobblestone, Blocks.cobblestone, false);
@@ -88,13 +89,13 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 8, 2, 3, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 8, 3, 2, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 8, 3, 3, par3StructureBoundingBox);
-		//this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 2, 2, 5, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 3, 2, 5, par3StructureBoundingBox);
-		//this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 5, 2, 5, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 6, 2, 5, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 5, 2, 5, par3StructureBoundingBox);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 1, 7, 4, 1, Blocks.planks, Blocks.planks, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 4, 7, 4, 4, Blocks.planks, Blocks.planks, false);
+		//Walls End
 
+		//Clocks Start
 		this.placeDoubleClockAtCurrentPosition(par1World, 4, 1, 4, 1);
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 4, 3, 4, new String[] {"", "Price:", "200$", ""});
 
@@ -103,15 +104,23 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 
 		this.placeModernClockAtCurrentPosition(par1World, 6, 2, 4, 1);
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 6, 3, 4, new String[] {"", "Price:", "25$", ""});
+		//Clocks End
 
+		//Door Start
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 1, 0, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 2, 0, par3StructureBoundingBox);
 		this.placeDoorAtCurrentPosition(par1World, par3StructureBoundingBox, par2Random, 1, 1, 0, this.getMetadataWithOffset(Blocks.wooden_door, 1));
+		//Door End
 
+		//Outside Stairs Start
 		if (this.getBlockAtCurrentPosition(par1World, 1, 0, -1, par3StructureBoundingBox).getMaterial() == Material.air && this.getBlockAtCurrentPosition(par1World, 1, -1, -1, par3StructureBoundingBox).getMaterial() != Material.air) {
 			this.placeBlockAtCurrentPosition(par1World, Blocks.stone_stairs, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 0, -1, par3StructureBoundingBox);
 		}
+		//Outside Staris End
+		
+		//Outside Sign Start
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 1, 3, -1, new String[] {"", "Clock Shop", "(Unfinished)", ""});
+		//Outside Sign End
 
 		for (l = 0; l < 6; ++l) {
 			for (int i1 = 0; i1 < 9; ++i1) {
@@ -129,6 +138,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 	 */
 	protected int getVillagerType(int par1) {
 		return 1;
+		//FIXME: Custom Villager!!
 	}
 
 	protected static boolean canVillageGoDeeper(StructureBoundingBox par0StructureBoundingBox) {

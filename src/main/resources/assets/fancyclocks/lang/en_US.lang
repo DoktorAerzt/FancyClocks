@@ -12,4 +12,4 @@ msg.clock.silent=silent
 msg.clock.ticking=ticking
 
 #Creative Tabs
-itemGroup.FancyClocks.name=Fancy Clocks
+itemGroup.FancyClocks=Fancy Clocks
