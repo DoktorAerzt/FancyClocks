@@ -1,8 +1,10 @@
 package de.empty2k12.fancyclocks.client.renderer.item;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.IItemRenderer;
 
@@ -27,6 +29,8 @@ public class ItemRenderClock implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		GL11.glPushMatrix();
 		
+		bindTexture("textures/model/clock1.png");
+
 		GL11.glScalef(1, -1, -1);
 
 		if(type == ItemRenderType.FIRST_PERSON_MAP || type == ItemRenderType.EQUIPPED || type == ItemRenderType.EQUIPPED_FIRST_PERSON) {
@@ -40,8 +44,13 @@ public class ItemRenderClock implements IItemRenderer {
 			GL11.glRotatef(90f, 0f, 1f, 0f);
 			GL11.glTranslatef(0f, 0.11f, 0f);
 		}
-		
+
 		new ModelClock().renderModel(0.025F);
 		GL11.glPopMatrix();
+	}
+
+	public static void bindTexture(String texture) {
+		ResourceLocation rl =  new ResourceLocation("fancyclocks", texture);
+		Minecraft.getMinecraft().renderEngine.bindTexture(rl);
 	}
 }
