@@ -87,8 +87,8 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 8, 3, 3, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 3, 2, 5, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 5, 2, 5, par3StructureBoundingBox);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 1, 7, 4, 1, Blocks.planks, Blocks.planks, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 4, 7, 4, 4, Blocks.planks, Blocks.planks, false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 1, 7, 4, 4, Blocks.planks, Blocks.planks, false);
+		//this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 4, 7, 4, 4, Blocks.planks, Blocks.planks, false);
 		//Walls End
 
 		//Clocks Start
@@ -104,9 +104,12 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		
 		//Counter Start
 		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 6, 1, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.flower_pot, 0, 6, 2, 2, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 11, 6, 1, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 11, 7, 1, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 16, 7, 1, 2, par3StructureBoundingBox);
+		
+		this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, p_151550_3_, p_151550_4_, p_151550_5_, p_151550_6_, p_151550_7_);
+		
+		this.placeBlockAtCurrentPosition(par1World, Blocks.flower_pot, 15, 6, 2, 2, par3StructureBoundingBox);
 		//Counter End
 		
 		//Door Start
@@ -198,4 +201,5 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		world.setTileEntity(placeX, placeY, placeZ, new TileClock());
 		return true;
 	}
+
 }
