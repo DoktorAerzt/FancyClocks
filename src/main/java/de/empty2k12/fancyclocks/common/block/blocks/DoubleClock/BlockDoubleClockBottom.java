@@ -2,20 +2,14 @@ package de.empty2k12.fancyclocks.common.block.blocks.DoubleClock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import de.empty2k12.fancyclocks.FancyClocks;
-import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
-import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
 public class BlockDoubleClockBottom extends Block {

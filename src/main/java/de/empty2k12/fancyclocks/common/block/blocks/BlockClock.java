@@ -7,7 +7,6 @@ import static net.minecraftforge.common.util.ForgeDirection.WEST;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
@@ -17,7 +16,6 @@ import net.minecraft.world.World;
 import de.empty2k12.fancyclocks.FancyClocks;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
 public class BlockClock extends BlockContainer implements IScrewdriveable {
 

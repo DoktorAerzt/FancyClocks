@@ -4,9 +4,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.Achievement;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -14,8 +12,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
@@ -35,9 +31,6 @@ public class FancyClocks {
 	@SidedProxy(clientSide = ModInfo.CLIENT_PROXY, serverSide = ModInfo.COMMON_PROXY)
 	public static CommonProxy proxy;
 
-//	public static Achievement timeMaster;
-//	public static Achievement advancedTimeMaster;
-
 	public static CreativeTabs tabFancyClocks = new TabFancyClocks("FancyClocks");
 
 	//TODO: everything from my todo list!
@@ -48,7 +41,6 @@ public class FancyClocks {
 		ClockItems.init();
 		proxy.registerRenderers();
 		addRecipes();
-//		addAchievements();
 
 		MapGenStructureIO.func_143031_a(ComponentClockShop.class, "clockShop");
 		VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
@@ -56,12 +48,12 @@ public class FancyClocks {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-//		FMLCommonHandler.instance().bus().register(this); 
+
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
+
 	}
 
 	public static void addRecipes() {
@@ -70,15 +62,4 @@ public class FancyClocks {
 		GameRegistry.addRecipe(new ItemStack(ClockBlocks.clock, 1), "sss", "sos", "sss", 'o', new ItemStack(Items.clock, 1), 's', new ItemStack(Blocks.stone));
 		GameRegistry.addRecipe(new ItemStack(ClockItems.screwdriver, 1), "l", "l", "x", 'x', new ItemStack(Items.iron_ingot, 1), 'l', new ItemStack(Items.stick));
 	}
-
-//	public static void addAchievements() {
-//		timeMaster = new Achievement("timeMaster", "timeMaster", 1, 1, ClockBlocks.clock, null);
-//	}
-//
-//	@SubscribeEvent
-//	public void onCrafting(PlayerEvent.ItemCraftedEvent event) {
-//		if(event.crafting == new ItemStack(ClockBlocks.clock)) {
-//			event.player.addStat(timeMaster, 50);
-//		}
-//	}
 }

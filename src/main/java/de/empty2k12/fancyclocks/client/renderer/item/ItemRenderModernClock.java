@@ -7,7 +7,6 @@ import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import de.empty2k12.fancyclocks.client.model.ModelClock;
 import de.empty2k12.fancyclocks.client.model.ModelModernClock;
 
 public class ItemRenderModernClock implements IItemRenderer {

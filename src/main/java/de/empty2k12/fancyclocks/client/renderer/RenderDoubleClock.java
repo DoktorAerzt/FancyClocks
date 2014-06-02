@@ -8,7 +8,6 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import de.empty2k12.fancyclocks.client.model.ModelDoubleClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 

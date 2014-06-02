@@ -1,6 +1,5 @@
 package de.empty2k12.fancyclocks.common.world.gen.village;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
