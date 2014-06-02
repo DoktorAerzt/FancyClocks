@@ -22,10 +22,10 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 
 	public ComponentClockShop() {}
 
-	public ComponentClockShop(StructureVillagePieces.Start startPiece, int par2, Random rand, StructureBoundingBox structureBoundingBox, int par5) {
-		super(startPiece, par2);
+	public ComponentClockShop(StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5) {
+		super(par1ComponentVillageStartPiece, par2);
 		this.coordBaseMode = par5;
-		this.boundingBox = structureBoundingBox;
+		this.boundingBox = par4StructureBoundingBox;
 	}
 
 	public static ComponentClockShop buildComponent(StructureVillagePieces.Start par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7) {

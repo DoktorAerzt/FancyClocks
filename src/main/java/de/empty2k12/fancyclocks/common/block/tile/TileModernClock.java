@@ -1,12 +1,10 @@
 package de.empty2k12.fancyclocks.common.block.tile;
 
 import java.util.Calendar;
-import java.util.TimeZone;
 
-import de.empty2k12.fancyclocks.client.misc.SoundHandler;
-import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import de.empty2k12.fancyclocks.common.misc.ModInfo;
 
 public class TileModernClock extends TileEntity {
 
