@@ -98,7 +98,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 6, 2, 5, par3StructureBoundingBox);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 1, 7, 4, 1, Blocks.planks, Blocks.planks, false);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 4, 7, 4, 4, Blocks.planks, Blocks.planks, false);
-		this.placeDoubleClock(par1World, 4, 1, 4);
+		this.placeDoubleClock(par1World, 4, 1, 4, 1);
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 4, 3, 4, new String[] {"", "Price:", "200$", ""});
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 1, 0, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 2, 0, par3StructureBoundingBox);
@@ -137,7 +137,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		int z = this.getZWithOffset(par4, par6);
 
 		if (par2StructureBoundingBox.isVecInside(x, y, z) && par1World.getBlock(x, y, z) != Blocks.wall_sign) {
-			par1World.setBlock(x, y, z, Blocks.wall_sign, this.getMetadataWithOffset(Blocks.wall_sign, 2), 2);
+			par1World.setBlock(x, y, z, Blocks.wall_sign, this.getMetadataWithOffset(Blocks.wall_sign, 5), 2);
 			TileEntitySign tilesign = (TileEntitySign)par1World.getTileEntity(x, y, z);
 
 			if (tilesign != null) {
@@ -151,14 +151,14 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		}
 	}
 
-	protected boolean placeDoubleClock(World par1World, int par2, int par3, int par4) {
-		int x = this.getXWithOffset(par2, par4);
-		int y = this.getYWithOffset(par3);
-		int z = this.getZWithOffset(par2, par4);
+	protected boolean placeDoubleClock(World world, int x, int y, int z, int meta) {
+		int placeX = this.getXWithOffset(x, z);
+		int placeY = this.getYWithOffset(y);
+		int placeZ = this.getZWithOffset(x, z);
 
-		par1World.setBlock(x, y, z, ClockBlocks.clock_bottom, 0, 2);
-		par1World.setBlock(x, y + 1, z, ClockBlocks.clock_top, 0, 2);
-		par1World.setTileEntity(x, y + 1, z, new TileDoubleClockTop());
+		world.setBlock(placeX, placeY, placeZ, ClockBlocks.clock_bottom, meta, 2);
+		world.setBlock(placeX, placeY + 1, placeZ, ClockBlocks.clock_top, meta, 2);
+		world.setTileEntity(placeX, placeY + 1, placeZ, new TileDoubleClockTop());
 		return true;
 	}
 }
