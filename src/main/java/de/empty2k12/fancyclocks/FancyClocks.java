@@ -4,6 +4,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -19,8 +20,8 @@ import de.empty2k12.fancyclocks.common.item.ClockItems;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import de.empty2k12.fancyclocks.common.misc.TabFancyClocks;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
-import de.empty2k12.fancyclocks.common.world.gen.village.ComponentClockShop;
-import de.empty2k12.fancyclocks.common.world.gen.village.VillageCreationHandler;
+import de.empty2k12.fancyclocks.common.world.gen.village.ComponentHorologistsShop;
+import de.empty2k12.fancyclocks.common.world.gen.village.VillageHandlerHorologist;
 
 @Mod(modid = ModInfo.MOD_ID, version = ModInfo.MOD_VERSION, name = ModInfo.MOD_NAME)
 public class FancyClocks {
@@ -42,8 +43,12 @@ public class FancyClocks {
 		proxy.registerRenderers();
 		addRecipes();
 
-		MapGenStructureIO.func_143031_a(ComponentClockShop.class, "clockShop");
-		VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
+		MapGenStructureIO.func_143031_a(ComponentHorologistsShop.class, "horologistsShop");
+		VillagerRegistry.instance().registerVillageCreationHandler(new VillageHandlerHorologist());
+
+		VillageHandlerHorologist horologist = new VillageHandlerHorologist();
+		VillagerRegistry.instance().registerVillageTradeHandler(VillageHandlerHorologist.HOROLOGIST_ID, horologist);
+		VillagerRegistry.instance().registerVillagerSkin(VillageHandlerHorologist.HOROLOGIST_ID, new ResourceLocation(ModInfo.MOD_ID, "textures/entity/horologist.png"));
 	}
 
 	@EventHandler

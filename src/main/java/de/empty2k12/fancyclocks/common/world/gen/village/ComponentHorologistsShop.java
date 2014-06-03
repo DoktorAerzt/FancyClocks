@@ -14,17 +14,17 @@ import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
-public class ComponentClockShop extends StructureVillagePieces.Village {
+public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 
-	public ComponentClockShop(StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5) {
+	public ComponentHorologistsShop(StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5) {
 		super(par1ComponentVillageStartPiece, par2);
 		this.coordBaseMode = par5;
 		this.boundingBox = par4StructureBoundingBox;
 	}
 
-	public static ComponentClockShop buildComponent(StructureVillagePieces.Start par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7) {
+	public static ComponentHorologistsShop buildComponent(StructureVillagePieces.Start par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7) {
 		StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(par3, par4, par5, 0, 0, 0, 9, 9, 6, par6);
-		return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(par1List, structureboundingbox) == null ? new ComponentClockShop(par0ComponentVillageStartPiece, par7, par2Random, structureboundingbox, par6) : null;
+		return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(par1List, structureboundingbox) == null ? new ComponentHorologistsShop(par0ComponentVillageStartPiece, par7, par2Random, structureboundingbox, par6) : null;
 	}
 
 	public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox) {
@@ -123,10 +123,10 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		if (this.getBlockAtCurrentPosition(par1World, 1, 0, -1, par3StructureBoundingBox).getMaterial() == Material.air && this.getBlockAtCurrentPosition(par1World, 1, -1, -1, par3StructureBoundingBox).getMaterial() != Material.air) {
 			this.placeBlockAtCurrentPosition(par1World, Blocks.stone_stairs, this.getMetadataWithOffset(Blocks.stone_stairs, 3), 1, 0, -1, par3StructureBoundingBox);
 		}
-		//Outside Staris End
+		//Outside Stairs End
 
 		//Outside Sign Start
-		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 1, 3, -1, new String[] {"", "Clock Shop", "(Unfinished)", ""});
+		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 1, 3, -1, new String[] {"", "Horologist", "", ""});
 		//Outside Sign End
 
 		for (l = 0; l < 6; ++l) {
@@ -141,8 +141,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 	}
 
 	protected int getVillagerType(int par1) {
-		return 1;
-		//FIXME: Custom Villager!!
+		return VillageHandlerHorologist.HOROLOGIST_ID;
 	}
 
 	protected static boolean canVillageGoDeeper(StructureBoundingBox par0StructureBoundingBox) {
