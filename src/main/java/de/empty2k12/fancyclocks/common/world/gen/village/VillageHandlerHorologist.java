@@ -60,7 +60,7 @@ public class VillageHandlerHorologist implements IVillageCreationHandler, IVilla
 
 			VillageHandlerHorologist horologist = new VillageHandlerHorologist();
 			VillagerRegistry.instance().registerVillageTradeHandler(VillageHandlerHorologist.HOROLOGIST_ID, horologist);
-			VillagerRegistry.instance().registerVillagerSkin(VillageHandlerHorologist.HOROLOGIST_ID, new ResourceLocation(ModInfo.MOD_ID, "textures/entity/horologist.png"));
+			VillagerRegistry.instance().registerVillagerSkin(VillageHandlerHorologist.HOROLOGIST_ID, new ResourceLocation(ModInfo.MOD_ID, "textures/entity/villager/horologist.png"));
 		}
 	}
 }
