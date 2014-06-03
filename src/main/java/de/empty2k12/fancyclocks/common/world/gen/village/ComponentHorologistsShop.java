@@ -15,6 +15,8 @@ import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
 
 public class ComponentHorologistsShop extends StructureVillagePieces.Village {
+	
+	//TODO: Bench and Correct Placement of the 2nd Trapdoor!
 
 	public ComponentHorologistsShop(StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5) {
 		super(par1ComponentVillageStartPiece, par2);
@@ -113,7 +115,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		this.placeBlockAtCurrentPosition(par1World, Blocks.flower_pot, 11, 6, 2, 2, par3StructureBoundingBox);
 		//Counter End
 		
-		//Easteregg Start
+		//Easteregg Start DONT TELL ANYONE!
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 7, 5, 1, new String[] {"Here, have", "a cookie!", "You", "rock!"});
 		//Easteregg End
 		
