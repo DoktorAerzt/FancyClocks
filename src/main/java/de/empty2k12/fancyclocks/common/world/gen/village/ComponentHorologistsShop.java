@@ -113,6 +113,10 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		this.placeBlockAtCurrentPosition(par1World, Blocks.flower_pot, 11, 6, 2, 2, par3StructureBoundingBox);
 		//Counter End
 		
+		//Easteregg Start
+		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 7, 5, 1, new String[] {"Here, have", "a cookie!", "You", "rock!"});
+		//Easteregg End
+		
 		//Door Start
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 1, 0, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 2, 0, par3StructureBoundingBox);
