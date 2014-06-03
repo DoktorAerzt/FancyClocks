@@ -104,7 +104,7 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		//Counter Start
 		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 6, 1, 2, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 11, 6, 1, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 16, 7, 1, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 10, 7, 1, 2, par3StructureBoundingBox);
 		
 		this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, 0, 6, 3, 2, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, 0, 6, 3, 1, par3StructureBoundingBox);
@@ -136,13 +136,10 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 			}
 		}
 
-		this.spawnVillagers(par1World, par3StructureBoundingBox, 2, 1, 2, 1);
+		this.spawnVillagers(par1World, par3StructureBoundingBox, 7, 1, 1, 1);
 		return true;
 	}
 
-	/**
-	 * Returns the villager type to spawn in this component, based on the number of villagers already spawned.
-	 */
 	protected int getVillagerType(int par1) {
 		return 1;
 		//FIXME: Custom Villager!!
