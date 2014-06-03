@@ -17,6 +17,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.item.ClockItems;
+import de.empty2k12.fancyclocks.common.misc.Config;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import de.empty2k12.fancyclocks.common.misc.TabFancyClocks;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
@@ -38,17 +39,12 @@ public class FancyClocks {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		Config.init(event.getSuggestedConfigurationFile());
 		ClockBlocks.init();
 		ClockItems.init();
+		VillageHandlerHorologist.init();
 		proxy.registerRenderers();
 		addRecipes();
-
-		MapGenStructureIO.func_143031_a(ComponentHorologistsShop.class, "horologistsShop");
-		VillagerRegistry.instance().registerVillageCreationHandler(new VillageHandlerHorologist());
-
-		VillageHandlerHorologist horologist = new VillageHandlerHorologist();
-		VillagerRegistry.instance().registerVillageTradeHandler(VillageHandlerHorologist.HOROLOGIST_ID, horologist);
-		VillagerRegistry.instance().registerVillagerSkin(VillageHandlerHorologist.HOROLOGIST_ID, new ResourceLocation(ModInfo.MOD_ID, "textures/entity/horologist.png"));
 	}
 
 	@EventHandler

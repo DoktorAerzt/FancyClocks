@@ -6,13 +6,19 @@ import java.util.Random;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+import cpw.mods.fml.common.registry.VillagerRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+import de.empty2k12.fancyclocks.common.item.ClockItems;
+import de.empty2k12.fancyclocks.common.misc.Config;
+import de.empty2k12.fancyclocks.common.misc.ModInfo;
 
 public class VillageHandlerHorologist implements IVillageCreationHandler, IVillageTradeHandler {
 
@@ -35,30 +41,26 @@ public class VillageHandlerHorologist implements IVillageCreationHandler, IVilla
 
 	@Override
 	public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random) {
-		if(villager.getProfession() == 1) { /*FIXME*/
+		if(villager.getProfession() == VillageHandlerHorologist.HOROLOGIST_ID) {
 			recipeList.add(new MerchantRecipe(
-					new ItemStack(Items.potionitem, 3, 16), // Awkward potion 
-					new ItemStack(Items.emerald, 2)));
-			recipeList.add(new MerchantRecipe(
-					new ItemStack(Items.emerald, 1),
-					new ItemStack(Items.potionitem, 2, 33))); // night vision
+					new ItemStack(Items.emerald, 3),
+					new ItemStack(Items.clock, 1)));
 			recipeList.add(new MerchantRecipe(
 					new ItemStack(Items.emerald, 1),
-					new ItemStack(Items.baked_potato, 32)));
-			recipeList.add(new MerchantRecipe(
-					new ItemStack(Items.emerald, 1),
-					new ItemStack(Items.magma_cream, 6)));
-			recipeList.add(new MerchantRecipe(
-					new ItemStack(Items.bone, 12),
-					new ItemStack(Items.emerald,1)));
-			recipeList.add(new MerchantRecipe(
-					new ItemStack(Items.redstone, 12),
-					new ItemStack(Items.emerald,1)));
-			recipeList.add(new MerchantRecipe(
-					new ItemStack(Items.blaze_powder, 12),
-					new ItemStack(Items.emerald, 1)));
-		}
+					new ItemStack(ClockItems.screwdriver, 1)));
 
+			//TODO: More Trades!
+		}
 	}
 
+	public static final void init() {
+		if(Config.ENABLE_HOROLOGIST) {
+			MapGenStructureIO.func_143031_a(ComponentHorologistsShop.class, "horologistsShop");
+			VillagerRegistry.instance().registerVillageCreationHandler(new VillageHandlerHorologist());
+
+			VillageHandlerHorologist horologist = new VillageHandlerHorologist();
+			VillagerRegistry.instance().registerVillageTradeHandler(VillageHandlerHorologist.HOROLOGIST_ID, horologist);
+			VillagerRegistry.instance().registerVillagerSkin(VillageHandlerHorologist.HOROLOGIST_ID, new ResourceLocation(ModInfo.MOD_ID, "textures/entity/horologist.png"));
+		}
+	}
 }
