@@ -88,7 +88,6 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 3, 2, 5, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 5, 2, 5, par3StructureBoundingBox);
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 1, 7, 4, 4, Blocks.planks, Blocks.planks, false);
-		//this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 4, 7, 4, 4, Blocks.planks, Blocks.planks, false);
 		//Walls End
 
 		//Clocks Start
@@ -107,9 +106,11 @@ public class ComponentClockShop extends StructureVillagePieces.Village {
 		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 11, 6, 1, 1, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 16, 7, 1, 2, par3StructureBoundingBox);
 		
-		this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, p_151550_3_, p_151550_4_, p_151550_5_, p_151550_6_, p_151550_7_);
+		this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, 0, 6, 3, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, 0, 6, 3, 1, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, 0, 7, 3, 2, par3StructureBoundingBox);
 		
-		this.placeBlockAtCurrentPosition(par1World, Blocks.flower_pot, 15, 6, 2, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, Blocks.flower_pot, 11, 6, 2, 2, par3StructureBoundingBox);
 		//Counter End
 		
 		//Door Start
