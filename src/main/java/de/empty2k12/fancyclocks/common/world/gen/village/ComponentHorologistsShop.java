@@ -161,6 +161,8 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		int x = this.getXWithOffset(par4, par6);
 		int y = this.getYWithOffset(par5);
 		int z = this.getZWithOffset(par4, par6);
+		
+		int i = this.getMetadataWithOffset(Blocks.wall_sign, 5);
 
 		if (par2StructureBoundingBox.isVecInside(x, y, z) && par1World.getBlock(x, y, z) != Blocks.wall_sign) {
 			par1World.setBlock(x, y, z, Blocks.wall_sign, 5, 2);
