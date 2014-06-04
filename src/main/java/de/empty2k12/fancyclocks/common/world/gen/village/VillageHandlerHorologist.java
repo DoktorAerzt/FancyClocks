@@ -26,7 +26,7 @@ public class VillageHandlerHorologist implements IVillageCreationHandler, IVilla
 
 	@Override
 	public PieceWeight getVillagePieceWeight(Random random, int i) {
-		return new StructureVillagePieces.PieceWeight(ComponentHorologistsShop.class, 4, 2);
+		return new StructureVillagePieces.PieceWeight(ComponentHorologistsShop.class, 1, 2);
 	}
 
 	@Override
