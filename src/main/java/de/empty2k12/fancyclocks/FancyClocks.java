@@ -48,7 +48,7 @@ public class FancyClocks {
 	public static void addRecipes() {
 		GameRegistry.addRecipe(new ItemStack(ClockBlocks.clock_bottom, 1), "x", "x", 'x', new ItemStack(ClockBlocks.clock, 1));
 		GameRegistry.addRecipe(new ItemStack(ClockBlocks.clock, 1), "xox", "xlx", "xix", 'x', new ItemStack(Blocks.planks, 1), 'o', new ItemStack(Items.clock, 1), 'l', new ItemStack(Items.stick), 'i', new ItemStack(Items.iron_ingot, 1));
-		GameRegistry.addRecipe(new ItemStack(ClockBlocks.clock, 1), "sss", "sos", "sss", 'o', new ItemStack(Items.clock, 1), 's', new ItemStack(Blocks.stone));
+		GameRegistry.addRecipe(new ItemStack(ClockBlocks.modern_clock, 1), "sss", "sos", "sss", 'o', new ItemStack(Items.clock, 1), 's', new ItemStack(Blocks.stone));
 		GameRegistry.addRecipe(new ItemStack(ClockItems.screwdriver, 1), "l", "l", "x", 'x', new ItemStack(Items.iron_ingot, 1), 'l', new ItemStack(Items.stick));
 	}
 }

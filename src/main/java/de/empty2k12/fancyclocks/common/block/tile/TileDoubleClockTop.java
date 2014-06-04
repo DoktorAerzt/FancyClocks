@@ -33,7 +33,7 @@ public class TileDoubleClockTop extends TileEntity {
 		calendar = Calendar.getInstance();
 		if(oldSeconds != calendar.get(Calendar.SECOND)) {
 			oldSeconds = calendar.get(Calendar.SECOND);
-			if(!silent && !getWorldObj().isRemote) {
+			if(!silent) {
 				getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
 			}
 		}

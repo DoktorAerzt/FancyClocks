@@ -103,6 +103,11 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		this.placeModernClockAtCurrentPosition(par1World, 6, 2, 4, 1);
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 6, 3, 4, new String[] {"", "Price:", "25$", ""});
 		//Clocks End
+		
+		//DEBUG START
+		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 4, 3, 2, new String[] {"", "coordBaseMode:", this.coordBaseMode + "", ""});
+		//DEBIG END
+		
 
 		//Counter Start
 		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 6, 1, 2, par3StructureBoundingBox);
@@ -213,16 +218,18 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 	}
 
 	public int getCustomMetaOffsetForClocks() {
-		if (this.coordBaseMode == 0) {
-			return 0;
-		} else if (this.coordBaseMode == 1) {
+		switch (this.coordBaseMode) {
+		case 0:
+			return 2;
+		case 1:
+			return 5;
+		case 3:
 			return 4;
-		} else if (this.coordBaseMode == 2) {
+		case 2:
 			return 3;
-		} else if (this.coordBaseMode == 3) {
+		default:
 			return 5;
 		}
-		return -1;
 	}
 
 	///tp Empty2k12 127 6 645
