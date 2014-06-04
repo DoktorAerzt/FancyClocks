@@ -6,8 +6,6 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntitySign;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Facing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -96,7 +94,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		//Walls End
 
 		//Clocks Start
-		this.placeDoubleClockAtCurrentPositionNEW(par1World, 4, 1, 4, 2);
+		this.placeDoubleClockAtCurrentPosition(par1World, 4, 1, 4, 2);
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 4, 3, 4, new String[] {"", "Price:", "200$", ""});
 
 		this.placeClockAtCurrentPosition(par1World, 2, 2, 4, 1);
@@ -161,11 +159,12 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		int x = this.getXWithOffset(par4, par6);
 		int y = this.getYWithOffset(par5);
 		int z = this.getZWithOffset(par4, par6);
-		
-		int i = this.getMetadataWithOffset(Blocks.wall_sign, 5);
+
+		int m = this.getMetadataWithOffset(Blocks.wall_sign, 5);
 
 		if (par2StructureBoundingBox.isVecInside(x, y, z) && par1World.getBlock(x, y, z) != Blocks.wall_sign) {
-			par1World.setBlock(x, y, z, Blocks.wall_sign, 5, 2);
+			//FIXME: better: this.placeB.....
+			par1World.setBlock(x, y, z, Blocks.wall_sign, m, 2);
 			TileEntitySign tilesign = (TileEntitySign)par1World.getTileEntity(x, y, z);
 
 			if (tilesign != null) {
@@ -180,51 +179,35 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 	}
 
 	///tp Empty2k12 -386 5 638
-
-	protected boolean placeDoubleClockAtCurrentPositionNEW(World world, int x, int y, int z, int meta) {
-
-		int i = this.getCustomMetaOffsetForClocks();
-
-		//		world.setBlock(placeX, placeY, placeZ, ClockBlocks.clock_bottom, meta, 2);
-		//		world.setBlock(placeX, placeY + 1, placeZ, ClockBlocks.clock_top, meta, 2);
-		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock_bottom, i, x, y, z, getBoundingBox());
-		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock_top, i, x, y + 1, z, getBoundingBox());
-
-		int placeX = this.getXWithOffset(x, z);
-		int placeY = this.getYWithOffset(y);
-		int placeZ = this.getZWithOffset(x, z);
-
-		world.setTileEntity(placeX, placeY + 1, placeZ, new TileDoubleClockTop());
-		return true;
-	}
+	///tp Empty2k12 -390 6 652
 
 	protected boolean placeDoubleClockAtCurrentPosition(World world, int x, int y, int z, int meta) {
+		int m = this.getCustomMetaOffsetForClocks();
+		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock_bottom, m, x, y, z, getBoundingBox());
+		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock_top, m, x, y + 1, z, getBoundingBox());
 		int placeX = this.getXWithOffset(x, z);
 		int placeY = this.getYWithOffset(y);
 		int placeZ = this.getZWithOffset(x, z);
-
-		world.setBlock(placeX, placeY, placeZ, ClockBlocks.clock_bottom, meta, 2);
-		world.setBlock(placeX, placeY + 1, placeZ, ClockBlocks.clock_top, meta, 2);
 		world.setTileEntity(placeX, placeY + 1, placeZ, new TileDoubleClockTop());
 		return true;
 	}
 
 	protected boolean placeClockAtCurrentPosition(World world, int x, int y, int z, int meta) {
+		int m = this.getCustomMetaOffsetForClocks();
+		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock, m, x, y, z, getBoundingBox());
 		int placeX = this.getXWithOffset(x, z);
 		int placeY = this.getYWithOffset(y);
 		int placeZ = this.getZWithOffset(x, z);
-
-		world.setBlock(placeX, placeY, placeZ, ClockBlocks.clock, meta, 2);
 		world.setTileEntity(placeX, placeY, placeZ, new TileClock());
 		return true;
 	}
 
 	protected boolean placeModernClockAtCurrentPosition(World world, int x, int y, int z, int meta) {
+		int m = this.getCustomMetaOffsetForClocks();
+		this.placeBlockAtCurrentPosition(world, ClockBlocks.modern_clock, m, x, y, z, getBoundingBox());
 		int placeX = this.getXWithOffset(x, z);
 		int placeY = this.getYWithOffset(y);
 		int placeZ = this.getZWithOffset(x, z);
-
-		world.setBlock(placeX, placeY, placeZ, ClockBlocks.modern_clock, meta, 2);
 		world.setTileEntity(placeX, placeY, placeZ, new TileModernClock());
 		return true;
 	}
@@ -241,4 +224,6 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		}
 		return -1;
 	}
+
+	///tp Empty2k12 127 6 645
 }
