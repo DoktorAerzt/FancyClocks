@@ -6,6 +6,8 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntitySign;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Facing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -13,9 +15,10 @@ import net.minecraft.world.gen.structure.StructureVillagePieces;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
+import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
 
 public class ComponentHorologistsShop extends StructureVillagePieces.Village {
-	
+
 	//TODO: Bench and Correct Placement of the 2nd Trapdoor!
 
 	public ComponentHorologistsShop(StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5) {
@@ -93,7 +96,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		//Walls End
 
 		//Clocks Start
-		this.placeDoubleClockAtCurrentPosition(par1World, 4, 1, 4, 1);
+		this.placeDoubleClockAtCurrentPositionNEW(par1World, 4, 1, 4, 2);
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 4, 3, 4, new String[] {"", "Price:", "200$", ""});
 
 		this.placeClockAtCurrentPosition(par1World, 2, 2, 4, 1);
@@ -102,23 +105,23 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		this.placeModernClockAtCurrentPosition(par1World, 6, 2, 4, 1);
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 6, 3, 4, new String[] {"", "Price:", "25$", ""});
 		//Clocks End
-		
+
 		//Counter Start
 		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 6, 1, 2, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 11, 6, 1, 1, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 10, 7, 1, 2, par3StructureBoundingBox);
-		
+
 		this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, 0, 6, 3, 2, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, 0, 6, 3, 1, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.iron_bars, 0, 7, 3, 2, par3StructureBoundingBox);
-		
+
 		this.placeBlockAtCurrentPosition(par1World, Blocks.flower_pot, 11, 6, 2, 2, par3StructureBoundingBox);
 		//Counter End
-		
+
 		//Easteregg Start DONT TELL ANYONE!
 		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 7, 5, 1, new String[] {"Here, have", "a cookie!", "You", "rock!"});
 		//Easteregg End
-		
+
 		//Door Start
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 1, 0, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.air, 0, 1, 2, 0, par3StructureBoundingBox);
@@ -160,7 +163,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		int z = this.getZWithOffset(par4, par6);
 
 		if (par2StructureBoundingBox.isVecInside(x, y, z) && par1World.getBlock(x, y, z) != Blocks.wall_sign) {
-			par1World.setBlock(x, y, z, Blocks.wall_sign, this.getMetadataWithOffset(Blocks.wall_sign, 5), 2);
+			par1World.setBlock(x, y, z, Blocks.wall_sign, 5, 2);
 			TileEntitySign tilesign = (TileEntitySign)par1World.getTileEntity(x, y, z);
 
 			if (tilesign != null) {
@@ -172,6 +175,25 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		} else {
 			return false;
 		}
+	}
+
+	///tp Empty2k12 -386 5 638
+
+	protected boolean placeDoubleClockAtCurrentPositionNEW(World world, int x, int y, int z, int meta) {
+
+		int i = this.getCustomMetaOffset(meta);
+
+		//		world.setBlock(placeX, placeY, placeZ, ClockBlocks.clock_bottom, meta, 2);
+		//		world.setBlock(placeX, placeY + 1, placeZ, ClockBlocks.clock_top, meta, 2);
+		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock_bottom, i, x, y, z, getBoundingBox());
+		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock_top, i, x, y + 1, z, getBoundingBox());
+
+		int placeX = this.getXWithOffset(x, z);
+		int placeY = this.getYWithOffset(y);
+		int placeZ = this.getZWithOffset(x, z);
+
+		world.setTileEntity(placeX, placeY + 1, placeZ, new TileDoubleClockTop());
+		return true;
 	}
 
 	protected boolean placeDoubleClockAtCurrentPosition(World world, int x, int y, int z, int meta) {
@@ -201,8 +223,48 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		int placeZ = this.getZWithOffset(x, z);
 
 		world.setBlock(placeX, placeY, placeZ, ClockBlocks.modern_clock, meta, 2);
-		world.setTileEntity(placeX, placeY, placeZ, new TileClock());
+		world.setTileEntity(placeX, placeY, placeZ, new TileModernClock());
 		return true;
 	}
 
+	public int getCustomMetaOffset(int meta) {
+		if (this.coordBaseMode == 0) {
+			if (meta == 2 || meta == 3) {
+				return Facing.oppositeSide[meta];
+			}
+		} else if (this.coordBaseMode == 1) {
+			if (meta == 2) {
+				return 4;
+			}
+
+			if (meta == 3) {
+				return 5;
+			}
+
+			if (meta == 4) {
+				return 2;
+			}
+
+			if (meta == 5) {
+				return 3;
+			}
+		} else if (this.coordBaseMode == 3) {
+			if (meta == 2) {
+				return 5;
+			}
+
+			if (meta == 3) {
+				return 4;
+			}
+
+			if (meta == 4) {
+				return 2;
+			}
+
+			if (meta == 5) {
+				return 3;
+			}
+		}
+		return meta;
+	}
 }

@@ -149,7 +149,7 @@ public class BlockModernClock extends BlockContainer implements IScrewdriveable 
 
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileModernClock(false);
+		return new TileModernClock();
 	}
 
 }
