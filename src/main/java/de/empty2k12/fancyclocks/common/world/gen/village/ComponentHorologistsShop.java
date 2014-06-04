@@ -181,7 +181,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 
 	protected boolean placeDoubleClockAtCurrentPositionNEW(World world, int x, int y, int z, int meta) {
 
-		int i = this.getCustomMetaOffset(meta);
+		int i = this.getCustomMetaOffsetForClocks();
 
 		//		world.setBlock(placeX, placeY, placeZ, ClockBlocks.clock_bottom, meta, 2);
 		//		world.setBlock(placeX, placeY + 1, placeZ, ClockBlocks.clock_top, meta, 2);
@@ -227,44 +227,16 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		return true;
 	}
 
-	public int getCustomMetaOffset(int meta) {
+	public int getCustomMetaOffsetForClocks() {
 		if (this.coordBaseMode == 0) {
-			if (meta == 2 || meta == 3) {
-				return Facing.oppositeSide[meta];
-			}
+			return 0;
 		} else if (this.coordBaseMode == 1) {
-			if (meta == 2) {
-				return 4;
-			}
-
-			if (meta == 3) {
-				return 5;
-			}
-
-			if (meta == 4) {
-				return 2;
-			}
-
-			if (meta == 5) {
-				return 3;
-			}
+			return 4;
+		} else if (this.coordBaseMode == 2) {
+			return 3;
 		} else if (this.coordBaseMode == 3) {
-			if (meta == 2) {
-				return 5;
-			}
-
-			if (meta == 3) {
-				return 4;
-			}
-
-			if (meta == 4) {
-				return 2;
-			}
-
-			if (meta == 5) {
-				return 3;
-			}
+			return 5;
 		}
-		return meta;
+		return -1;
 	}
 }
