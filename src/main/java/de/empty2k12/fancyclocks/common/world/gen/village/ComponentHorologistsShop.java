@@ -95,19 +95,19 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 
 		//Clocks Start
 		this.placeDoubleClockAtCurrentPosition(par1World, 4, 1, 4, 2);
-		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 4, 3, 4, new String[] {"", "Price:", "200$", ""});
+		this.placeSignWithTextAtCurrentPosition(par1World, 4, 3, 4, new String[] {"", "Price:", "200$", ""});
 
 		this.placeClockAtCurrentPosition(par1World, 2, 2, 4, 1);
-		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 2, 3, 4, new String[] {"", "Price:", "100$", ""});
+		this.placeSignWithTextAtCurrentPosition(par1World, 2, 3, 4, new String[] {"", "Price:", "100$", ""});
 
 		this.placeModernClockAtCurrentPosition(par1World, 6, 2, 4, 1);
-		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 6, 3, 4, new String[] {"", "Price:", "25$", ""});
+		this.placeSignWithTextAtCurrentPosition(par1World, 6, 3, 4, new String[] {"", "Price:", "25$", ""});
 		//Clocks End
-		
+
 		//DEBUG START
-		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 4, 3, 2, new String[] {"", "coordBaseMode:", this.coordBaseMode + "", ""});
+		this.placeSignWithTextAtCurrentPosition(par1World, 4, 3, 2, new String[] {"", "coordBaseMode:", this.coordBaseMode + "", ""});
 		//DEBIG END
-		
+
 
 		//Counter Start
 		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 6, 1, 2, par3StructureBoundingBox);
@@ -122,7 +122,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		//Counter End
 
 		//Easteregg Start DONT TELL ANYONE!
-		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 7, 5, 1, new String[] {"Here, have", "a cookie!", "You", "rock!"});
+		this.placeSignWithTextAtCurrentPosition(par1World, 7, 5, 1, new String[] {"Here, have", "a cookie!", "You", "rock!"});
 		//Easteregg End
 
 		//Door Start
@@ -138,7 +138,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		//Outside Stairs End
 
 		//Outside Sign Start
-		this.placeSignWithTextAtCurrentPosition(par1World, par3StructureBoundingBox, 1, 3, -1, new String[] {"", "Horologist", "", ""});
+		this.placeSignWithTextAtCurrentPosition(par1World, 1, 3, -1, new String[] {"", "Horologist", "", ""});
 		//Outside Sign End
 
 		for (l = 0; l < 6; ++l) {
@@ -160,27 +160,19 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		return par0StructureBoundingBox != null && par0StructureBoundingBox.minY > 10;
 	}
 
-	protected boolean placeSignWithTextAtCurrentPosition(World par1World, StructureBoundingBox par2StructureBoundingBox, int par4, int par5, int par6, String[] text) {
-		int x = this.getXWithOffset(par4, par6);
-		int y = this.getYWithOffset(par5);
-		int z = this.getZWithOffset(par4, par6);
-
-		int m = this.getMetadataWithOffset(Blocks.wall_sign, 5);
-
-		if (par2StructureBoundingBox.isVecInside(x, y, z) && par1World.getBlock(x, y, z) != Blocks.wall_sign) {
-			//FIXME: better: this.placeB.....
-			par1World.setBlock(x, y, z, Blocks.wall_sign, m, 2);
-			TileEntitySign tilesign = (TileEntitySign)par1World.getTileEntity(x, y, z);
-
-			if (tilesign != null) {
-				for(int i = 0; i < text.length; i++) {
-					tilesign.signText[i] = text[i];
-				}
+	protected boolean placeSignWithTextAtCurrentPosition(World world, int x, int y, int z, String[] text) {
+		int m = getCustomMetaOffsetForSigns();
+		this.placeBlockAtCurrentPosition(world, Blocks.wall_sign, m, x, y, z, getBoundingBox());
+		int placeX = this.getXWithOffset(x, z);
+		int placeY = this.getYWithOffset(y);
+		int placeZ = this.getZWithOffset(x, z);
+		TileEntitySign tilesign = (TileEntitySign) world.getTileEntity(placeX, placeY, placeZ);
+		if (tilesign != null) {
+			for(int i = 0; i < text.length; i++) {
+				tilesign.signText[i] = text[i];
 			}
-			return true;
-		} else {
-			return false;
 		}
+		return true;
 	}
 
 	///tp Empty2k12 -386 5 638
@@ -218,6 +210,21 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 	}
 
 	public int getCustomMetaOffsetForClocks() {
+		switch (this.coordBaseMode) {
+		case 0:
+			return 2;
+		case 1:
+			return 5;
+		case 3:
+			return 4;
+		case 2:
+			return 3;
+		default:
+			return 5;
+		}
+	}
+	
+	public int getCustomMetaOffsetForSigns() {
 		switch (this.coordBaseMode) {
 		case 0:
 			return 2;
