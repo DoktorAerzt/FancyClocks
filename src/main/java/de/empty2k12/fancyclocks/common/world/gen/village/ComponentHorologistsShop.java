@@ -104,11 +104,6 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		this.placeSignWithTextAtCurrentPosition(par1World, 6, 3, 4, new String[] {"", "Price:", "25$", ""});
 		//Clocks End
 
-		//DEBUG START
-		this.placeSignWithTextAtCurrentPosition(par1World, 4, 3, 2, new String[] {"", "coordBaseMode:", this.coordBaseMode + "", ""});
-		//DEBIG END
-
-
 		//Counter Start
 		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 6, 1, 2, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 11, 6, 1, 1, par3StructureBoundingBox);
@@ -161,11 +156,11 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 	}
 
 	protected boolean placeSignWithTextAtCurrentPosition(World world, int x, int y, int z, String[] text) {
-		int m = getCustomMetaOffsetForSigns();
-		this.placeBlockAtCurrentPosition(world, Blocks.wall_sign, m, x, y, z, getBoundingBox());
+		int m = getCustomMetaOffset();
 		int placeX = this.getXWithOffset(x, z);
 		int placeY = this.getYWithOffset(y);
 		int placeZ = this.getZWithOffset(x, z);
+		world.setBlock(placeX, placeY, placeZ, Blocks.wall_sign, m, 2);
 		TileEntitySign tilesign = (TileEntitySign) world.getTileEntity(placeX, placeY, placeZ);
 		if (tilesign != null) {
 			for(int i = 0; i < text.length; i++) {
@@ -175,11 +170,8 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		return true;
 	}
 
-	///tp Empty2k12 -386 5 638
-	///tp Empty2k12 -390 6 652
-
 	protected boolean placeDoubleClockAtCurrentPosition(World world, int x, int y, int z, int meta) {
-		int m = this.getCustomMetaOffsetForClocks();
+		int m = this.getCustomMetaOffset();
 		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock_bottom, m, x, y, z, getBoundingBox());
 		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock_top, m, x, y + 1, z, getBoundingBox());
 		int placeX = this.getXWithOffset(x, z);
@@ -190,7 +182,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 	}
 
 	protected boolean placeClockAtCurrentPosition(World world, int x, int y, int z, int meta) {
-		int m = this.getCustomMetaOffsetForClocks();
+		int m = this.getCustomMetaOffset();
 		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock, m, x, y, z, getBoundingBox());
 		int placeX = this.getXWithOffset(x, z);
 		int placeY = this.getYWithOffset(y);
@@ -200,7 +192,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 	}
 
 	protected boolean placeModernClockAtCurrentPosition(World world, int x, int y, int z, int meta) {
-		int m = this.getCustomMetaOffsetForClocks();
+		int m = this.getCustomMetaOffset();
 		this.placeBlockAtCurrentPosition(world, ClockBlocks.modern_clock, m, x, y, z, getBoundingBox());
 		int placeX = this.getXWithOffset(x, z);
 		int placeY = this.getYWithOffset(y);
@@ -209,7 +201,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		return true;
 	}
 
-	public int getCustomMetaOffsetForClocks() {
+	public int getCustomMetaOffset() {
 		switch (this.coordBaseMode) {
 		case 0:
 			return 2;
@@ -224,20 +216,4 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		}
 	}
 	
-	public int getCustomMetaOffsetForSigns() {
-		switch (this.coordBaseMode) {
-		case 0:
-			return 2;
-		case 1:
-			return 5;
-		case 3:
-			return 4;
-		case 2:
-			return 3;
-		default:
-			return 5;
-		}
-	}
-
-	///tp Empty2k12 127 6 645
 }
