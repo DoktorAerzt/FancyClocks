@@ -172,6 +172,9 @@ public class ModelClock extends ModelBase {
 		Filling1.render(f);
 		Filling2.render(f);
 		Filling3.render(f);
+	}
+	
+	public void renderTimeIndicators(float f) {
 		MiddleDot1.render(f);
 		twelveOClock.render(f);
 		nineOClock.render(f);
