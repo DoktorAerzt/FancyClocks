@@ -16,6 +16,7 @@ import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+import de.empty2k12.fancyclocks.FancyClocks;
 import de.empty2k12.fancyclocks.common.item.ClockItems;
 import de.empty2k12.fancyclocks.common.misc.Config;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
@@ -60,7 +61,8 @@ public class VillageHandlerHorologist implements IVillageCreationHandler, IVilla
 
 			VillageHandlerHorologist horologist = new VillageHandlerHorologist();
 			VillagerRegistry.instance().registerVillageTradeHandler(VillageHandlerHorologist.HOROLOGIST_ID, horologist);
-			VillagerRegistry.instance().registerVillagerSkin(VillageHandlerHorologist.HOROLOGIST_ID, new ResourceLocation(ModInfo.MOD_ID, "textures/entity/villager/horologist.png"));
+			
+			FancyClocks.proxy.setupVillagers();
 		}
 	}
 }
