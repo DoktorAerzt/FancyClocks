@@ -54,7 +54,7 @@ public class VillageHandlerHorologist implements IVillageCreationHandler, IVilla
 
 	public static final void init() {
 		if(Config.ENABLE_HOROLOGIST) {
-			MapGenStructureIO.func_143031_a(ComponentHorologistsShop.class, "horologistsShop");
+			MapGenStructureIO.func_143031_a(ComponentHorologistsShop.class, "hS");
 			VillagerRegistry.instance().registerVillageCreationHandler(new VillageHandlerHorologist());
 
 			VillageHandlerHorologist horologist = new VillageHandlerHorologist();
