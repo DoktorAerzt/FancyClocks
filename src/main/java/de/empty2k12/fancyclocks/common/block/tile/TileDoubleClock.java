@@ -36,23 +36,19 @@ public class TileDoubleClock extends TileEntity {
 		calendar = Calendar.getInstance();
 		if(oldSeconds != calendar.get(Calendar.SECOND)) {
 			oldSeconds = calendar.get(Calendar.SECOND);
-			if(!silent) {
-				getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
-			}
-		}
-//TODO: Rework with the code above so it does not overlap with ticking sound
-//        if(!silent) {
-//            if(calendar.get(Calendar.MINUTE) == 0) {
-//                for(int times = 0; times < calendar.get(Calendar.MINUTE); times++) {
-//                    if(oldSeconds != calendar.get(Calendar.SECOND)) {
-//                        getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "full_hour_gong", 1F, 1F, true);
-//                    }
-//
-//                }
-//
-//            }
-//        }
+            if(calendar.get(Calendar.MINUTE) == 0) {
+                for(int times = 0; times < calendar.get(Calendar.MINUTE); times++) {
+                    if(oldSeconds != calendar.get(Calendar.SECOND)) {
+                        getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "full_hour_gong", 1F, 1F, true);
+                    }
 
+                }
+            } else {
+                if(!silent) {
+                    getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
+                }
+            }
+		}
 	}
 
 	public static int getRotationFromSeconds() {
