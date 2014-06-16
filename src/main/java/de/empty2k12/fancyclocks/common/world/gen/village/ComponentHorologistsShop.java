@@ -12,7 +12,7 @@ import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
 
 public class ComponentHorologistsShop extends StructureVillagePieces.Village {
@@ -177,7 +177,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		int placeX = this.getXWithOffset(x, z);
 		int placeY = this.getYWithOffset(y);
 		int placeZ = this.getZWithOffset(x, z);
-		world.setTileEntity(placeX, placeY + 1, placeZ, new TileDoubleClockTop());
+		world.setTileEntity(placeX, placeY + 1, placeZ, new TileDoubleClock());
 		return true;
 	}
 

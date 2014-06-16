@@ -15,7 +15,7 @@ import de.empty2k12.fancyclocks.client.renderer.item.ItemRenderDoubleClock;
 import de.empty2k12.fancyclocks.client.renderer.item.ItemRenderModernClock;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
 import de.empty2k12.fancyclocks.common.misc.Config;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
@@ -36,7 +36,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ClockBlocks.modern_clock), new ItemRenderModernClock());
 
 		TileEntitySpecialRenderer renderDoubleClock = new RenderDoubleClock();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileDoubleClockTop.class, renderDoubleClock);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileDoubleClock.class, renderDoubleClock);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ClockBlocks.clock_bottom), new ItemRenderDoubleClock());
 	}
 

@@ -2,7 +2,9 @@ package de.empty2k12.fancyclocks.client.renderer;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -26,53 +28,56 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 		int rotationAngle = 0;
 
-		int meta = tile.getBlockMetadata();
-
-		switch(meta % 4){
+		switch(((TileClock)tile).getOrientation()){
 		case 0:
-			rotationAngle = 90;
-			break;
-		case 1:
-			rotationAngle = 270;
-			break;
-		case 2:
 			rotationAngle = 0;
 			break;
-		case 3:
+		case 1:
+			rotationAngle = -90;
+			break;
+		case 2:
 			rotationAngle = 180;
+			break;
+		case 3:
+			rotationAngle = 90;
 			break;
 		}
 
 		GL11.glPushMatrix();
 
-		GL11.glTranslated((float) x + 0.5, (float) y + 0.2, (float) z + 0.5);
+		GL11.glTranslated((float) x + 0.5, (float) y + 0.1, (float) z + 0.5);
 		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(0.0F, 0.1F, 0.4375F);
 		GL11.glScalef(1.0F, -1F, -1F);
 
 		GL11.glPushMatrix();
+		bindTextureBasedOnMeta(tile.getBlockMetadata());
+		this.model.renderCorpse(0.0625F);
+		GL11.glTranslatef(0.0F, 0.0F, 0.0001F);
+		this.model.renderRoof1(0.0625F);
+		GL11.glTranslatef(0.0F, 0.0F, 0.000001F);
+		this.model.renderRoof2(0.0625F);
 		bindTexture(texture);
-		this.model.renderModel(0.0625F);
+		this.model.renderIndicators(0.0625F);
 		GL11.glPopMatrix();
 
 		GL11.glTranslatef(-0.0F, -0.3F, -0.0F);
 		GL11.glScalef(-1.0F, 1F, 1F);
 
-		drawSecondPointer((TileClock)tile);
-		GL11.glTranslatef(0, 0, 0);
-		drawMinutePointer((TileClock)tile);
-		GL11.glTranslatef(0, 0, 0);
-		drawHourPointer((TileClock)tile);
+		drawSecondPointer((TileClock)tile, tile.getBlockMetadata());
+		drawMinutePointer((TileClock)tile, tile.getBlockMetadata());
+		drawHourPointer((TileClock)tile, tile.getBlockMetadata());
 
 		GL11.glPopMatrix();
 	}
 
-	public static void drawSecondPointer(TileClock tile) {
+	//Pointer color based on wood color!
+	public static void drawSecondPointer(TileClock tile, int meta) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
 		Tessellator secondTess = Tessellator.instance;
 		secondTess.startDrawing(GL11.GL_LINE_STRIP);
-		secondTess.setBrightness(1);
+		secondTess.setColorRGBA(getColorForMeta(meta), getColorForMeta(meta), getColorForMeta(meta), 100);
 		secondTess.addVertex(-0.01, 0.01, 0.15D);
 		secondTess.addVertex(-0.01, -0.15, 0.15D);
 		secondTess.addVertex(0.0, -0.15, 0.15D);
@@ -81,12 +86,12 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glPopMatrix();
 	}
 
-	public static void drawMinutePointer(TileClock tile) {
+	public static void drawMinutePointer(TileClock tile, int meta) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromMinutes(), 0.0f, 0.0f, 1.0f);
 		Tessellator minuteTess = Tessellator.instance;
 		minuteTess.startDrawing(GL11.GL_LINE_STRIP);
-		minuteTess.setBrightness(1);
+		minuteTess.setColorRGBA(getColorForMeta(meta), getColorForMeta(meta), getColorForMeta(meta), 100);
 		minuteTess.addVertex(-0.01, 0.01, 0.15D);
 		minuteTess.addVertex(-0.01, -0.12, 0.15D);
 		minuteTess.addVertex(0.0, -0.12, 0.15D);
@@ -95,17 +100,27 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glPopMatrix();
 	}
 
-	public static void drawHourPointer(TileClock tile) {
+	public static void drawHourPointer(TileClock tile, int meta) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromHours(), 0.0f, 0.0f, 1.0f);
 		Tessellator hourTess = Tessellator.instance;
 		hourTess.startDrawing(GL11.GL_LINE_STRIP);
-		hourTess.setBrightness(1);
+		hourTess.setColorRGBA(getColorForMeta(meta), getColorForMeta(meta), getColorForMeta(meta), 100);
 		hourTess.addVertex(-0.01, 0.01, 0.15D);
 		hourTess.addVertex(-0.01, -0.10, 0.15D);
 		hourTess.addVertex(0.0, -0.10, 0.15D);
 		hourTess.addVertex(0.0, 0.01, 0.15D);
 		hourTess.draw();
 		GL11.glPopMatrix();
+	}
+
+	public void bindTextureBasedOnMeta(int meta) {
+		if (meta >= 0) {
+			bindTexture(ModelClock.textures[meta]);
+		}
+	}
+	
+	public static int getColorForMeta(int meta) {
+		return meta == 2 || meta == 6 ? 0 : 255;
 	}
 }
