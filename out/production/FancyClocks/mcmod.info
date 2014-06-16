@@ -1,0 +1,16 @@
+[
+{
+  "modid": "fancyclocks",
+  "name": "Fancy Clocks",
+  "description": "Adds fancier (3d) modeled clocks to the Game!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://github.com/Empty2k12/FancyClocks",
+  "updateUrl": "",
+  "authors": ["Empty2k12"],
+  "credits": "ModJam Team: Motivating me to code quicker and don't waste too much time!",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

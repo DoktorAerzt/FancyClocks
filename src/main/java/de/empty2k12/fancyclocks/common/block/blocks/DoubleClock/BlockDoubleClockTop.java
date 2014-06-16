@@ -1,9 +1,10 @@
 package de.empty2k12.fancyclocks.common.block.blocks.DoubleClock;
 
-import java.util.ArrayList;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import de.empty2k12.fancyclocks.api.IScrewdriveable;
+import de.empty2k12.fancyclocks.common.block.ClockBlocks;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,9 +17,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import de.empty2k12.fancyclocks.api.IScrewdriveable;
-import de.empty2k12.fancyclocks.common.block.ClockBlocks;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
+
+import java.util.ArrayList;
 
 public class BlockDoubleClockTop extends BlockContainer implements IScrewdriveable {
 

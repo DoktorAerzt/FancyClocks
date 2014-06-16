@@ -1,15 +1,13 @@
 package de.empty2k12.fancyclocks.client.renderer.item;
 
+import de.empty2k12.fancyclocks.client.model.ModelClock;
+import de.empty2k12.fancyclocks.client.model.ModelDoubleClock;
+import de.empty2k12.fancyclocks.client.renderer.RenderDoubleClock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-
 import org.lwjgl.opengl.GL11;
-
-import de.empty2k12.fancyclocks.client.model.ModelClock;
-import de.empty2k12.fancyclocks.client.model.ModelDoubleClock;
-import de.empty2k12.fancyclocks.client.renderer.RenderDoubleClock;
 
 public class ItemRenderDoubleClock implements IItemRenderer {
 
@@ -39,7 +37,7 @@ public class ItemRenderDoubleClock implements IItemRenderer {
 			GL11.glTranslated(0F, -0.5F, 0F);
 		} else if (type == ItemRenderType.INVENTORY) {
 			GL11.glScalef(1.9f, 1.9f, 1.9f);
-			GL11.glRotatef(290f, 0f, 1f, 0f);
+			GL11.glRotatef(-90f, 0f, 1f, 0f);
 			GL11.glTranslatef(-0.05f, -0.18f, 0f);
 		} else if (type == ItemRenderType.EQUIPPED) {
 			GL11.glScalef(5f, 5f, 5f);

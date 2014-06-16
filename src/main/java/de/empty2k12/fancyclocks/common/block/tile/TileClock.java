@@ -1,13 +1,13 @@
 package de.empty2k12.fancyclocks.common.block.tile;
 
-import java.util.Calendar;
-
+import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import de.empty2k12.fancyclocks.common.misc.ModInfo;
+
+import java.util.Calendar;
 
 public class TileClock extends TileEntity {
 

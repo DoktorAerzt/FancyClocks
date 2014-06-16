@@ -1,13 +1,13 @@
 package de.empty2k12.fancyclocks.common.block.tile;
 
-import java.util.Calendar;
-
+import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import de.empty2k12.fancyclocks.common.misc.ModInfo;
+
+import java.util.Calendar;
 
 public class TileDoubleClock extends TileEntity {
 
@@ -40,6 +40,19 @@ public class TileDoubleClock extends TileEntity {
 				getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
 			}
 		}
+//TODO: Rework with the code above so it does not overlap with ticking sound
+//        if(!silent) {
+//            if(calendar.get(Calendar.MINUTE) == 0) {
+//                for(int times = 0; times < calendar.get(Calendar.MINUTE); times++) {
+//                    if(oldSeconds != calendar.get(Calendar.SECOND)) {
+//                        getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "full_hour_gong", 1F, 1F, true);
+//                    }
+//
+//                }
+//
+//            }
+//        }
+
 	}
 
 	public static int getRotationFromSeconds() {

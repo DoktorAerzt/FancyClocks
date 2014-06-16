@@ -1,8 +1,9 @@
 package de.empty2k12.fancyclocks.common.world.gen.village;
 
-import java.util.List;
-import java.util.Random;
-
+import de.empty2k12.fancyclocks.common.block.ClockBlocks;
+import de.empty2k12.fancyclocks.common.block.tile.TileClock;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
+import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntitySign;
@@ -10,10 +11,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
-import de.empty2k12.fancyclocks.common.block.ClockBlocks;
-import de.empty2k12.fancyclocks.common.block.tile.TileClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
+
+import java.util.List;
+import java.util.Random;
 
 public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 

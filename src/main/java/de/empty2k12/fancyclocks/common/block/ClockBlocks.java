@@ -1,6 +1,5 @@
 package de.empty2k12.fancyclocks.common.block;
 
-import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.empty2k12.fancyclocks.common.block.blocks.BlockClock;
 import de.empty2k12.fancyclocks.common.block.blocks.BlockModernClock;
@@ -11,6 +10,7 @@ import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
 import de.empty2k12.fancyclocks.common.item.items.block.ItemBlockClock;
 import de.empty2k12.fancyclocks.common.item.items.block.ItemBlockDoubleClock;
+import net.minecraft.block.Block;
 
 public class ClockBlocks {
 	

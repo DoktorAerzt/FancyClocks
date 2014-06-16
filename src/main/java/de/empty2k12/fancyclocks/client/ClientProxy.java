@@ -1,10 +1,5 @@
 package de.empty2k12.fancyclocks.client;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
-import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import de.empty2k12.fancyclocks.client.renderer.RenderClock;
@@ -20,8 +15,11 @@ import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
 import de.empty2k12.fancyclocks.common.misc.Config;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
-import de.empty2k12.fancyclocks.common.world.gen.village.ComponentHorologistsShop;
 import de.empty2k12.fancyclocks.common.world.gen.village.VillageHandlerHorologist;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends CommonProxy {
 

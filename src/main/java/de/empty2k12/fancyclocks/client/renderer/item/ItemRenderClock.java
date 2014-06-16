@@ -1,14 +1,12 @@
 package de.empty2k12.fancyclocks.client.renderer.item;
 
+import de.empty2k12.fancyclocks.client.model.ModelClock;
+import de.empty2k12.fancyclocks.client.renderer.RenderClock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-
 import org.lwjgl.opengl.GL11;
-
-import de.empty2k12.fancyclocks.client.model.ModelClock;
-import de.empty2k12.fancyclocks.client.renderer.RenderClock;
 
 public class ItemRenderClock implements IItemRenderer {
 
