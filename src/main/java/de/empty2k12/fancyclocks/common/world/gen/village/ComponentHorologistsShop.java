@@ -170,6 +170,8 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		return true;
 	}
 
+	///tp empty2k12 -693 5 1884
+	
 	protected boolean placeDoubleClockAtCurrentPosition(World world, int x, int y, int z) {
 		int woodType = world.rand.nextInt(6);
 		this.placeBlockAtCurrentPosition(world, ClockBlocks.clock_bottom, woodType, x, y, z, getBoundingBox());
@@ -178,9 +180,9 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		int placeY = this.getYWithOffset(y);
 		int placeZ = this.getZWithOffset(x, z);
 		world.setTileEntity(placeX, placeY + 1, placeZ, new TileDoubleClock());
-        TileDoubleClock tileDoubleClock = (TileDoubleClock) world.getTileEntity(placeX, placeY, placeZ);
+        TileDoubleClock tileDoubleClock = (TileDoubleClock) world.getTileEntity(placeX, placeY + 1, placeZ);
         if (tileDoubleClock != null) {
-            tileDoubleClock.setOrientation(this.getCustomMetaOffset());
+            tileDoubleClock.setOrientation(this.coordBaseMode);
         }
 		return true;
 	}
@@ -192,10 +194,9 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		int placeY = this.getYWithOffset(y);
 		int placeZ = this.getZWithOffset(x, z);
 		world.setTileEntity(placeX, placeY, placeZ, new TileClock());
-        world.setTileEntity(placeX, placeY + 1, placeZ, new TileDoubleClock());
-        TileDoubleClock tileDoubleClock = (TileDoubleClock) world.getTileEntity(placeX, placeY, placeZ);
+		TileClock tileDoubleClock = (TileClock) world.getTileEntity(placeX, placeY, placeZ);
         if (tileDoubleClock != null) {
-            tileDoubleClock.setOrientation(this.getCustomMetaOffset());
+            tileDoubleClock.setOrientation(this.coordBaseMode);
         }
 		return true;
 	}
