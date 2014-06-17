@@ -41,33 +41,26 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 		GL11.glPushMatrix();
 
-		GL11.glTranslated((float) x + 0.5, (float) y + 0.45, (float) z + 0.5);
+		GL11.glTranslated((float) x + 0.5, (float) y + 0.5, (float) z + 0.5);
 		GL11.glRotatef(rotationAngle + 180F, 0.0F, 1.0F, 0.0F);
 		GL11.glScalef(1.1F, -1.1F, -1.1F);
 
-		bindTextureBasedOnMeta(tile.getBlockMetadata());
-		this.model.renderModel(0.0625F);
-
-		GL11.glEnable(GL11.GL_TEXTURE_2D);
-		GL11.glEnable(GL11.GL_NORMALIZE);
-		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glEnable(GL11.GL_DITHER);
-
-		GL11.glShadeModel(GL11.GL_SMOOTH);
-		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
-		GL11.glDepthFunc(GL11.GL_LEQUAL);
-		GL11.glEnable(GL11.GL_DEPTH_TEST);
-
 		bindTexture(texture);
-		this.model.renderOtherStuffs(0.0625F);
-		GL11.glDisable(GL11.GL_BLEND);
 
 		GL11.glTranslatef(0.01F, -0.055F, -0.3F);
 		drawSecondPointer((TileDoubleClock)tile, tile.getBlockMetadata());
 		drawMinutePointer((TileDoubleClock)tile, tile.getBlockMetadata());
 		drawHourPointer((TileDoubleClock)tile, tile.getBlockMetadata());
 		GL11.glTranslatef(-0.01F, 0.055F, 0.3F);
+
+		bindTextureBasedOnMeta(tile.getBlockMetadata());
+		this.model.renderModel(0.0625F);
+		
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		bindTexture(texture);
+		this.model.renderOtherStuffs(0.0625F);
+		GL11.glDisable(GL11.GL_BLEND);
 
 		GL11.glPopMatrix();
 	}
