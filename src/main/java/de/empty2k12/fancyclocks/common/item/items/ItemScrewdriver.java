@@ -1,13 +1,13 @@
 package de.empty2k12.fancyclocks.common.item.items;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 import de.empty2k12.fancyclocks.FancyClocks;
 import de.empty2k12.fancyclocks.api.IClockScrewdriver;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class ItemScrewdriver extends Item implements IClockScrewdriver {
 	

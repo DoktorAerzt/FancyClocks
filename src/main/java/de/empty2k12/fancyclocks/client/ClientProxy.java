@@ -1,10 +1,5 @@
 package de.empty2k12.fancyclocks.client;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
-import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import de.empty2k12.fancyclocks.client.renderer.RenderClock;
@@ -15,13 +10,16 @@ import de.empty2k12.fancyclocks.client.renderer.item.ItemRenderDoubleClock;
 import de.empty2k12.fancyclocks.client.renderer.item.ItemRenderModernClock;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClockTop;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
 import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
 import de.empty2k12.fancyclocks.common.misc.Config;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
-import de.empty2k12.fancyclocks.common.world.gen.village.ComponentHorologistsShop;
 import de.empty2k12.fancyclocks.common.world.gen.village.VillageHandlerHorologist;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends CommonProxy {
 
@@ -36,7 +34,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ClockBlocks.modern_clock), new ItemRenderModernClock());
 
 		TileEntitySpecialRenderer renderDoubleClock = new RenderDoubleClock();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileDoubleClockTop.class, renderDoubleClock);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileDoubleClock.class, renderDoubleClock);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ClockBlocks.clock_bottom), new ItemRenderDoubleClock());
 	}
 

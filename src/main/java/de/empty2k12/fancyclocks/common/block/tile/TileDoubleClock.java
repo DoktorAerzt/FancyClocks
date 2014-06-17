@@ -9,7 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 
 import java.util.Calendar;
 
-public class TileClock extends TileEntity {
+public class TileDoubleClock extends TileEntity {
 
 	private int orientation = 0;
 	private static int oldSeconds;
@@ -36,9 +36,18 @@ public class TileClock extends TileEntity {
 		calendar = Calendar.getInstance();
 		if(oldSeconds != calendar.get(Calendar.SECOND)) {
 			oldSeconds = calendar.get(Calendar.SECOND);
-			if(!silent) {
-				getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
-			}
+            if(calendar.get(Calendar.MINUTE) == 0) {
+                for(int times = 0; times < calendar.get(Calendar.MINUTE); times++) {
+                    if(oldSeconds != calendar.get(Calendar.SECOND)) {
+                        getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "full_hour_gong", 1F, 1F, true);
+                    }
+
+                }
+            } else {
+                if(!silent) {
+                    getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
+                }
+            }
 		}
 	}
 
@@ -85,5 +94,5 @@ public class TileClock extends TileEntity {
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
 		readFromNBT(packet.func_148857_g());
 	}
-	
+
 }

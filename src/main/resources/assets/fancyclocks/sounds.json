@@ -1,3 +1,4 @@
 {
     "clock_tick": {"clocks.sounds": "master", "sounds": [{"name": "clock_tick", "stream": false}]}
+	"full_hour_gong": {"clocks.sounds": "master", "sounds": [{"name": "full_hour_gong", "stream": false}]}
 }

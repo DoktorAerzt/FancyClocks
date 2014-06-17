@@ -1,10 +1,10 @@
 package de.empty2k12.fancyclocks.common.block.tile;
 
-import java.util.Calendar;
-
+import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import de.empty2k12.fancyclocks.common.misc.ModInfo;
+
+import java.util.Calendar;
 
 public class TileModernClock extends TileEntity {
 
@@ -39,15 +39,15 @@ public class TileModernClock extends TileEntity {
 	}
 
 	public static int getRotationFromSeconds() {
-		return calendar == null ? 0 : calendar.get(Calendar.SECOND)*6;
+		return calendar == null ? 0 : calendar.get(Calendar.SECOND) * 6;
 	}
 
 	public static int getRotationFromMinutes() {
-		return calendar == null ? 0 : calendar.get(Calendar.MINUTE)*6;
+		return calendar == null ? 0 : calendar.get(Calendar.MINUTE) * 6;
 	}
 
 	public static int getRotationFromHours() {
-		return calendar == null ? 0 : (calendar.get(Calendar.HOUR_OF_DAY)*30 + calendar.get(Calendar.MINUTE)/6);
+		return calendar == null ? 0 : (calendar.get(Calendar.HOUR_OF_DAY) * 30 + calendar.get(Calendar.MINUTE) / 6);
 	}
 
 	public void toggleSounds() {

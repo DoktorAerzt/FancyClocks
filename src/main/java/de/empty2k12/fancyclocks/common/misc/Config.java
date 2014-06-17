@@ -1,8 +1,8 @@
 package de.empty2k12.fancyclocks.common.misc;
 
-import java.io.File;
-
 import net.minecraftforge.common.config.Configuration;
+
+import java.io.File;
 
 public class Config {
 

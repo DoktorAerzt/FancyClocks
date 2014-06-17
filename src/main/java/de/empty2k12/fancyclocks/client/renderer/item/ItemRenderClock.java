@@ -1,13 +1,12 @@
 package de.empty2k12.fancyclocks.client.renderer.item;
 
+import de.empty2k12.fancyclocks.client.model.ModelClock;
+import de.empty2k12.fancyclocks.client.renderer.RenderClock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-
 import org.lwjgl.opengl.GL11;
-
-import de.empty2k12.fancyclocks.client.model.ModelClock;
 
 public class ItemRenderClock implements IItemRenderer {
 
@@ -24,8 +23,6 @@ public class ItemRenderClock implements IItemRenderer {
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		GL11.glPushMatrix();
-		
-		bindTexture("textures/model/clock1.png");
 
 		GL11.glScalef(1, -1, -1);
 
@@ -40,13 +37,26 @@ public class ItemRenderClock implements IItemRenderer {
 			GL11.glRotatef(90f, 0f, 1f, 0f);
 			GL11.glTranslatef(0f, 0.11f, 0f);
 		}
+		
+		bindTexture(RenderClock.texture);
+		new ModelClock().renderIndicators(0.025F);
+		bindTextureBasedOnMeta(item.getItemDamage());
+		new ModelClock().renderCorpse(0.025F);
+		GL11.glTranslatef(0.0F, 0.0F, 0.0001F);
+		new ModelClock().renderRoof1(0.025F);
+		GL11.glTranslatef(0.0F, 0.0F, 0.000001F);
+		new ModelClock().renderRoof2(0.025F);
 
-		new ModelClock().renderModel(0.025F);
 		GL11.glPopMatrix();
 	}
 
-	public static void bindTexture(String texture) {
-		ResourceLocation rl =  new ResourceLocation("fancyclocks", texture);
-		Minecraft.getMinecraft().renderEngine.bindTexture(rl);
+	public void bindTextureBasedOnMeta(int meta) {
+		if (meta >= 0) {
+			bindTexture(ModelClock.textures[meta]);
+		}
+	}
+
+	public static void bindTexture(ResourceLocation texture) {
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 	}
 }

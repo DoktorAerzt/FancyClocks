@@ -1,9 +1,8 @@
 package de.empty2k12.fancyclocks.common.block.blocks;
 
-import static net.minecraftforge.common.util.ForgeDirection.EAST;
-import static net.minecraftforge.common.util.ForgeDirection.NORTH;
-import static net.minecraftforge.common.util.ForgeDirection.SOUTH;
-import static net.minecraftforge.common.util.ForgeDirection.WEST;
+import de.empty2k12.fancyclocks.FancyClocks;
+import de.empty2k12.fancyclocks.api.IScrewdriveable;
+import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -13,9 +12,8 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import de.empty2k12.fancyclocks.FancyClocks;
-import de.empty2k12.fancyclocks.api.IScrewdriveable;
-import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
+
+import static net.minecraftforge.common.util.ForgeDirection.*;
 
 public class BlockModernClock extends BlockContainer implements IScrewdriveable {
 

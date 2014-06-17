@@ -1,25 +1,23 @@
 package de.empty2k12.fancyclocks.common.world.gen.village;
 
-import java.util.List;
-import java.util.Random;
-
-import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.village.MerchantRecipe;
-import net.minecraft.village.MerchantRecipeList;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
-import net.minecraft.world.gen.structure.StructureVillagePieces;
-import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
-import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
 import de.empty2k12.fancyclocks.FancyClocks;
 import de.empty2k12.fancyclocks.common.item.ClockItems;
 import de.empty2k12.fancyclocks.common.misc.Config;
-import de.empty2k12.fancyclocks.common.misc.ModInfo;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.village.MerchantRecipe;
+import net.minecraft.village.MerchantRecipeList;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
+import net.minecraft.world.gen.structure.StructureVillagePieces;
+import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
+import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+
+import java.util.List;
+import java.util.Random;
 
 public class VillageHandlerHorologist implements IVillageCreationHandler, IVillageTradeHandler {
 
@@ -56,12 +54,12 @@ public class VillageHandlerHorologist implements IVillageCreationHandler, IVilla
 
 	public static final void init() {
 		if(Config.ENABLE_HOROLOGIST) {
-			MapGenStructureIO.func_143031_a(ComponentHorologistsShop.class, "horologistsShop");
+			MapGenStructureIO.func_143031_a(ComponentHorologistsShop.class, "hS");
 			VillagerRegistry.instance().registerVillageCreationHandler(new VillageHandlerHorologist());
 
 			VillageHandlerHorologist horologist = new VillageHandlerHorologist();
 			VillagerRegistry.instance().registerVillageTradeHandler(VillageHandlerHorologist.HOROLOGIST_ID, horologist);
-			
+
 			FancyClocks.proxy.setupVillagers();
 		}
 	}

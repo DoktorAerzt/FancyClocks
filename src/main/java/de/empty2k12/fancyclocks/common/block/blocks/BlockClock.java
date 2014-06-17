@@ -1,23 +1,39 @@
 package de.empty2k12.fancyclocks.common.block.blocks;
 
-import static net.minecraftforge.common.util.ForgeDirection.EAST;
-import static net.minecraftforge.common.util.ForgeDirection.NORTH;
-import static net.minecraftforge.common.util.ForgeDirection.SOUTH;
-import static net.minecraftforge.common.util.ForgeDirection.WEST;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import de.empty2k12.fancyclocks.FancyClocks;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.tile.TileClock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.StatCollector;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+
+import java.util.List;
+
+import static net.minecraftforge.common.util.ForgeDirection.*;
 
 public class BlockClock extends BlockContainer implements IScrewdriveable {
+
+	@SideOnly(Side.CLIENT)
+	private IIcon[] texture;
+
+	private final static String[] particleTextures = {
+		"minecraft:planks_oak", "minecraft:planks_spruce", "minecraft:planks_birch", "minecraft:planks_jungle", "minecraft:planks_acacia", "minecraft:planks_big_oak"
+	};
 
 	public BlockClock() {
 		super(Material.wood);
@@ -27,7 +43,6 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 		setHardness(2F);
 		setResistance(1F);
 		setHarvestLevel("axe", 0);
-		setBlockTextureName("minecraft:planks_oak");
 	}
 
 	@Override
@@ -39,8 +54,63 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 		}
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister par1IconRegister){
+		texture = new IIcon[7];
+		for(int meta = 0; meta < particleTextures.length; meta++) {
+			texture[meta] = par1IconRegister.registerIcon(particleTextures[meta]);
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta){
+		return texture[meta];
+	}
+
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item item, CreativeTabs tabs, List items) {
+		for (int meta = 0; meta < 6; meta++) {
+			items.add(new ItemStack(item, 1, meta));
+		}
+	}
+
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
+	}
+
+	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z) {
-		this.setBlockBoundsOnState(blockAccess.getBlockMetadata(x, y, z));
+		TileEntity te = blockAccess.getTileEntity(x, y, z);
+		if(te != null && te instanceof TileClock) {
+			int orientation = ((TileClock) te).getOrientation();
+			float f = 0.30F;
+
+			if (orientation == 0) {
+				this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
+			}
+
+			if (orientation == 1) {
+				this.setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
+			}
+
+			if (orientation == 2) {
+				this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
+			}
+
+			if (orientation == 3) {
+				this.setBlockBounds(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+			}
+		}
+	}
+
+	@Override
+	public int getRenderType() {
+		return -1;
 	}
 
 	@Override
@@ -48,23 +118,7 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 		return false;
 	}
 
-	@Override
-	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int p_149646_5_) {
-		return false;
-	}
-
-	@Override
 	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	@Override
-	public boolean isNormalCube() {
-		return false;
-	}
-	
-	@Override
-	public boolean isNormalCube(IBlockAccess world, int x, int y, int z) {
 		return false;
 	}
 
@@ -78,31 +132,33 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-		int l = world.getBlockMetadata(x, y, z);
-		boolean flag = false;
+		TileEntity te = world.getTileEntity(x, y, z);
+		if(te != null && te instanceof TileClock) {
+			int orientation = ((TileClock) te).getOrientation();
+			boolean doDrop = true;
 
-		if (l == 2 && world.isSideSolid(x, y, z + 1, NORTH)) {
-			flag = true;
+			if (orientation == 0 && !world.isAirBlock(x, y, z + 1)) {
+				doDrop = false;
+			}
+
+			if (orientation == 1 && !world.isAirBlock(x - 1, y, z)) {
+				doDrop = false;
+			}
+
+			if (orientation == 2 && !world.isAirBlock(x, y, z - 1)) {
+				doDrop = false;
+			}
+
+			if (orientation == 3 && !world.isAirBlock(x + 1, y, z)) {
+				doDrop = false;
+			}
+
+			if (doDrop) {
+				this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), world.getBlockMetadata(x, y, z));
+				world.setBlockToAir(x, y, z);
+			}
+			super.onNeighborBlockChange(world, x, y, z, block);
 		}
-
-		if (l == 3 && world.isSideSolid(x, y, z - 1, SOUTH)) {
-			flag = true;
-		}
-
-		if (l == 4 && world.isSideSolid(x + 1, y, z, WEST)) {
-			flag = true;
-		}
-
-		if (l == 5 && world.isSideSolid(x - 1, y, z, EAST)) {
-			flag = true;
-		}
-
-		if (!flag) {
-			this.dropBlockAsItem(world, x, y, z, l, 0);
-			world.setBlockToAir(x, y, z);
-		}
-
-		super.onNeighborBlockChange(world, x, y, z, block);
 	}
 
 	@Override
@@ -111,46 +167,10 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 	}
 
 	@Override
-	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int meta) {
-		int newMeta = meta;
-
-		if ((meta == 0 || side == 2) && world.isSideSolid(x, y, z + 1, NORTH)) {
-			newMeta = 2;
-		}
-
-		if ((newMeta == 0 || side == 3) && world.isSideSolid(x, y, z - 1, SOUTH)) {
-			newMeta = 3;
-		}
-
-		if ((newMeta == 0 || side == 4) && world.isSideSolid(x + 1, y, z, WEST)) {
-			newMeta = 4;
-		}
-
-		if ((newMeta == 0 || side == 5) && world.isSideSolid(x - 1, y, z, EAST)) {
-			newMeta = 5;
-		}
-
-		return newMeta;
-	}
-
-	//FIXME: if time change these!
-	public void setBlockBoundsOnState(int meta) {
-		float f = 0.30F;
-
-		if (meta == 2) {
-			this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
-		}
-
-		if (meta == 3) {
-			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
-		}
-
-		if (meta == 4) {
-			this.setBlockBounds(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		}
-
-		if (meta == 5) {
-			this.setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase livingBase, ItemStack stack) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if(te != null && te instanceof TileClock) {
+			((TileClock) te).setOrientation(MathHelper.floor_double((double)((livingBase.rotationYaw * 4F) / 360F) + 0.5D) & 3);
 		}
 	}
 }
