@@ -9,8 +9,10 @@ import java.util.Calendar;
 public class TileModernClock extends TileEntity {
 
 	private static int oldSeconds;
-
+	private static int oldMinutes;
+	private static int oldHours;
 	private boolean silent = false;
+	private static boolean haspower = true;
 
 	private static Calendar calendar;
 
@@ -30,7 +32,7 @@ public class TileModernClock extends TileEntity {
 	@Override
 	public void updateEntity() {
 		calendar = Calendar.getInstance();
-		if(oldSeconds != calendar.get(Calendar.SECOND)) {
+		if(oldSeconds != calendar.get(Calendar.SECOND) && haspower) {
 			oldSeconds = calendar.get(Calendar.SECOND);
 			if(!silent) {
 				getWorldObj().playSound(xCoord, yCoord, zCoord, ModInfo.MOD_ID + ":" + "clock_tick", 1F, 1F, true);
@@ -39,15 +41,33 @@ public class TileModernClock extends TileEntity {
 	}
 
 	public static int getRotationFromSeconds() {
-		return calendar == null ? 0 : calendar.get(Calendar.SECOND) * 6;
+		if (haspower) {
+			oldSeconds = calendar.get(calendar.SECOND);
+			return calendar == null ? 0 : calendar.get(Calendar.SECOND) * 6;
+		} else {
+			return oldSeconds * 6;
+		}
+		
 	}
 
 	public static int getRotationFromMinutes() {
-		return calendar == null ? 0 : calendar.get(Calendar.MINUTE) * 6;
+		if (haspower) {
+			oldMinutes = calendar.get(Calendar.MINUTE);
+			return calendar == null ? 0 : calendar.get(Calendar.MINUTE) * 6;
+		} else {
+			return oldMinutes * 6;
+		}
+		
 	}
 
 	public static int getRotationFromHours() {
-		return calendar == null ? 0 : (calendar.get(Calendar.HOUR_OF_DAY) * 30 + calendar.get(Calendar.MINUTE) / 6);
+		if (haspower) {
+			oldHours = calendar.get(Calendar.HOUR_OF_DAY);
+			return calendar == null ? 0 : (calendar.get(Calendar.HOUR_OF_DAY) * 30 + calendar.get(Calendar.MINUTE) / 6);
+		} else {
+			return oldHours * 30 + oldMinutes / 6;
+		}
+		
 	}
 
 	public void toggleSounds() {
