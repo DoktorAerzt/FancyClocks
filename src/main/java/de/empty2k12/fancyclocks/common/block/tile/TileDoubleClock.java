@@ -16,7 +16,7 @@ public class TileDoubleClock extends TileEntity {
 	private static int oldMinutes;
 	private static int oldHours;
 	private boolean silent = false;
-	private static boolean haspower = true;
+	private static boolean hasPower = true;
 
 	private static Calendar calendar;
 
@@ -24,20 +24,28 @@ public class TileDoubleClock extends TileEntity {
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		this.silent = compound.getBoolean("silent");
+        this.hasPower = compound.getBoolean("hasPower");
 		this.orientation = compound.getInteger("orientation");
+        this.oldSeconds = compound.getInteger("oldSeconds");
+        this.oldMinutes = compound.getInteger("oldMinutes");
+        this.oldHours = compound.getInteger("oldHours");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setBoolean("silent", silent);
+        compound.setBoolean("hasPower", hasPower);
 		compound.setInteger("orientation", orientation);
+        compound.setInteger("oldSeconds", oldSeconds);
+        compound.setInteger("oldMinutes", oldMinutes);
+        compound.setInteger("oldHours", oldHours);
 	}
 
 	@Override
 	public void updateEntity() {
 		calendar = Calendar.getInstance();
-		if(oldSeconds != calendar.get(Calendar.SECOND) && haspower) {
+		if(oldSeconds != calendar.get(Calendar.SECOND) && hasPower) {
 			oldSeconds = calendar.get(Calendar.SECOND);
             if(calendar.get(Calendar.MINUTE) == 0) {
                 for(int times = 0; times < calendar.get(Calendar.MINUTE); times++) {
@@ -55,8 +63,8 @@ public class TileDoubleClock extends TileEntity {
 	}
 
 	public static int getRotationFromSeconds() {
-		if (haspower) {
-			oldSeconds = calendar.get(calendar.SECOND);
+		if (hasPower) {
+			oldSeconds = calendar.get(Calendar.SECOND);
 			return calendar == null ? 0 : calendar.get(Calendar.SECOND) * 6;
 		} else {
 			return oldSeconds * 6;
@@ -65,7 +73,7 @@ public class TileDoubleClock extends TileEntity {
 	}
 
 	public static int getRotationFromMinutes() {
-		if (haspower) {
+		if (hasPower) {
 			oldMinutes = calendar.get(Calendar.MINUTE);
 			return calendar == null ? 0 : calendar.get(Calendar.MINUTE) * 6;
 		} else {
@@ -75,7 +83,7 @@ public class TileDoubleClock extends TileEntity {
 	}
 
 	public static int getRotationFromHours() {
-		if (haspower) {
+		if (hasPower) {
 			oldHours = calendar.get(Calendar.HOUR_OF_DAY);
 			return calendar == null ? 0 : (calendar.get(Calendar.HOUR_OF_DAY) * 30 + calendar.get(Calendar.MINUTE) / 6);
 		} else {
