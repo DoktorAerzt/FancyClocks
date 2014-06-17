@@ -76,8 +76,6 @@ public class BlockDoubleClockBottom extends Block {
 		if(te != null && te instanceof TileDoubleClock) {
 			((TileDoubleClock) te).setOrientation(MathHelper.floor_double((double)((livingBase.rotationYaw * 4F) / 360F) + 0.5D) & 3);
 		}
-		
-		System.out.println("" + (MathHelper.floor_double((double)((livingBase.rotationYaw * 4F) / 360F) + 0.5D) & 3));
 	}
 
 	@Override
