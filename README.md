@@ -1,10 +1,13 @@
-modjam-2014
+FancyClocks
 ===========
 
-Repository for the FancyClocks mod! Download:http://dragem.de:8080/job/Fancy%20Clocks/lastSuccessfulBuild/artifact/build/libs/fancyclocks-1.7.2-8.jar
-(You find the newest version on our Jenkins(http://dragem.de:8080/job/Fancy%20Clocks/))
+Repository for the FancyClocks mod!
 
-Please be warned: This download is unfinished and still missing a lot of stuff but voila!
+Download: http://dragem.de:8080/job/Fancy%20Clocks/lastSuccessfulBuild/
 
-Copyright (�) 2014 by Gero G. aka. Empty2k12
+(You find the newest version on our Jenkins(http://dragem.de:8080/job/Fancy%20Clocks/)
+
+Please be warned: Download might contain unfinished code!
+
+Copyright (©) 2014 by Gero G. aka. Empty2k12
 
