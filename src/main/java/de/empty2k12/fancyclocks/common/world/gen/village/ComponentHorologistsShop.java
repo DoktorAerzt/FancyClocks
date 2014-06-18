@@ -1,9 +1,9 @@
 package de.empty2k12.fancyclocks.common.world.gen.village;
 
-import de.empty2k12.fancyclocks.common.block.ClockBlocks;
-import de.empty2k12.fancyclocks.common.block.tile.TileClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
+import java.util.List;
+import java.util.Random;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntitySign;
@@ -11,18 +11,24 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
-
-import java.util.List;
-import java.util.Random;
+import de.empty2k12.fancyclocks.common.block.ClockBlocks;
+import de.empty2k12.fancyclocks.common.block.tile.TileClock;
+import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
+import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
 
 public class ComponentHorologistsShop extends StructureVillagePieces.Village {
-
-	//TODO: Bench and Correct Placement of the 2nd Trapdoor!
+	
+	Block[] buildingMaterial;
 
 	public ComponentHorologistsShop(StructureVillagePieces.Start par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5) {
 		super(par1ComponentVillageStartPiece, par2);
 		this.coordBaseMode = par5;
 		this.boundingBox = par4StructureBoundingBox;
+		if(par1ComponentVillageStartPiece.inDesert) {
+			this.buildingMaterial = new Block[] {Blocks.sandstone, Blocks.sandstone_stairs, Blocks.iron_bars, Blocks.sandstone};
+		} else {
+			this.buildingMaterial = new Block[] {Blocks.cobblestone, Blocks.oak_stairs, Blocks.glass_pane, Blocks.planks};
+		}
 	}
 
 	public static ComponentHorologistsShop buildComponent(StructureVillagePieces.Start par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7) {
@@ -44,53 +50,53 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 
 		//Roof Start
 		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 1, 7, 5, 4, Blocks.air, Blocks.air, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 8, 0, 5, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 5, 0, 8, 5, 5, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 6, 1, 8, 6, 4, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 7, 2, 8, 7, 3, Blocks.cobblestone, Blocks.cobblestone, false);
-		int i = this.getMetadataWithOffset(Blocks.oak_stairs, 3);
-		int j = this.getMetadataWithOffset(Blocks.oak_stairs, 2);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 8, 0, 5, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 5, 0, 8, 5, 5, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 6, 1, 8, 6, 4, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 7, 2, 8, 7, 3, buildingMaterial[0], buildingMaterial[0], false);
+		int i = this.getMetadataWithOffset(buildingMaterial[1], 3);
+		int j = this.getMetadataWithOffset(buildingMaterial[1], 2);
 		int k;
 		int l;
 
 		for (k = -1; k <= 2; ++k) {
 			for (l = 0; l <= 8; ++l) {
-				this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, i, l, 6 + k, k, par3StructureBoundingBox);
-				this.placeBlockAtCurrentPosition(par1World, Blocks.oak_stairs, j, l, 6 + k, 5 - k, par3StructureBoundingBox);
+				this.placeBlockAtCurrentPosition(par1World, buildingMaterial[1], i, l, 6 + k, k, par3StructureBoundingBox);
+				this.placeBlockAtCurrentPosition(par1World, buildingMaterial[1], j, l, 6 + k, 5 - k, par3StructureBoundingBox);
 			}
 		}
 		//Roof End
 
 		//Walls Start
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 0, 0, 1, 5, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 5, 8, 1, 5, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 1, 0, 8, 1, 4, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 2, 1, 0, 7, 1, 0, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 2, 0, 0, 4, 0, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 2, 5, 0, 4, 5, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 2, 5, 8, 4, 5, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 2, 0, 8, 4, 0, Blocks.cobblestone, Blocks.cobblestone, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 2, 1, 0, 4, 4, Blocks.planks, Blocks.planks, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 2, 5, 7, 4, 5, Blocks.planks, Blocks.planks, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 2, 1, 8, 4, 4, Blocks.planks, Blocks.planks, false);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 2, 0, 7, 4, 0, Blocks.planks, Blocks.planks, false);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 4, 2, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 5, 2, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 6, 2, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 4, 3, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 5, 3, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 6, 3, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 0, 2, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 0, 2, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 0, 3, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 0, 3, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 8, 2, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 8, 2, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 8, 3, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 8, 3, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 3, 2, 5, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.glass_pane, 0, 5, 2, 5, par3StructureBoundingBox);
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 1, 7, 4, 4, Blocks.planks, Blocks.planks, false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 1, 0, 0, 1, 5, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 5, 8, 1, 5, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 1, 0, 8, 1, 4, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 2, 1, 0, 7, 1, 0, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 2, 0, 0, 4, 0, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 2, 5, 0, 4, 5, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 2, 5, 8, 4, 5, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 2, 0, 8, 4, 0, buildingMaterial[0], buildingMaterial[0], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 2, 1, 0, 4, 4, buildingMaterial[3], buildingMaterial[3], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 2, 5, 7, 4, 5, buildingMaterial[3], buildingMaterial[3], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 2, 1, 8, 4, 4, buildingMaterial[3], buildingMaterial[3], false);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 2, 0, 7, 4, 0, buildingMaterial[3], buildingMaterial[3], false);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 4, 2, 0, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 5, 2, 0, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 6, 2, 0, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 4, 3, 0, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 5, 3, 0, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 6, 3, 0, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 0, 2, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 0, 2, 3, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 0, 3, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 0, 3, 3, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 8, 2, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 8, 2, 3, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 8, 3, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 8, 3, 3, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 3, 2, 5, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[2], 0, 5, 2, 5, par3StructureBoundingBox);
+		this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 1, 7, 4, 4, buildingMaterial[3], buildingMaterial[3], false);
 		//Walls End
 
 		//Clocks Start
@@ -105,7 +111,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		//Clocks End
 
 		//Counter Start
-		this.placeBlockAtCurrentPosition(par1World, Blocks.planks, 0, 6, 1, 2, par3StructureBoundingBox);
+		this.placeBlockAtCurrentPosition(par1World, buildingMaterial[3], 0, 6, 1, 2, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 11, 6, 1, 1, par3StructureBoundingBox);
 		this.placeBlockAtCurrentPosition(par1World, Blocks.trapdoor, 10, 7, 1, 2, par3StructureBoundingBox);
 
@@ -139,7 +145,7 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		for (l = 0; l < 6; ++l) {
 			for (int i1 = 0; i1 < 9; ++i1) {
 				this.clearCurrentPositionBlocksUpwards(par1World, i1, 9, l, par3StructureBoundingBox);
-				this.func_151554_b(par1World, Blocks.cobblestone, 0, i1, -1, l, par3StructureBoundingBox);
+				this.func_151554_b(par1World, buildingMaterial[0], 0, i1, -1, l, par3StructureBoundingBox);
 			}
 		}
 
