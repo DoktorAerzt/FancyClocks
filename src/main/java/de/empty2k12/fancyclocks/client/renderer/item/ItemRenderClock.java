@@ -1,11 +1,12 @@
 package de.empty2k12.fancyclocks.client.renderer.item;
 
 import de.empty2k12.fancyclocks.client.model.ModelClock;
-import de.empty2k12.fancyclocks.client.renderer.RenderClock;
+import de.empty2k12.fancyclocks.client.renderer.block.RenderWoodenClock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
+
 import org.lwjgl.opengl.GL11;
 
 public class ItemRenderClock implements IItemRenderer {
@@ -38,7 +39,7 @@ public class ItemRenderClock implements IItemRenderer {
 			GL11.glTranslatef(0f, 0.11f, 0f);
 		}
 		
-		bindTexture(RenderClock.texture);
+		bindTexture(RenderWoodenClock.texture);
 		new ModelClock().renderIndicators(0.025F);
 		bindTextureBasedOnMeta(item.getItemDamage());
 		new ModelClock().renderCorpse(0.025F);

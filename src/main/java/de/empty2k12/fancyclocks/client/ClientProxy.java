@@ -2,9 +2,9 @@ package de.empty2k12.fancyclocks.client;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry;
-import de.empty2k12.fancyclocks.client.renderer.RenderClock;
-import de.empty2k12.fancyclocks.client.renderer.RenderDoubleClock;
-import de.empty2k12.fancyclocks.client.renderer.RenderModernClock;
+import de.empty2k12.fancyclocks.client.renderer.block.RenderDoubleClock;
+import de.empty2k12.fancyclocks.client.renderer.block.RenderModernClock;
+import de.empty2k12.fancyclocks.client.renderer.block.RenderWoodenClock;
 import de.empty2k12.fancyclocks.client.renderer.item.ItemRenderClock;
 import de.empty2k12.fancyclocks.client.renderer.item.ItemRenderDoubleClock;
 import de.empty2k12.fancyclocks.client.renderer.item.ItemRenderModernClock;
@@ -25,7 +25,7 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenderers() {
-		TileEntitySpecialRenderer renderClock = new RenderClock();
+		TileEntitySpecialRenderer renderClock = new RenderWoodenClock();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileWoodenClock.class, renderClock);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ClockBlocks.clock), new ItemRenderClock());
 

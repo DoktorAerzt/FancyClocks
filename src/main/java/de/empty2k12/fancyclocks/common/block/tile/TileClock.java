@@ -9,6 +9,9 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 
+/*
+ * Does not need to be registered, because its only used as a subclass..
+ * */
 public class TileClock extends TileEntity {
 
 	private int orientation = 0;

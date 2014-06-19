@@ -1,6 +1,7 @@
-package de.empty2k12.fancyclocks.client.renderer;
+package de.empty2k12.fancyclocks.client.renderer.block;
 
 import de.empty2k12.fancyclocks.client.model.ModelModernClock;
+import de.empty2k12.fancyclocks.client.renderer.RenderClock;
 import de.empty2k12.fancyclocks.common.block.clocks.modern_clock.TileModernClock;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import net.minecraft.client.renderer.Tessellator;
@@ -10,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-public class RenderModernClock extends TileEntitySpecialRenderer {
+public class RenderModernClock extends RenderClock {
 
 	public static final ResourceLocation texture = new ResourceLocation(ModInfo.MOD_ID + ":" + "textures/model/modernClock1.png");
 
