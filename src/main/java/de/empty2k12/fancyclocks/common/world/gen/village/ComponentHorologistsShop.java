@@ -12,9 +12,9 @@ import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
-import de.empty2k12.fancyclocks.common.block.tile.TileClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
+import de.empty2k12.fancyclocks.common.block.clocks.double_clock.TileDoubleClock;
+import de.empty2k12.fancyclocks.common.block.clocks.modern_clock.TileModernClock;
+import de.empty2k12.fancyclocks.common.block.clocks.wooden_clock.TileWoodenClock;
 
 public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 	
@@ -199,8 +199,8 @@ public class ComponentHorologistsShop extends StructureVillagePieces.Village {
 		int placeX = this.getXWithOffset(x, z);
 		int placeY = this.getYWithOffset(y);
 		int placeZ = this.getZWithOffset(x, z);
-		world.setTileEntity(placeX, placeY, placeZ, new TileClock());
-		TileClock tileDoubleClock = (TileClock) world.getTileEntity(placeX, placeY, placeZ);
+		world.setTileEntity(placeX, placeY, placeZ, new TileWoodenClock());
+		TileWoodenClock tileDoubleClock = (TileWoodenClock) world.getTileEntity(placeX, placeY, placeZ);
         if (tileDoubleClock != null) {
             tileDoubleClock.setOrientation(this.coordBaseMode);
         }

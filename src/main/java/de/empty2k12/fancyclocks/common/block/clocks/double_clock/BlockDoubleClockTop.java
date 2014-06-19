@@ -1,10 +1,9 @@
-package de.empty2k12.fancyclocks.common.block.blocks.DoubleClock;
+package de.empty2k12.fancyclocks.common.block.clocks.double_clock;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;

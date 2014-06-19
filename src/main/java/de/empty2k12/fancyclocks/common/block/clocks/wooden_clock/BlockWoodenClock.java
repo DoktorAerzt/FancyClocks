@@ -1,10 +1,9 @@
-package de.empty2k12.fancyclocks.common.block.blocks;
+package de.empty2k12.fancyclocks.common.block.clocks.wooden_clock;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import de.empty2k12.fancyclocks.FancyClocks;
 import de.empty2k12.fancyclocks.api.IScrewdriveable;
-import de.empty2k12.fancyclocks.common.block.tile.TileClock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -26,7 +25,7 @@ import java.util.List;
 
 import static net.minecraftforge.common.util.ForgeDirection.*;
 
-public class BlockClock extends BlockContainer implements IScrewdriveable {
+public class BlockWoodenClock extends BlockContainer implements IScrewdriveable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] texture;
@@ -35,7 +34,7 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 		"minecraft:planks_oak", "minecraft:planks_spruce", "minecraft:planks_birch", "minecraft:planks_jungle", "minecraft:planks_acacia", "minecraft:planks_big_oak"
 	};
 
-	public BlockClock() {
+	public BlockWoodenClock() {
 		super(Material.wood);
 		setCreativeTab(FancyClocks.tabFancyClocks);
 		setBlockName("blockClock");
@@ -47,8 +46,8 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 
 	@Override
 	public void onScrewDriveTurn(EntityPlayer player, World world, int x, int y, int z) {
-		if(world.getTileEntity(x, y, z) instanceof TileClock) {
-			TileClock tile = (TileClock) world.getTileEntity(x, y, z);
+		if(world.getTileEntity(x, y, z) instanceof TileWoodenClock) {
+			TileWoodenClock tile = (TileWoodenClock) world.getTileEntity(x, y, z);
 			tile.toggleSounds();
 			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("msg.clock.1") + " " + (tile.getSilent() ? StatCollector.translateToLocal("msg.clock.silent") : StatCollector.translateToLocal("msg.clock.ticking") + "!")));
 		}
@@ -86,8 +85,8 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z) {
 		TileEntity te = blockAccess.getTileEntity(x, y, z);
-		if(te != null && te instanceof TileClock) {
-			int orientation = ((TileClock) te).getOrientation();
+		if(te != null && te instanceof TileWoodenClock) {
+			int orientation = ((TileWoodenClock) te).getOrientation();
 			float f = 0.30F;
 
 			if (orientation == 0) {
@@ -133,8 +132,8 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if(te != null && te instanceof TileClock) {
-			int orientation = ((TileClock) te).getOrientation();
+		if(te != null && te instanceof TileWoodenClock) {
+			int orientation = ((TileWoodenClock) te).getOrientation();
 			boolean doDrop = true;
 
 			if (orientation == 0 && !world.isAirBlock(x, y, z + 1)) {
@@ -163,14 +162,14 @@ public class BlockClock extends BlockContainer implements IScrewdriveable {
 
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileClock();
+		return new TileWoodenClock();
 	}
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase livingBase, ItemStack stack) {
 		TileEntity te = world.getTileEntity(x, y, z);
-		if(te != null && te instanceof TileClock) {
-			((TileClock) te).setOrientation(MathHelper.floor_double((double)((livingBase.rotationYaw * 4F) / 360F) + 0.5D) & 3);
+		if(te != null && te instanceof TileWoodenClock) {
+			((TileWoodenClock) te).setOrientation(MathHelper.floor_double((double)((livingBase.rotationYaw * 4F) / 360F) + 0.5D) & 3);
 		}
 	}
 }

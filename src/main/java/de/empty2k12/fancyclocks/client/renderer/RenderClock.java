@@ -1,12 +1,13 @@
 package de.empty2k12.fancyclocks.client.renderer;
 
 import de.empty2k12.fancyclocks.client.model.ModelClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileClock;
+import de.empty2k12.fancyclocks.common.block.clocks.wooden_clock.TileWoodenClock;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 
 public class RenderClock extends TileEntitySpecialRenderer {
@@ -24,7 +25,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 
 		int rotationAngle = 0;
 
-		switch(((TileClock)tile).getOrientation()){
+		switch(((TileWoodenClock)tile).getOrientation()){
 		case 0:
 			rotationAngle = 0;
 			break;
@@ -60,15 +61,15 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glTranslatef(-0.0F, -0.3F, -0.0F);
 		GL11.glScalef(-1.0F, 1F, 1F);
 
-		drawSecondPointer((TileClock)tile, tile.getBlockMetadata());
-		drawMinutePointer((TileClock)tile, tile.getBlockMetadata());
-		drawHourPointer((TileClock)tile, tile.getBlockMetadata());
+		drawSecondPointer((TileWoodenClock)tile, tile.getBlockMetadata());
+		drawMinutePointer((TileWoodenClock)tile, tile.getBlockMetadata());
+		drawHourPointer((TileWoodenClock)tile, tile.getBlockMetadata());
 
 		GL11.glPopMatrix();
 	}
 
 	//Pointer color based on wood color!
-	public static void drawSecondPointer(TileClock tile, int meta) {
+	public static void drawSecondPointer(TileWoodenClock tile, int meta) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
 		Tessellator secondTess = Tessellator.instance;
@@ -82,7 +83,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glPopMatrix();
 	}
 
-	public static void drawMinutePointer(TileClock tile, int meta) {
+	public static void drawMinutePointer(TileWoodenClock tile, int meta) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromMinutes(), 0.0f, 0.0f, 1.0f);
 		Tessellator minuteTess = Tessellator.instance;
@@ -96,7 +97,7 @@ public class RenderClock extends TileEntitySpecialRenderer {
 		GL11.glPopMatrix();
 	}
 
-	public static void drawHourPointer(TileClock tile, int meta) {
+	public static void drawHourPointer(TileWoodenClock tile, int meta) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(tile.getRotationFromHours(), 0.0f, 0.0f, 1.0f);
 		Tessellator hourTess = Tessellator.instance;

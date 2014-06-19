@@ -1,12 +1,13 @@
 package de.empty2k12.fancyclocks.client.renderer;
 
 import de.empty2k12.fancyclocks.client.model.ModelModernClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
+import de.empty2k12.fancyclocks.common.block.clocks.modern_clock.TileModernClock;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 
 public class RenderModernClock extends TileEntitySpecialRenderer {

@@ -1,12 +1,13 @@
 package de.empty2k12.fancyclocks.client.renderer;
 
 import de.empty2k12.fancyclocks.client.model.ModelDoubleClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
+import de.empty2k12.fancyclocks.common.block.clocks.double_clock.TileDoubleClock;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 
 public class RenderDoubleClock extends TileEntitySpecialRenderer {
@@ -55,7 +56,7 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 
 		bindTextureBasedOnMeta(tile.getBlockMetadata());
 		this.model.renderModel(0.0625F);
-		
+
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		bindTexture(texture);
@@ -70,7 +71,7 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		GL11.glRotatef(tile.getRotationFromSeconds(), 0.0f, 0.0f, 1.0f);
 		Tessellator secondTess = Tessellator.instance;
 		secondTess.startDrawing(GL11.GL_LINE_STRIP);
-        secondTess.setColorRGBA(getColorForMeta(meta), getColorForMeta(meta), getColorForMeta(meta), 100);
+		secondTess.setColorRGBA(getColorForMeta(meta), getColorForMeta(meta), getColorForMeta(meta), 100);
 		secondTess.setTranslation(0, 0, 0);
 		secondTess.addVertex(-0.02, 0.01, 0.15D);
 		secondTess.addVertex(-0.02, -0.2, 0.15D);
@@ -85,7 +86,7 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		GL11.glRotatef(tile.getRotationFromMinutes(), 0.0f, 0.0f, 1.0f);
 		Tessellator minuteTess = Tessellator.instance;
 		minuteTess.startDrawing(GL11.GL_LINE_STRIP);
-        minuteTess.setColorRGBA(getColorForMeta(meta), getColorForMeta(meta), getColorForMeta(meta), 100);
+		minuteTess.setColorRGBA(getColorForMeta(meta), getColorForMeta(meta), getColorForMeta(meta), 100);
 		minuteTess.addVertex(-0.02, 0.01, 0.15D);
 		minuteTess.addVertex(-0.02, -0.16, 0.15D);
 		minuteTess.addVertex(0.0, -0.16, 0.15D);
@@ -99,7 +100,7 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 		GL11.glRotatef(tile.getRotationFromHours(), 0.0f, 0.1f, 1.0f);
 		Tessellator hourTess = Tessellator.instance;
 		hourTess.startDrawing(GL11.GL_LINE_STRIP);
-        hourTess.setColorRGBA(getColorForMeta(meta), getColorForMeta(meta), getColorForMeta(meta), 100);
+		hourTess.setColorRGBA(getColorForMeta(meta), getColorForMeta(meta), getColorForMeta(meta), 100);
 		hourTess.addVertex(-0.02, 0.01, 0.15D);
 		hourTess.addVertex(-0.02, -0.15, 0.15D);
 		hourTess.addVertex(0.0, -0.15, 0.15D);
@@ -111,7 +112,10 @@ public class RenderDoubleClock extends TileEntitySpecialRenderer {
 	public void bindTextureBasedOnMeta(int meta) {
 		bindTexture(ModelDoubleClock.textures[meta]);
 	}
-    public static int getColorForMeta(int meta) {
-        return meta == 2 || meta == 6 ? 0 : 255;
-    }
+
+	public static int getColorForMeta(int meta) {
+		if(meta == 0)
+			return 255;
+		return meta == 2 || meta == 6 ? 0 : 255;
+	}
 }

@@ -9,9 +9,9 @@ import de.empty2k12.fancyclocks.client.renderer.item.ItemRenderClock;
 import de.empty2k12.fancyclocks.client.renderer.item.ItemRenderDoubleClock;
 import de.empty2k12.fancyclocks.client.renderer.item.ItemRenderModernClock;
 import de.empty2k12.fancyclocks.common.block.ClockBlocks;
-import de.empty2k12.fancyclocks.common.block.tile.TileClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileDoubleClock;
-import de.empty2k12.fancyclocks.common.block.tile.TileModernClock;
+import de.empty2k12.fancyclocks.common.block.clocks.double_clock.TileDoubleClock;
+import de.empty2k12.fancyclocks.common.block.clocks.modern_clock.TileModernClock;
+import de.empty2k12.fancyclocks.common.block.clocks.wooden_clock.TileWoodenClock;
 import de.empty2k12.fancyclocks.common.misc.Config;
 import de.empty2k12.fancyclocks.common.misc.ModInfo;
 import de.empty2k12.fancyclocks.common.proxy.CommonProxy;
@@ -26,7 +26,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerRenderers() {
 		TileEntitySpecialRenderer renderClock = new RenderClock();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileClock.class, renderClock);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileWoodenClock.class, renderClock);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ClockBlocks.clock), new ItemRenderClock());
 
 		TileEntitySpecialRenderer renderModernClock = new RenderModernClock();
