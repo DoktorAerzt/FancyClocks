@@ -2,13 +2,22 @@
 tile.blockClock.name=Uhr
 tile.blockDoubleClock.name=Standuhr
 tile.blockModernClock.name=Moderne Uhr
+
 #Items
-item.screwdriver.name=Schraubendreher
+item.screwdriver.name=Schraubenzieher
 
 #Translations
-msg.clock.1=Die Uhr macht nun
-msg.clock.silent=keine Geräusche
-msg.clock.ticking=Geräusche
+msg.clock.1=Die Uhr ist nun
+msg.clock.silent=leise
+msg.clock.ticking=laut
 
 #Creative Tabs
 itemGroup.FancyClocks=Fancy Clocks
+
+#Wood Types
+wood.type.0=Eichenholz
+wood.type.1=Fichtenholz
+wood.type.2=Birke
+wood.type.3=Jungelholz
+wood.type.4=Akazienholz
+wood.type.5=Dunkle Eichenholz

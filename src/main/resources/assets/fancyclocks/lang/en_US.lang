@@ -13,3 +13,11 @@ msg.clock.ticking=ticking
 
 #Creative Tabs
 itemGroup.FancyClocks=Fancy Clocks
+
+#Wood Types
+wood.type.0=Oak
+wood.type.1=Spruce
+wood.type.2=Birch
+wood.type.3=Jungle
+wood.type.4=Acacia
+wood.type.5=Dark Oak

@@ -3,13 +3,10 @@ package de.empty2k12.fancyclocks.common.item.items.block;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class ItemBlockDoubleClock extends ItemBlock {
 	
-	//FIXME: Localizse!
-
-	private final static String[] subNames = {"Oak", "Spruce", "Birch", "Jungle", "Acacia", "Dark Oak"};
-
 	public ItemBlockDoubleClock(Block block){
 		super(block);
 		setHasSubtypes(true);
@@ -17,7 +14,7 @@ public class ItemBlockDoubleClock extends ItemBlock {
 
 	@Override
 	public String getItemStackDisplayName(ItemStack is){
-		return subNames[is.getItemDamage()] + " Grandfather Clock";
+		return StatCollector.translateToLocal("wood.type." + is.getItemDamage()) + " " + StatCollector.translateToLocal("tile.blockDoubleClock.name");
 	}
 
 	@Override
