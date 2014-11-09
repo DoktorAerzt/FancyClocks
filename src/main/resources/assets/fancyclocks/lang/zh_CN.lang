@@ -1,0 +1,23 @@
+#Blocks
+tile.blockClock.name=时钟
+tile.blockDoubleClock.name=落地座钟
+tile.blockModernClock.name=现代时钟
+
+#Items
+item.screwdriver.name=螺丝刀
+
+#Translations
+msg.clock.1=时钟已
+msg.clock.silent=停止
+msg.clock.ticking=开始运转
+
+#Creative Tabs
+itemGroup.FancyClocks=Fancy Clocks
+
+#Wood Types
+wood.type.0=橡木
+wood.type.1=云杉木
+wood.type.2=白桦木
+wood.type.3=丛林木
+wood.type.4=金合欢木
+wood.type.5=深色橡木
