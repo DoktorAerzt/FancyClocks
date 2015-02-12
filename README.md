@@ -10,4 +10,3 @@ Download: http://dragem.de:8080/job/Fancy%20Clocks/lastSuccessfulBuild/
 Please be warned: Download might contain unfinished code!
 
 Copyright (©) 2014 by Gero G. aka. Empty2k12
-
